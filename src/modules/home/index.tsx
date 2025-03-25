@@ -136,72 +136,71 @@ const Index = () => {
               Ro'yxatdan O'tish
             </a>
           </button>
-{/* Arrow Icon */}
-<img 
-  src={Arrow} 
-  alt="arrow icon" 
-  className="w-auto h-auto absolute 
-             top-[310px] left-[0px] sm:top-[280px] sm:left-[20px] 
+         <div> {/* Arrow Icon */}
+          <img
+            src={Arrow}
+            alt="arrow icon"
+            className="w-auto h-auto absolute 
+             top-[310px] left-0 sm:top-[280px] sm:left-[20px] 
              md:top-[300px] md:left-[50px] 
              lg:top-[450px] lg:left-[300px] 
-             -rotate-60" 
-/>
+             -rotate-60"
+          />
 
-{/* Blue Spot */}
-<img 
-  src={BlueSpot} 
-  alt="Blue spot" 
-  className="h-auto w-auto object-cover absolute 
+          {/* Blue Spot */}
+          <img
+            src={BlueSpot}
+            alt="Blue spot"
+            className="h-auto w-auto object-cover absolute 
              top-[150px] right-[5px] sm:top-[180px] sm:right-[20px] 
              md:top-[220px] md:right-[50px] 
-             lg:top-[450px] lg:right-[320px]" 
-/>
-
+             lg:top-[450px] lg:right-[320px]"
+          /></div>
         </div>
         <div className="flex flex-col gap-0">
-          <div className="flex  lg:w-[1280px] justify-end items-end pl-0 w-full"><img src={Feather} alt="feather" className="-rotate-15 " /></div>
-        <div className="bg-gradient-to-br from-[#E7ECFF] to-[#dde3f8] p-[10px] sm:p-[30px] md:p-[40px] lg:p-[60px] rounded-[20px] sm:rounded-[25px] md:rounded-[30px]   flex items-center justify-center lg:h-[704px] relative"
-        >
-          <div className="absolute top-10 left-9 w-18 h-18 bg-gradient-to-r from-white to-transparent rounded-full"></div>
-          <div className="relative bg-transparent rounded-[30px] p-[10px] sm:p-5 md:p-8 lg:p-[30px] max-w-sm sm:max-w-md md:max-w-lg lg:max-w-4xl mx-auto border-[4px] border-dashed border-[#FFFFFF] w-full "
+          <div className="flex  lg:w-[1260px] justify-end items-end pl-0 w-full"><img src={Feather} alt="feather" className="-rotate-15 " /></div>
+          <div className="bg-gradient-to-br from-[#E7ECFF] to-[#dde3f8] p-[10px] sm:p-[30px] md:p-[40px] lg:p-[60px] rounded-[20px] sm:rounded-[25px] md:rounded-[30px]   flex items-center justify-center lg:h-[704px] relative"
           >
-            {/* Dashed Border Effect */}
-            <div className="w-full rounded-[30px] lg:p-6 p-3 md:p-10 flex flex-col bg-white relative gap-2 lg:h-[364px]">
-              {/* Title */}
-              <h4 className="text-[#1E9FD9] poppin font-medium text-sm md:text-base">
-                Aql-idrokingizni sinovdan o‘tkazing
-              </h4>
-              <h2 className="text-[#061A40] lg:text-[32px] md:text-3xl font-bold mt-2">
-                IQ – darajangizni biz bilan o‘lchang.
-              </h2>
+            <div className="absolute top-10 left-9 w-18 h-18 bg-gradient-to-r from-white to-transparent rounded-full"></div>
+            <div className="relative bg-transparent rounded-[30px] p-[10px] sm:p-5 md:p-8 lg:p-[30px] max-w-sm sm:max-w-md md:max-w-lg lg:max-w-4xl mx-auto border-[4px] border-dashed border-[#FFFFFF] w-full "
+            >
+              {/* Dashed Border Effect */}
+              <div className="w-full rounded-[30px] lg:p-6 p-3 md:p-10 flex flex-col bg-white relative gap-2 lg:h-[364px]">
+                {/* Title */}
+                <h4 className="text-[#1E9FD9] poppin font-medium text-sm md:text-base">
+                  Aql-idrokingizni sinovdan o‘tkazing
+                </h4>
+                <h2 className="text-[#061A40] lg:text-[32px] md:text-3xl font-bold mt-2">
+                  IQ – darajangizni biz bilan o‘lchang.
+                </h2>
 
-              {/* Description */}
-              <p className="text-[#01284099]  lg:text-[18px] lg:font-[400] text-[14px] md:text-[16px] poppins">
-                IQ darajangiz – bu sizning fikrlash tezligingiz, muammolarni hal qilish qobiliyatingiz
-                va intellektual salohiyatingizning kaliti. O‘z imkoniyatlaringizni kashf eting, yangi
-                bilimlar bilan ongingizni charxlang va har kuni o‘zingizning eng yaxshi versiyangiz bo‘lishga
-                intiling! Aql-u idrokingizni sinang – siz doim o‘ylaganingizdan ham aqilliroqsiz!
-              </p>
+                {/* Description */}
+                <p className="text-[#01284099]  lg:text-[18px] lg:font-[400] text-[14px] md:text-[16px] poppins">
+                  IQ darajangiz – bu sizning fikrlash tezligingiz, muammolarni hal qilish qobiliyatingiz
+                  va intellektual salohiyatingizning kaliti. O‘z imkoniyatlaringizni kashf eting, yangi
+                  bilimlar bilan ongingizni charxlang va har kuni o‘zingizning eng yaxshi versiyangiz bo‘lishga
+                  intiling! Aql-u idrokingizni sinang – siz doim o‘ylaganingizdan ham aqilliroqsiz!
+                </p>
 
-              {/* Floating Images */}
-              <div className="flex  md:flex-nowrap sm:justify-between items-center gap-[10px]">
-                <img
-                  src={Iqnd}
-                  alt="Child with Abacus"
-                  className="lg:absolute  h-[80px] w-[140px]  lg:top-[-100px] lg:right-[-90px] lg:w-[245px] md:w-[200px]  md:h-[180px]  lg:h-[200px] object-cover rounded-xl shadow-lg"
-                />
-                <img
-                  src={IqSt}
-                  alt="Kids Experimenting"
-                  className="lg:absolute  h-[80px]  w-[140px]  lg:bottom-[-110px] lg:left-[-100px] lg:w-[245px] md:w-[200px] md:h-[180px] lg:h-[200px]   object-cover rounded-xl shadow-lg"
-                />
+                {/* Floating Images */}
+                <div className="flex  md:flex-nowrap sm:justify-between items-center gap-[10px]">
+                  <img
+                    src={Iqnd}
+                    alt="Child with Abacus"
+                    className="lg:absolute  h-[80px] w-[140px]  lg:top-[-100px] lg:right-[-90px] lg:w-[245px] md:w-[200px]  md:h-[180px]  lg:h-[200px] object-cover rounded-xl shadow-lg"
+                  />
+                  <img
+                    src={IqSt}
+                    alt="Kids Experimenting"
+                    className="lg:absolute  h-[80px]  w-[140px]  lg:bottom-[-110px] lg:left-[-100px] lg:w-[245px] md:w-[200px] md:h-[180px] lg:h-[200px]   object-cover rounded-xl shadow-lg"
+                  />
+                </div>
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
-        </div>
-        
+
       </section>
       {/* ============= About Iq============ */}
       <section className="bg-[#F7FAFF] py-20 ">
