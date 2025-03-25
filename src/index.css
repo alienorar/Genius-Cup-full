@@ -1,0 +1,58 @@
+@import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
+
+@font-face {
+    font-family: 'Rubik italic';
+    src: url('/public/fonts/Rubik/Rubik-Italic-VariableFont_wght.ttf')
+}
+
+@font-face {
+    font-family: 'Rubik static';
+    src: url('/public/fonts/Rubik/Rubik-VariableFont_wght.ttf')
+}
+
+@font-face {
+    font-family: 'Early Bird';
+    src: url('/public/fonts/early_bird/Early\ Bird.otf')
+}
+
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* Custom Container */
+.custom-container {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+/* Responsive Padding */
+@media (min-width: 640px) {
+    .custom-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .custom-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+body {
+    font-family: 'Poppins';
+}
+
+.poppin{
+    font-family:'Poppins';
+}
