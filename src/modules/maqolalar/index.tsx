@@ -29,12 +29,12 @@ const NewsSection: React.FC = () => {
    <section>
 <div className="mb-8 text-center poppin">
       {/* Subheading - "Maqolalar" */}
-      <p className="text-lg sm:text-xl md:text-2xl text-[#1E9FD9] font-medium mb-2">
+      <p className="text-sm sm:text-xl poppin md:text-[16px] text-[#1E9FD9] font-medium mb-1">
         Maqolalar
       </p>
       
       {/* Main Heading - "Yangilik va Maqolalar" */}
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black">
+      <h2 className="text-2xl sm:text-3xl md:text-[40px] font-semibold poppin text-black">
         Yangilik va Maqolalar
       </h2>
       
@@ -43,7 +43,7 @@ const NewsSection: React.FC = () => {
      <div className="custom-container mx-auto px-4 py-8 grid md:grid-cols-4 gap-6">
       {/* News Section */}
       <div className="md:col-span-3">
-        <h2 className="text-2xl font-bold mb-4">So‘nggi yangiliklar</h2>
+        <h2 className="text-2xl font-semibold poppin mb-4">So‘nggi yangiliklar</h2>
         <div className="grid md:grid-cols-3 gap-4">
           {newsData.map((news) => (
             <div key={news.id} >
@@ -65,7 +65,7 @@ const NewsSection: React.FC = () => {
       {/* Sidebar */}
       <div className="md:col-span-1">
         {/* Categories */}
-        <h3 className="text-xl font-bold mb-4">Bo‘limlar</h3>
+        <h3 className="text-xl font-semibold poppin mb-4">Bo‘limlar</h3>
           <ul className="bg-[#E7ECFF] shadow-md rounded-lg p-4">
           {categories.map((category, index) => (
             <li key={index} className="flex justify-between py-2 poppin text-[18px]">

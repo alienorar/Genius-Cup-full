@@ -1,4 +1,4 @@
-import { FaInstagram, FaYoutube, FaTelegramPlane, FaTwitter, FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import SupportService from "../../assets/support-service.png"
 import Instagram from "../../assets/instagram (2) 1.svg"
 import Telegram from "../../assets/telegram (4) 1.svg"
