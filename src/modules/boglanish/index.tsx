@@ -45,7 +45,7 @@ const ContactSection = () => {
       </section>
       <section className="relative w-full px-6 md:px-16 py-12">
         {/* Contact Info Box */}
-        <div className="absolute top-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between w-11/12 md:w-3/4 lg:w-2/3">
+        <div className="absolute lg:top-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between w-11/12 md:w-3/4 lg:w-2/3">
           {/* Location */}
           <div className="flex flex-col items-center text-center px-4">
             <FaMapMarkerAlt className="text-blue-500 text-3xl mb-2" />

@@ -56,3 +56,9 @@ body {
 .poppin{
     font-family:'Poppins';
 }
+.nizom-header{
+    background-image: url("./assets/nizom-img.png");
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

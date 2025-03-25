@@ -1,30 +1,35 @@
 import { useParams, useNavigate } from "react-router-dom";
-import FAQHeader from "./faq-header"; 
-
+import { useState } from "react";
+import FAQHeader from "./faq-header";  
 
 const faqData = {
   general: [
-    "Is there a free trial available?",
-    "Can I change my plan later?",
-    "What is your connectivity policy?",
-    "How does billing work?",
-    "How do I change my Email account?",
+    { question: "Is there a free trial available?", answer: "Yes, we offer a 7-day free trial." },
+    { question: "Can I change my plan later?", answer: "Yes, you can upgrade or downgrade anytime." },
+    { question: "What is your connectivity policy?", answer: "We ensure 99.9% uptime for our services." },
+    { question: "How does billing work?", answer: "Billing is done on a monthly basis." },
+    { question: "How do I change my Email account?", answer: "You can update your email in the settings." },
   ],
   pricing: [
-    "What payment methods do you accept?",
-    "Is there a refund policy?",
-    "Do you offer discounts for teams?",
+    { question: "What payment methods do you accept?", answer: "We accept credit cards and PayPal." },
+    { question: "Is there a refund policy?", answer: "Yes, we have a 30-day refund policy." },
+    { question: "Do you offer discounts for teams?", answer: "Yes, we provide team-based discounts." },
   ],
   about: [
-    "Where is your company located?",
-    "How can I contact support?",
-    "Do you have a mobile app?",
+    { question: "Where is your company located?", answer: "We are based in San Francisco, CA." },
+    { question: "How can I contact support?", answer: "You can reach us via email or live chat." },
+    { question: "Do you have a mobile app?", answer: "Yes, we have apps for iOS and Android." },
   ],
 };
 
 const FAQSection = () => {
   const { category } = useParams<{ category: keyof typeof faqData }>();
   const navigate = useNavigate();
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggleFAQ = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   return (
     <div>
@@ -39,8 +44,9 @@ const FAQSection = () => {
             <button
               key={key}
               onClick={() => navigate(`/faq/${key}`)}
-              className={`px-4 py-2 text-[18px] font-semibold border rounded-full ${category === key ? "border-black text-black" : "border-transparent"
-                }`}
+              className={`px-4 py-2 text-[18px] font-semibold border rounded-full ${
+                category === key ? "border-black text-black" : "border-transparent"
+              }`}
             >
               {key.charAt(0).toUpperCase() + key.slice(1)}
             </button>
@@ -49,10 +55,18 @@ const FAQSection = () => {
 
         {/* FAQ List */}
         <ul className="w-3/4 max-w-lg space-y-4">
-          {faqData[category || "general"].map((question, index) => (
-            <li key={index} className="flex items-center justify-between border-b py-2">
-              <span>{question}</span>
-              <span>▼</span>
+          {faqData[category || "general"].map((item, index) => (
+            <li key={index} className=" pb-3">
+              <button
+                className="flex items-center justify-between w-full text-left font-medium text-lg py-2"
+                onClick={() => toggleFAQ(index)}
+              >
+                <span>{item.question}</span>
+                <span className={`transform transition-transform ${openIndex === index ? "rotate-180" : ""}`}>▼</span>
+              </button>
+              {openIndex === index && (
+                <p className="mt-2 text-gray-600">{item.answer}</p>
+              )}
             </li>
           ))}
         </ul>
