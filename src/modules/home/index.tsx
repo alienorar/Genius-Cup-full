@@ -14,6 +14,7 @@ import WhiteSpot from "../../assets/Ellipse 4.svg"
 import NewsSt from "../../assets/news-1.png"
 import NewsNd from "../../assets/news-2.png"
 import NewsRd from "../../assets/news-3.png"
+import Feather from "../../assets/feather.svg"
 
 const Index = () => {
 
@@ -23,7 +24,7 @@ const Index = () => {
       description:
         " Aholining katta qismi (taxminan 68%) 85 dan 115 gacha IQ darajasiga ega",
       imgSrc: AverageIq,
-      color: "text-blue-600",
+      color: "text-[#1E9FD9]",
     },
     {
       title: "IQ va Ta’lim Darajasi",
@@ -88,7 +89,7 @@ const Index = () => {
       title: "Design Analysis & Evaluation Introduction to API",
       description:
         "Design Analysis & Evaluation Introduction to API Design Analysis & Evaluation Introduction to API",
-      image:NewsSt,
+      image: NewsSt,
       link: "maqolalar",
     },
     {
@@ -96,7 +97,7 @@ const Index = () => {
       title: "Design Analysis & Evaluation Analysis & Evaluation",
       description:
         "Design Analysis & Evaluation Introduction to API Design Analysis & Evaluation Introduction to API",
-      image:NewsNd,
+      image: NewsNd,
       link: "maqolalar",
     },
     {
@@ -113,38 +114,59 @@ const Index = () => {
     <main className="flex flex-col gap-[40px]">
       {/* ==============hero ============ */}
       <section className="custom-container">
-        <div className="flex flex-col justify-center items-center gap-[20px] mb-4 lg:pt-[60px]">
-          <div>
-            <div className="flex justify-between items-end">
-              <img src={YellowSpot} alt="yellow spot" />
+        <div className="flex flex-col justify-center items-center gap-[20px] mb-4 lg:py-[100px] px-4">
+          <div className="w-full max-w-[500px] lg:max-w-[1200px] text-center relative">
+            <div className="relative flex justify-between items-start lg:items-end px-4 lg:px-0">
+              <img src={YellowSpot} alt="yellow spot" className="w-[10px] h-[10px] lg:w-auto lg:h-auto" />
               <img src={Brain} alt="brain" className="h-[40px] lg:h-full" />
             </div>
-
-            <h1 className="poppin text-[30px] sm:text-[40px] md:text-[48px] py-2 lg:text-[56px] text-center font-bold text-black leading-tight sm:leading-snug">
+            <h1 className="poppin text-[24px] sm:text-[30px] md:text-[40px] py-2 lg:text-[56px] text-center font-bold text-black leading-tight sm:leading-snug">
               "Aql va zakovat sinovidan o‘tib, kelajak yetakchilariga aylaning!"
             </h1>
-            <div className=" flex items-end px-[40px] justify-around">
-
-              <img src={Arrow} alt="arrow icon" className="hidden lg:block" />
-              <p className=" text-[#01284099] text-lg text-[18px] md:text-[22px] font-[400] text-center poppins">Bilimingizni sinang, mantiqiy fikrlash qobiliyatingizni oshiring va kelajak yetakchilari qatoridan joy oling!
-                Intellektual sinovlar orqali o‘z imkoniyatlaringizni kashf eting!</p>
-              <img src={BlueSpot} alt="Blue spot" className="hidden lg:block" />
+            <div className="flex flex-col justify-center items-center w-full lg:w-[900px] mx-auto">
+              <p className="text-[#01284099] text-[16px] sm:text-[18px] lg:text-[20px] font-[400] text-center poppins px-4 leading-relaxed max-w-[880px]">
+                Bilimingizni sinang, mantiqiy fikrlash qobiliyatingizni oshiring va kelajak yetakchilari qatoridan joy oling!
+                Intellektual sinovlar orqali o‘z imkoniyatlaringizni kashf eting!
+              </p>
             </div>
+
           </div>
           <button className="relative h-12 w-40 overflow-hidden border-[2px] border-[#1E9FD9] text-[16px] rounded-[30px] text-[#1E9FD9] font-[500] poppin  transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-[#1E9FD9] before:duration-300 before:ease-out hover:text-white hover:shadow-[#1E9FD9] hover:before:h-40 hover:before:w-40 hover:before:opacity-80">
             <a href="https://t.me/Genius_cup_bot" target="_blank" rel="noopener noreferrer" className="relative z-10">
               Ro'yxatdan O'tish
             </a>
           </button>
+{/* Arrow Icon */}
+<img 
+  src={Arrow} 
+  alt="arrow icon" 
+  className="w-auto h-auto absolute 
+             top-[310px] left-[0px] sm:top-[280px] sm:left-[20px] 
+             md:top-[300px] md:left-[50px] 
+             lg:top-[450px] lg:left-[300px] 
+             -rotate-60" 
+/>
+
+{/* Blue Spot */}
+<img 
+  src={BlueSpot} 
+  alt="Blue spot" 
+  className="h-auto w-auto object-cover absolute 
+             top-[150px] right-[5px] sm:top-[180px] sm:right-[20px] 
+             md:top-[220px] md:right-[50px] 
+             lg:top-[450px] lg:right-[320px]" 
+/>
+
         </div>
-        <div className="bg-gradient-to-br from-[#E7ECFF] to-[#dde3f8] p-[10px] sm:p-[30px] md:p-[40px] lg:p-[60px] rounded-[20px] sm:rounded-[25px] md:rounded-[30px]  lg:my-[100px] flex items-center justify-center lg:h-[604px] relative"
+        <div className="flex flex-col gap-0">
+          <div className="flex  lg:w-[1280px] justify-end items-end pl-0 w-full"><img src={Feather} alt="feather" className="-rotate-15 " /></div>
+        <div className="bg-gradient-to-br from-[#E7ECFF] to-[#dde3f8] p-[10px] sm:p-[30px] md:p-[40px] lg:p-[60px] rounded-[20px] sm:rounded-[25px] md:rounded-[30px]   flex items-center justify-center lg:h-[704px] relative"
         >
           <div className="absolute top-10 left-9 w-18 h-18 bg-gradient-to-r from-white to-transparent rounded-full"></div>
-          <div className="relative bg-transparent rounded-3xl p-[10px] sm:p-5 md:p-8 lg:p-12 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-4xl mx-auto border-[4px] border-dashed border-[#FFFFFF] w-full"
+          <div className="relative bg-transparent rounded-[30px] p-[10px] sm:p-5 md:p-8 lg:p-[30px] max-w-sm sm:max-w-md md:max-w-lg lg:max-w-4xl mx-auto border-[4px] border-dashed border-[#FFFFFF] w-full "
           >
             {/* Dashed Border Effect */}
-
-            <div className="w-full rounded-2xl lg:p-6 p-3 md:p-10 flex flex-col bg-white relative gap-2">
+            <div className="w-full rounded-[30px] lg:p-6 p-3 md:p-10 flex flex-col bg-white relative gap-2 lg:h-[364px]">
               {/* Title */}
               <h4 className="text-[#1E9FD9] poppin font-medium text-sm md:text-base">
                 Aql-idrokingizni sinovdan o‘tkazing
@@ -166,25 +188,27 @@ const Index = () => {
                 <img
                   src={Iqnd}
                   alt="Child with Abacus"
-                  className="lg:absolute  h-[80px] w-[120px]  lg:top-[-100px] lg:right-[-90px] lg:w-[245px] md:w-[200px]  md:h-[180px]  lg:h-[200px] object-cover rounded-xl shadow-lg"
+                  className="lg:absolute  h-[80px] w-[140px]  lg:top-[-100px] lg:right-[-90px] lg:w-[245px] md:w-[200px]  md:h-[180px]  lg:h-[200px] object-cover rounded-xl shadow-lg"
                 />
                 <img
                   src={IqSt}
                   alt="Kids Experimenting"
-                  className="lg:absolute  h-[80px]  w-[120px]  lg:bottom-[-170px] lg:left-[-100px] lg:w-[245px] md:w-[200px] md:h-[180px] lg:h-[200px]   object-cover rounded-xl shadow-lg"
+                  className="lg:absolute  h-[80px]  w-[140px]  lg:bottom-[-110px] lg:left-[-100px] lg:w-[245px] md:w-[200px] md:h-[180px] lg:h-[200px]   object-cover rounded-xl shadow-lg"
                 />
               </div>
             </div>
           </div>
 
         </div>
+        </div>
+        
       </section>
       {/* ============= About Iq============ */}
-      <section className="bg-[#F7FAFF] py-4">
+      <section className="bg-[#F7FAFF] py-20 ">
         <div className="custom-container poppin">
           <div className="text-center">
             {/* Section Title */}
-            <h2 className="text-[#061A40] text-3xl md:text-4xl font-bold">
+            <h2 className="text-[#061A40]  md:text-4xl font-bold">
               IQ, Ta’lim va Muvaffaqiyat
             </h2>
 
@@ -200,10 +224,10 @@ const Index = () => {
                     alt={item.title}
                     className="w-[180px] h-[150px] md:w-[200px] md:h-[170px] object-cover"
                   />
-                  <h3 className={`${item.color} text-[18px] md:text-[20px] font-bold`}>
+                  <h3 className={`${item.color} lg:text-[28px] text-[24px]  md:text-[26px] font-bold`}>
                     {item.title}
                   </h3>
-                  <p className="text-[#01284099] text-[15px] md:text-[17px] font-semibold mt-2">
+                  <p className="text-[#01284099] text-[15px] md:text-[18px] font-semibold mt-2">
                     {item.description}
                   </p>
                 </div>
@@ -250,17 +274,17 @@ const Index = () => {
               </div>
 
               {/* Step table */}
-              <div className="bg-[#DCE1F899] px-6 py-5 rounded-3xl mx-auto  poppin">
-                <div className="grid  grid-cols-2 lg:grid-cols-3 gap-4 text-center font-semibold">
-                  <span className="bg-white rounded-2xl md:px-4 md:py-4 py-2 px-3 text-center">O‘tkazilish sanasi</span>
-                  <span className="bg-white rounded-2xl md:px-4 md:py-4 py-2 px-3 text-center hidden lg:block">O‘tkazilish Manzili</span>
-                  <span className="bg-white rounded-2xl md:px-4 md:py-4 py-2 px-3 text-center">Vaqtlar</span>
+              <div className={`${index % 2 === 0 ? "bg-[#DCE1F899]" : "bg-[#E2F6FD99]"} px-6 py-5 rounded-3xl mx-auto poppin`}>
+                <div className="grid text-[#012840]  grid-cols-2 lg:grid-cols-3 gap-4 text-center font-semibold">
+                  <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3 text-center">O‘tkazilish sanasi</span>
+                  <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3 text-center hidden lg:block">O‘tkazilish Manzili</span>
+                  <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3 text-center">Vaqtlar</span>
                 </div>
                 {schedule.map((item, i) => (
-                  <div key={i} className="grid grid-cols-2 lg:grid-cols-3 gap-4 px-2 text-center mt-3 ">
-                    <span>{item.grades} Sinf o‘quvchilari</span>
-                    <span className="hidden md:block">{item.location} Telegram bot</span>
-                    <span>{item.date} {item.time} gacha</span>
+                  <div key={i} className="grid grid-cols-2 lg:grid-cols-3 gap-5 px-2 text-center mt-3 poppin ">
+                    <span className="text-[#012840B2] font-[500] text-[16px] poppin">{item.grades} Sinf o‘quvchilari</span>
+                    <span className="hidden md:block text-[#012840B2] font-[500] text-[16px] poppin">{item.location} Telegram bot</span>
+                    <span className="text-[#012840B2] font-[500] text-[16px] poppin">{item.date} {item.time} gacha</span>
                   </div>
                 ))}
               </div>
@@ -317,25 +341,25 @@ const Index = () => {
           </button>
         </div>
         <div className="grid md:grid-cols-3 gap-[20px]">
-        {newsData.map((news, index) => (
-          <div key={index} className="">
-            <img
-              src={news.image}
-              alt={news.title}
-              className="w-full h-[220px] object-cover rounded-xl"
-            />
-            <p className="text-[#01284099] text-[17px]  mt-3">{news.date}</p>
-            <h3 className="text-[#061A40] lg:text-[24px] md:text-[22px] text-[20px] font-bold ">{news.title}</h3>
-            <p className="text-[#01284099] text-[17px]  mt-1">{news.description}</p>
-            <a
-              href={news.link}
-              className="text-[#012840] font-medium text-[18px] mt-3 inline-block"
-            >
-              Read More →
-            </a>
-          </div>
-        ))}
-      </div>
+          {newsData.map((news, index) => (
+            <div key={index} className="">
+              <img
+                src={news.image}
+                alt={news.title}
+                className="w-full h-[220px] object-cover rounded-xl"
+              />
+              <p className="text-[#01284099] text-[17px]  mt-3">{news.date}</p>
+              <h3 className="text-[#061A40] lg:text-[24px] md:text-[22px] text-[20px] font-bold ">{news.title}</h3>
+              <p className="text-[#01284099] text-[17px]  mt-1">{news.description}</p>
+              <a
+                href={news.link}
+                className="text-[#012840] font-medium text-[18px] mt-3 inline-block"
+              >
+                Read More →
+              </a>
+            </div>
+          ))}
+        </div>
       </section>
 
     </main>

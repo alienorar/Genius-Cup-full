@@ -1,6 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import FAQHeader from "./faq-header";  
+import FAQHeader from "./faq-header"; 
+import { FiChevronDown } from "react-icons/fi"; 
+import ChatImg from "../../assets/chat.svg"
 
 const faqData = {
   general: [
@@ -25,6 +27,7 @@ const faqData = {
 const FAQSection = () => {
   const { category } = useParams<{ category: keyof typeof faqData }>();
   const navigate = useNavigate();
+  const defaultCategory: keyof typeof faqData = (category as keyof typeof faqData) || "general";
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
@@ -45,7 +48,7 @@ const FAQSection = () => {
               key={key}
               onClick={() => navigate(`/faq/${key}`)}
               className={`px-4 py-2 text-[18px] font-semibold border rounded-full ${
-                category === key ? "border-black text-black" : "border-transparent"
+                defaultCategory === key ? "border-black text-black" : "border-transparent"
               }`}
             >
               {key.charAt(0).toUpperCase() + key.slice(1)}
@@ -55,14 +58,18 @@ const FAQSection = () => {
 
         {/* FAQ List */}
         <ul className="w-3/4 max-w-lg space-y-4">
-          {faqData[category || "general"].map((item, index) => (
+          {faqData[defaultCategory].map((item, index) => (
             <li key={index} className=" pb-3">
               <button
-                className="flex items-center justify-between w-full text-left font-medium text-lg py-2"
+                className="flex items-center justify-between  w-full text-left font-medium text-lg py-2"
                 onClick={() => toggleFAQ(index)}
-              >
+              ><div className="flex gap-4 md:gap-5 items-center">
+                <span>
+                <img src={ChatImg} alt="" />
+              </span>
                 <span>{item.question}</span>
-                <span className={`transform transition-transform ${openIndex === index ? "rotate-180" : ""}`}>▼</span>
+              </div>
+                <span className={`transform transition-transform ${openIndex === index ? "rotate-180" : ""}`}><FiChevronDown /></span>
               </button>
               {openIndex === index && (
                 <p className="mt-2 text-gray-600">{item.answer}</p>

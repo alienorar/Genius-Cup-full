@@ -24,8 +24,9 @@ const Footer: React.FC = () => {
           </button>
         </div>
 
-        {/* Navigation Links */}
-        <div>
+      <div className="flex justify-between gap-5">
+          {/* Navigation Links */}
+          <div>
           <h3 className="text-lg sm:text-[16px] md:text-[17px] font-semibold">Navigation</h3>
           <ul className="mt-3 space-y-2 text-gray-400 text-sm sm:text-[12px] md:text-[13px]">
             <li>Home</li>
@@ -47,31 +48,7 @@ const Footer: React.FC = () => {
             4801 Rockhill Road, Kansas City, MO 64110
           </p>
         </div>
-
-        {/* Subscribe */}
-        <div>
-          <h3 className="text-lg sm:text-[16px] md:text-[17px] font-semibold">Subscribe</h3>
-          <p className="text-gray-400 text-sm sm:text-[12px] md:text-[13px] mt-3">
-            Lorem ipsum dolor sit ipsum dolor sit ipsum dolor sit
-          </p>
-          <div className="mt-4">
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full bg-transparent border border-gray-500 px-3 py-2 rounded-lg text-white text-sm sm:text-[12px] md:text-[13px] focus:outline-none"
-            />
-            <button className="relative mt-8 h-12 w-40 overflow-hidden border-[2px] border-[#FFFF] text-[16px] sm:text-[14px] md:text-[15px] rounded-[20px] text-[#FFFF] font-[500] poppin transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-[#1E9FD9] before:duration-300 before:ease-out hover:text-white hover:shadow-[#1E9FD9] hover:before:h-40 hover:before:w-40 hover:before:opacity-80">
-              <a
-                href="https://t.me/Genius_cup_bot"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative z-10"
-              >
-                Ro'yxatdan O'tish
-              </a>
-            </button>
-          </div>
-        </div>
+      </div>
       </div>
 
       {/* Bottom Text */}

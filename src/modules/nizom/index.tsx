@@ -63,7 +63,7 @@ const Nizom: React.FC = () => {
       <div className="bg-[#F7FAFF] text-gray-900 py-10 ">
         <div className="w-full mx-auto px-4 nizom-header custom-container">
           {/* Header */}
-          <h1 className=" md:text-3xl text-[#012840] lg:text-[32px] text-[28px] font-semibold mb-6">Genius Cup Nizom</h1>
+          <h1 className=" md:text-3xl text-[#012840] lg:text-[32px] text-[28px] text-center md:text-start font-semibold mb-6">Genius Cup Nizom</h1>
 
           {/* Nizom Matni */}
           <div className="space-y-4 text-[16px] leading-relaxed">
