@@ -139,7 +139,7 @@ const Index = () => {
         </div>
         <div className="flex flex-col gap-0">
           <div className="flex  justify-end items-end pl-0 "><img src={Feather} alt="feather" className="-rotate-20 "/></div>
-          <div className="bg-gradient-to-br from-[#E7ECFF] to-[#dde3f8] p-[10px] sm:p-[30px] md:p-[40px] lg:p-[60px] rounded-3xl rounded-tr-[20px] lg:rounded-tr-[60px] sm:rounded-[25px] md:rounded-[30px]   flex items-center justify-center lg:h-[704px] relative"
+          <div className="bg-gradient-to-br from-[#E7ECFF] to-[#dde3f8] p-[10px] sm:p-[30px] md:p-[40px] lg:p-[60px] rounded-3xl rounded-tr-[40px] md:rounded-tr-[60px] sm:rounded-[25px] md:rounded-[30px]   flex items-center justify-center lg:h-[704px] relative"
           >
             <div className="absolute top-10 left-9 w-18 h-18 bg-gradient-to-r from-white to-transparent rounded-full"></div>
             <div className="relative bg-transparent rounded-[30px] p-[10px] sm:p-5 md:p-8 lg:p-[30px] max-w-sm sm:max-w-md md:max-w-lg lg:max-w-4xl mx-auto border-[4px] border-dashed border-[#FFFFFF] w-full "
