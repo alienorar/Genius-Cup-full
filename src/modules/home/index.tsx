@@ -48,7 +48,7 @@ const Index = () => {
       description:
         "Musobaqaning birinchi bosqichi online tarzda quyida keltirilgan telegram botlar orqali o'tkaziladi. Musobaqada ishtirok etish uchun oldindan ro'yxatdan o'tib qo'yishingiz zarur!",
       type: "Online",
-      date: "20.04.2025",
+      date: "01.05.2025",
       buttonText: "Ro‘yxatdan o‘tish",
       bgColor: "bg-white",
     },
@@ -57,7 +57,7 @@ const Index = () => {
       description:
         "Musobaqaning ikkinchi bosqichi offline tarzda o'tkaziladi. Musobaqada ishtirok etish uchun oldindan ro'yxatdan o'tib qo'yishingiz zarur!",
       type: "Offline",
-      date: "20.04.2025",
+      date: "15.05.2025",
       buttonText: "Ro‘yxatdan o‘tish",
       bgColor: "bg-white",
     },
@@ -252,22 +252,20 @@ const Index = () => {
                 </button>
               </div>
 
-              {/* Step table */}
-              <div className={`${index % 2 === 0 ? "bg-[#DCE1F899]" : "bg-[#E2F6FD99]"} px-6 py-5 rounded-3xl mx-auto poppin`}>
-                <div className="grid text-[#012840]  grid-cols-2 lg:grid-cols-3 gap-4 text-center font-semibold">
-                  <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3 text-center">O‘tkazilish sanasi</span>
-                  <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3 text-center hidden lg:block">O‘tkazilish Manzili</span>
-                  <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3 text-center">Vaqtlar</span>
-                </div>
-                {schedule.map((item, i) => (
-                  <div key={i} className="grid grid-cols-2 lg:grid-cols-3 gap-5 px-2 text-center mt-3 poppin ">
-                    <span className="text-[#012840B2] font-[500] text-[16px] poppin">{item.grades} Sinf o‘quvchilari</span>
-                    <span className="hidden md:block text-[#012840B2] font-[500] text-[16px] poppin">{item.location} Telegram bot</span>
-                    <span className="text-[#012840B2] font-[500] text-[16px] poppin">{item.date} {item.time} gacha</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+              <div className="bg-[#DCE1F899] px-6 py-5 rounded-3xl w-full lg:w-1/2">
+        <div className="grid text-[#012840] grid-cols-2 lg:grid-cols-3 gap-4 text-center font-semibold">
+          <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3">O‘tkazilish sanasi</span>
+          <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3 hidden lg:block">O‘tkazilish Manzili</span>
+          <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3">Vaqtlar</span>
+        </div>
+        {schedule.map((item, i) => (
+          <div key={i} className="grid grid-cols-2 lg:grid-cols-3 gap-5 px-2 text-center mt-3">
+            <span className="text-[#012840B2] font-[500] text-[16px]">{item.grades} Sinf o‘quvchilari</span>
+            <span className="hidden md:block text-[#012840B2] font-[500] text-[16px]">{index === 0 ? "Online Telegram Bot " : "Offline Osiyo Texnologiyalar Universiteti "}</span>
+            <span className="text-[#012840B2] font-[500] text-[16px]">{item.date} {item.time} gacha</span>
+          </div>
+        ))}
+      </div></div>
           ))}
         </div>
       </section>

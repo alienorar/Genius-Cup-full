@@ -12,11 +12,10 @@ const ContactSection = () => {
         <div className="flex flex-col-reverse md:flex-row items-center gap-5 lg:gap-40 lg:px-[100px]  py-[10px]">
           {/* Left Content */}
           <div className="flex flex-col md:items-start items-center  poppin">
-            <div>
+            <div className="flex flex-col gap-3">
               <h2 className="text-3xl font-semibold text-gray-800 poppin text-center md:text-start">Biz bilan bog‘lanish</h2>
               <p className="text-[#01284099] text-center md:text-start text-[14px] md:text-[16px] poppin">
-                Lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsum dolor sit
-                lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsum dolor.
+              "Genius Cup" intellektual musobaqasi orqali aql-zakovatingizni sinang! Bu platforma sizga mantiqiy fikrlash, muammolarni hal qilish va strategik tahlil qilish qobiliyatlaringizni oshirish imkoniyatini taqdim etadi..
               </p>
             </div>
             {/* Social Media Links */}
@@ -45,7 +44,7 @@ const ContactSection = () => {
             <img
               src={SupportService}
               alt="Customer Support"
-              className="w-full md:max-w-md sm:max-w-sm"
+              className="md:max-w-xl  "
             />
           </div>
         </div>

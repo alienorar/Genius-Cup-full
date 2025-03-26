@@ -42,10 +42,10 @@ const Footer: React.FC = () => {
         <div>
           <h3 className="text-lg sm:text-[16px] md:text-[17px] font-semibold">Contacts</h3>
           <p className="text-gray-400 text-sm sm:text-[12px] md:text-[13px] mt-3">
-            (816) 932-1000
+          (+998 55) 404-11-66;
           </p>
           <p className="text-gray-400 text-sm sm:text-[12px] md:text-[13px]">
-            4801 Rockhill Road, Kansas City, MO 64110
+          Qashqadaryo viloyati, Qarshi tuman, Chaman MFY, Mustaqillik ko’chasi, 41-uy.
           </p>
         </div>
       </div>
