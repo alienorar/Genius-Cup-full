@@ -64,10 +64,10 @@ const Index = () => {
   ];
 
   const schedule = [
-    { grades: <span className="font-bold text-black block">3-4-5</span>, description: "Sinf o’quvchilari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">20-aprel</span>, time: "9:00dan 10:00gacha" },
-    { grades: <span className="font-bold text-black block">6-7-8</span>, description: "Sinf o’quvchilari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">20-aprel</span>, time: "11:00dan 12:00gacha" },
-    { grades: <span className="font-bold text-black block">9-10-11</span>, description: "Sinf o’quvchilari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">20-aprel</span>, time: "11:00dan 12:00gacha" },
-    { grades: <span className="font-bold text-black block">1-2</span>, description: "Bosqich akademik litsey talabalari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">20-aprel</span>, time: "11:00dan 12:00gacha" },
+    { grades: <span className="font-bold text-black block">3-4-5</span>, description: "Sinf o’quvchilari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">1-may</span>, time: "9:00dan 10:00gacha" },
+    { grades: <span className="font-bold text-black block">6-7-8</span>, description: "Sinf o’quvchilari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">1-may</span>, time: "11:00dan 12:00gacha" },
+    { grades: <span className="font-bold text-black block">9-10-11</span>, description: "Sinf o’quvchilari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">1-may</span>, time: "11:00dan 12:00gacha" },
+    { grades: <span className="font-bold text-black block">1-2</span>, description: "Bosqich akademik litsey talabalari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">1-may</span>, time: "11:00dan 12:00gacha" },
   ];
 
   const organizers = [
@@ -138,7 +138,7 @@ const Index = () => {
             <img src={BlueSpot} alt="Blue spot" className="block md:hidden h-[100px] w-[100px] object-none " /></div>
         </div>
         <div className="flex flex-col gap-0">
-          <div className="flex  justify-end items-end pl-0 "><img src={Feather} alt="feather" className="-rotate-20 "/></div>
+          <div className="flex  justify-end items-end pl-0 "><img src={Feather} alt="feather" className="-rotate-20 " /></div>
           <div className="bg-gradient-to-br from-[#E7ECFF] to-[#dde3f8] p-[10px] sm:p-[30px] md:p-[40px] lg:p-[60px] rounded-3xl rounded-tr-[40px] md:rounded-tr-[60px] sm:rounded-[25px] md:rounded-[30px]   flex items-center justify-center lg:h-[704px] relative"
           >
             <div className="absolute top-10 left-9 w-18 h-18 bg-gradient-to-r from-white to-transparent rounded-full"></div>
@@ -251,21 +251,21 @@ const Index = () => {
                   </a>
                 </button>
               </div>
-
-              <div className="bg-[#DCE1F899] px-6 py-5 rounded-3xl w-full lg:w-1/2">
-        <div className="grid text-[#012840] grid-cols-2 lg:grid-cols-3 gap-4 text-center font-semibold">
-          <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3">O‘tkazilish sanasi</span>
-          <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3 hidden lg:block">O‘tkazilish Manzili</span>
-          <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3">Vaqtlar</span>
-        </div>
-        {schedule.map((item, i) => (
-          <div key={i} className="grid grid-cols-2 lg:grid-cols-3 gap-5 px-2 text-center mt-3">
-            <span className="text-[#012840B2] font-[500] text-[16px]">{item.grades} Sinf o‘quvchilari</span>
-            <span className="hidden md:block text-[#012840B2] font-[500] text-[16px]">{index === 0 ? "Online Telegram Bot " : "Offline Osiyo Texnologiyalar Universiteti "}</span>
-            <span className="text-[#012840B2] font-[500] text-[16px]">{item.date} {item.time} gacha</span>
-          </div>
-        ))}
-      </div></div>
+              <div className={`${index % 2 === 0 ? "bg-[#DCE1F899]" : "bg-[#E2F6FD99]"} px-6 py-5 rounded-3xl mx-auto poppin`}>
+                <div className="grid text-[#012840] grid-cols-2 lg:grid-cols-3 gap-4 text-center font-semibold">
+                  <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3">O‘tkazilish sanasi</span>
+                  <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3 hidden lg:block">O‘tkazilish Manzili</span>
+                  <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3">Vaqtlar</span>
+                </div>
+                {schedule.map((item, i) => (
+                  <div key={i} className="grid grid-cols-2 lg:grid-cols-3 gap-5 px-2 text-center mt-3">
+                    <span className="text-[#012840B2] font-[500] text-[16px]">{item.grades} Sinf o‘quvchilari</span>
+                    <span className="hidden md:block text-[#012840B2] font-[500] text-[16px]">{index === 0 ? "Online Telegram Bot " : "Offline Osiyo Texnologiyalar Universiteti "}</span>
+                    <span className="text-[#012840B2] font-[500] text-[16px]">{index === 0 ? "1-May " : "15-May "} {item.time} gacha</span>
+                  </div>
+                ))}
+              </div>
+              </div>
           ))}
         </div>
       </section>
