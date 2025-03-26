@@ -138,7 +138,7 @@ const Index = () => {
             <img src={BlueSpot} alt="Blue spot" className="block md:hidden h-[100px] w-[100px] object-none " /></div>
         </div>
         <div className="flex flex-col gap-0">
-          <div className="flex  lg:w-[1260px] justify-end items-end pl-0 w-full"><img src={Feather} alt="feather" className="-rotate-15 "/></div>
+          <div className="flex  justify-end items-end pl-0 "><img src={Feather} alt="feather" className="-rotate-20 "/></div>
           <div className="bg-gradient-to-br from-[#E7ECFF] to-[#dde3f8] p-[10px] sm:p-[30px] md:p-[40px] lg:p-[60px] rounded-[20px] sm:rounded-[25px] md:rounded-[30px]   flex items-center justify-center lg:h-[704px] relative"
           >
             <div className="absolute top-10 left-9 w-18 h-18 bg-gradient-to-r from-white to-transparent rounded-full"></div>
