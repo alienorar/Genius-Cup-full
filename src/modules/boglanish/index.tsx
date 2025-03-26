@@ -9,49 +9,50 @@ const ContactSection = () => {
   return (
     <>
       <section className=" custom-container">
-      <div className="flex flex-col-reverse md:flex-row items-center gap-40 px-[100px]  py-[10px]">
+        <div className="flex flex-col-reverse md:flex-row items-center gap-5 lg:gap-40 lg:px-[100px]  py-[10px]">
           {/* Left Content */}
-          <div className="md:w-1/2 space-y-4 poppin">
-          <h2 className="text-3xl font-semibold text-gray-800 poppin">Biz bilan bog‘lanish</h2>
-          <p className="text-[#01284099] text-[14px] md:text-[16px] poppin">
-            Lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsum dolor sit
-            lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsum dolor.
-          </p>
+          <div className="flex flex-col md:items-start items-center  poppin">
+            <div>
+              <h2 className="text-3xl font-semibold text-gray-800 poppin text-center md:text-start">Biz bilan bog‘lanish</h2>
+              <p className="text-[#01284099] text-center md:text-start text-[14px] md:text-[16px] poppin">
+                Lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsum dolor sit
+                lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsum dolor.
+              </p>
+            </div>
+            {/* Social Media Links */}
+            <div className="grid grid-cols-2 gap-4 items-center  justify-center max-w-xs mt-6">
+              <a href="#" className="flex items-center  text-gray-700 hover:text-pink-500">
+                <img src={Instagram} alt="instagram" />
+                <span className="poppin">Instagram</span>
+              </a>
+              <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-red-600">
+                <img src={Youtube} alt="instagram" />
+                <span className="poppin">YouTube</span>
+              </a>
+              <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-[#1E9FD9]">
+                <img src={Telegram} alt="instagram" />
+                <span className="poppin">Telegram</span>
+              </a>
+              <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-black">
+                <img src={Twitter} alt="instagram" />
+                <span className="poppin">Twitter</span>
+              </a>
+            </div>
+          </div>
 
-          {/* Social Media Links */}
-          <div className="grid grid-cols-2 gap-4 max-w-xs mt-6">
-            <a href="#" className="flex items-center space-x-3 text-gray-700 hover:text-pink-500">
-              <img src={Instagram} alt="instagram" />
-              <span className="poppin">Instagram</span>
-            </a>
-            <a href="#" className="flex items-center space-x-3 text-gray-700 hover:text-red-600">
-                 <img src={Youtube} alt="instagram"/>
-              <span className="poppin">YouTube</span>
-            </a>
-            <a href="#" className="flex items-center space-x-3 text-gray-700 hover:text-[#1E9FD9]">
-               <img src={Telegram} alt="instagram"/>
-              <span className="poppin">Telegram</span>
-            </a>
-            <a href="#" className="flex items-center space-x-3 text-gray-700 hover:text-black">
-                 <img src={Twitter} alt="instagram"/>
-              <span className="poppin">Twitter</span>
-            </a>
+          {/* Right Image */}
+          <div className="md:w-1/2 flex justify-center">
+            <img
+              src={SupportService}
+              alt="Customer Support"
+              className="w-full md:max-w-md sm:max-w-sm"
+            />
           </div>
         </div>
-
-        {/* Right Image */}
-        <div className="md:w-1/2 flex justify-center">
-          <img
-            src={SupportService}
-            alt="Customer Support"
-            className="w-full max-w-md"
-          />
-        </div>
-      </div>
       </section>
-      <section className="relative w-full px-6 md:px-16 py-12 custom-container">
+      <section className="relative w-full px-6 md:px-16 py-12  custom-container">
         {/* Contact Info Box */}
-        <div className="absolute top-45 lg:top-30 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-[-2px_-2px_75px_4px_rgba(0,_0,_0,_0.1)] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between w-11/12 md:w-3/4 lg:w-2/3">
+        <div className="absolute top-55 sm:top-55 md:top-30 lg:top-30 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-[-2px_-2px_75px_4px_rgba(0,_0,_0,_0.1)] p-6 md:p-8 flex flex-col  md:flex-row items-center justify-between w-11/12 md:w-3/4 lg:w-2/3">
           {/* Location */}
           <div className="flex flex-col items-center text-center px-4">
             <FaMapMarkerAlt className="text-[#1E9FD9] text-3xl mb-2" />
