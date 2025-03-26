@@ -114,51 +114,31 @@ const Index = () => {
     <main className="flex flex-col gap-[40px]">
       {/* ==============hero ============ */}
       <section className="custom-container">
-        <div className="flex flex-col justify-center items-center gap-[20px] mb-4 lg:py-[100px] px-4">
-          <div className="w-full max-w-[500px] lg:max-w-[1200px] text-center relative">
-            <div className="relative flex justify-between items-start lg:items-end px-4 lg:px-0">
-              <img src={YellowSpot} alt="yellow spot" className="w-[10px] h-[10px] lg:w-auto lg:h-auto" />
-              <img src={Brain} alt="brain" className="h-[40px] lg:h-full" />
+        <div className="flex flex-col justify-center items-center gap-[20px] pt-[60px]">
+          <div>
+            <div className="flex justify-between items-end">
+              <img src={YellowSpot} alt="yellow spot" />
+              <img src={Brain} alt="brain" />
             </div>
-            <h1 className="poppin text-[24px] sm:text-[30px] md:text-[40px] py-2 lg:text-[56px] text-center font-bold text-black leading-tight sm:leading-snug">
-              "Aql va zakovat sinovidan o‘tib, kelajak yetakchilariga aylaning!"
-            </h1>
-            <div className="flex flex-col justify-center items-center w-full lg:w-[900px] mx-auto">
-              <p className="text-[#01284099] text-[16px] sm:text-[18px] lg:text-[20px] font-[400] text-center poppins px-4 leading-relaxed max-w-[880px]">
-                Bilimingizni sinang, mantiqiy fikrlash qobiliyatingizni oshiring va kelajak yetakchilari qatoridan joy oling!
-                Intellektual sinovlar orqali o‘z imkoniyatlaringizni kashf eting!
-              </p>
+            <h1 className="poppin lg:text-[56px] md:text-[50px] text-[40px] text-black text-center font-bold ">"Aql va zakovat sinovidan o‘tib, kelajak yetakchilariga aylaning!"</h1>
+            <div className=" flex items-end px-[40px] justify-around ">
+              <img src={Arrow} alt="arrow icon" className="hidden md:block" />
+              <p className=" text-[#01284099]  text-[22px] font-[400] text-center poppins">Bilimingizni sinang, mantiqiy fikrlash qobiliyatingizni oshiring va kelajak yetakchilari qatoridan joy oling!
+                Intellektual sinovlar orqali o‘z imkoniyatlaringizni kashf eting!</p>
+              <img src={BlueSpot} alt="Blue spot" className="hidden md:block" />
             </div>
-
           </div>
-          <button className="relative h-12 w-40 overflow-hidden border-[2px] border-[#1E9FD9] text-[16px] rounded-[30px] text-[#1E9FD9] font-[500] poppin  transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-[#1E9FD9] before:duration-300 before:ease-out hover:text-white hover:shadow-[#1E9FD9] hover:before:h-40 hover:before:w-40 hover:before:opacity-80">
-            <a href="https://t.me/Genius_cup_bot" target="_blank" rel="noopener noreferrer" className="relative z-10">
-              Ro'yxatdan O'tish
-            </a>
-          </button>
-         <div> {/* Arrow Icon */}
-          <img
-            src={Arrow}
-            alt="arrow icon"
-            className="w-auto h-auto absolute 
-             top-[310px] left-0 sm:top-[280px] sm:left-[20px] 
-             md:top-[300px] md:left-[50px] 
-             lg:top-[450px] lg:left-[300px] 
-             -rotate-60"
-          />
-
-          {/* Blue Spot */}
-          <img
-            src={BlueSpot}
-            alt="Blue spot"
-            className="h-auto w-auto object-cover absolute 
-             top-[150px] right-[5px] sm:top-[180px] sm:right-[20px] 
-             md:top-[220px] md:right-[50px] 
-             lg:top-[450px] lg:right-[320px]"
-          /></div>
+          <div className="flex justify-between md:justify-center w-full items-center ">
+            <img src={Arrow} alt="arrow icon" className="block md:hidden h-[100px] w-[100px] -rotate-45" />
+            <button className="relative h-12 w-40 overflow-hidden border-[2px] border-[#1E9FD9] text-[16px] rounded-[30px] text-[#1E9FD9] font-[500] poppin  transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-[#1E9FD9] before:duration-300 before:ease-out hover:text-white hover:shadow-[#1E9FD9] hover:before:h-40 hover:before:w-40 hover:before:opacity-80">
+              <a href="https://t.me/Genius_cup_bot" target="_blank" rel="noopener noreferrer" className="relative z-10">
+                Ro'yxatdan O'tish
+              </a>
+            </button>
+            <img src={BlueSpot} alt="Blue spot" className="block md:hidden h-[100px] w-[100px] object-none " /></div>
         </div>
         <div className="flex flex-col gap-0">
-          <div className="flex  lg:w-[1260px] justify-end items-end pl-0 w-full"><img src={Feather} alt="feather" className="-rotate-15 " /></div>
+          <div className="flex  lg:w-[1260px] justify-end items-end pl-0 w-full"><img src={Feather} alt="feather" className="-rotate-15 "/></div>
           <div className="bg-gradient-to-br from-[#E7ECFF] to-[#dde3f8] p-[10px] sm:p-[30px] md:p-[40px] lg:p-[60px] rounded-[20px] sm:rounded-[25px] md:rounded-[30px]   flex items-center justify-center lg:h-[704px] relative"
           >
             <div className="absolute top-10 left-9 w-18 h-18 bg-gradient-to-r from-white to-transparent rounded-full"></div>
