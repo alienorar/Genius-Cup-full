@@ -2,7 +2,7 @@ import PrizeImg from "../../assets/prize-img.png"
 import Gold from "../../assets/gold.svg"
 import Silver from "../../assets/silver.svg"
 import Bronze from "../../assets/bronze.svg"
-
+import { motion } from "framer-motion";
 const PrizeFundSection = () => {
 
   const prizes = [
@@ -33,7 +33,10 @@ const PrizeFundSection = () => {
     <>
       <section className="flex flex-col lg:flex-row items-center justify-between gap-8  custom-container poppin">
         {/* Left Side (Text) */}
-        <div className=" lg:px-[100px] lg:py-[100px] px-[20px] text-center flex flex-col justify-center items-center lg:items-start  ">
+        <motion.div initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className=" lg:px-[100px] lg:py-[100px] px-[20px] text-center flex flex-col justify-center items-center lg:items-start  ">
           <h2 className="text-[#1E9FD9]  text-center  lg:text-start text-[34px] md:text-3xl font-bold">
             450 million so‘m
           </h2>
@@ -51,32 +54,35 @@ const PrizeFundSection = () => {
               Ro'yxatdan O'tish
             </a>
           </button>
-        </div>
+        </motion.div>
 
         {/* Right Side (Image) */}
-        <div className="w-full max-w-sm lg:max-w-md">
+        <motion.div initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="w-full max-w-sm lg:max-w-md">
           <img
             src={PrizeImg}
             alt="Winners Celebration"
             className="w-full object-cover"
           />
-        </div>
+        </motion.div>
       </section>
       <section className=" custom-container ">
         <div className="flex flex-col md:flex-row justify-center gap-3  py-10 text-center lg:px-[60px]">
-        {prizes.map((prize) => (
-          <div key={prize.id} className="flex   flex-col w-full items-center">
-            <img src={prize.image} alt={`Rank ${prize.id}`} className="w-24 md:w-28 lg:w-32" />
-            <p className="text-gray-700 mt-4 text-lg md:text-xl">
-              Bazaviy hisoblash miqdorining <br />
-              <span className="font-bold">{prize.times} baravari</span>{" "}
-              <span className={`font-bold ${prize.color}`}>{prize.amount}</span> so‘m
-            </p>
-            <p className="text-gray-600 text-sm">(UZS);</p>
-          </div>
-        ))}
+          {prizes.map((prize) => (
+            <div key={prize.id} className="flex   flex-col w-full items-center">
+              <img src={prize.image} alt={`Rank ${prize.id}`} className="w-24 md:w-28 lg:w-32 transition-transform ease-linear duration-500 hover:transform hover:rotate-y-360" />
+              <p className="text-gray-700 mt-4 text-lg md:text-xl">
+                Bazaviy hisoblash miqdorining <br />
+                <span className="font-bold">{prize.times} baravari</span>{" "}
+                <span className={`font-bold ${prize.color}`}>{prize.amount}</span> so‘m
+              </p>
+              <p className="text-gray-600 text-sm">(UZS);</p>
+            </div>
+          ))}
         </div>
-       
+
       </section>
       <section className="py-8 text-black custom-container px-20 md:px-10 lg:px-20">
         <h2 className="text-xl md:text-2xl font-bold mb-4 text-center lg:text-start">Uchinchi bosqich g‘oliblari</h2>

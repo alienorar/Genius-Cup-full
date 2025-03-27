@@ -4,12 +4,16 @@ import Instagram from "../../assets/instagram (2) 1.svg"
 import Telegram from "../../assets/telegram (4) 1.svg"
 import Twitter from "../../assets/twitter 1.svg"
 import Youtube from "../../assets/youtube (1) 1.svg"
-
+import { motion } from "framer-motion";
 const ContactSection = () => {
   return (
     <>
       <section className=" custom-container">
-        <div className="flex flex-col-reverse md:flex-row items-center gap-5 lg:gap-40 lg:px-[100px]  py-[10px]">
+        <motion.div 
+         initial={{ opacity: 0, y: 50 }}
+         animate={{ opacity: 1, y: 0 }}
+         transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex flex-col-reverse md:flex-row items-center gap-5 lg:gap-40 lg:px-[100px]  py-[10px]">
           {/* Left Content */}
           <div className="flex flex-col md:items-start items-center  poppin">
             <div className="flex flex-col gap-3">
@@ -47,7 +51,7 @@ const ContactSection = () => {
               className="md:max-w-xl  "
             />
           </div>
-        </div>
+        </motion.div>
       </section>
       <section className="relative w-full px-6 md:px-16 py-12  custom-container">
         {/* Contact Info Box */}
