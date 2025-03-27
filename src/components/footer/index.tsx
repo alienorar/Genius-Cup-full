@@ -24,39 +24,39 @@ const Footer: React.FC = () => {
           </button>
         </div>
 
-      <div className="flex justify-between gap-5">
+        <div className="flex justify-between gap-5">
           {/* Navigation Links */}
           <div>
-          <h3 className="text-lg sm:text-[16px] md:text-[17px] font-semibold">Navigation</h3>
-          <ul className="mt-3 space-y-2 text-gray-400 text-sm sm:text-[12px] md:text-[13px]">
-            <li>Home</li>
-            <li>Sovrinlar</li>
-            <li>Nizom</li>
-            <li>Maqolalar</li>
-            <li>FAQ</li>
-            <li>Bog‘lanish</li>
-          </ul>
-        </div>
+            <h3 className="text-lg sm:text-[16px] md:text-[17px] font-semibold">Navigation</h3>
+            <ul className="mt-3 space-y-2 text-gray-400 text-sm sm:text-[12px] md:text-[13px]">
+              <li><a href="/">Home</a></li>
+              <li><a href="sovrinlar">Sovrinlar </a></li>
+              <li><a href="nizom">Nizom </a></li>
+              <li>  <a href="maqolalar"> Maqolalar</a></li>
+              <li> <a href="savollar">FAQ</a></li>
+              <li>   <a href="boglanish"> Bog‘lanish </a></li>
+            </ul >
+          </div >
 
-        {/* Contacts */}
-        <div>
-          <h3 className="text-lg sm:text-[16px] md:text-[17px] font-semibold">Contacts</h3>
-          <p className="text-gray-400 text-sm sm:text-[12px] md:text-[13px] mt-3">
-          (+998 55) 404-11-66;
-          </p>
-          <p className="text-gray-400 text-sm sm:text-[12px] md:text-[13px]">
-          Qashqadaryo viloyati, Qarshi tuman, Chaman MFY, Mustaqillik ko’chasi, 41-uy.
-          </p>
-        </div>
-      </div>
-      </div>
+          {/* Contacts */}
+          <div >
+            <h3 className="text-lg sm:text-[16px] md:text-[17px] font-semibold">Contacts</h3>
+            <p className="text-gray-400 text-sm sm:text-[12px] md:text-[13px] mt-3">
+              (+998 55) 404-11-66;
+            </p>
+            <p className="text-gray-400 text-sm sm:text-[12px] md:text-[13px]">
+              Qashqadaryo viloyati, Qarshi tuman, Chaman MFY, Mustaqillik ko’chasi, 41-uy.
+            </p>
+          </div >
+        </div >
+      </div >
 
       {/* Bottom Text */}
-      <div className="mt-10 border-t border-gray-700 pt-5 flex justify-between text-center text-gray-500 text-sm sm:text-[12px] md:text-[13px] custom-container">
+      <div className="mt-10 border-t border-gray-700 pt-5 flex justify-between text-center text-gray-500 text-sm sm:text-[12px] md:text-[13px] custom-container" >
         <p>Lorem Ipsum dolor sit lorem ipsum</p>
         <p>© Copyright 2019 Povert. All rights reserved.</p>
-      </div>
-    </footer>
+      </div >
+    </footer >
   );
 };
 
