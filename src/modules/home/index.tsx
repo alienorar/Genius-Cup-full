@@ -85,30 +85,33 @@ const Index = () => {
 
   const newsData = [
     {
+      id:1,
       date: "May 15, 2024",
-      title: "Design Analysis & Evaluation Introduction to API",
+      title: " Intellekt, Strategiya, Muvaffaqiyat",
       description:
-        "Design Analysis & Evaluation Introduction to API Design Analysis & Evaluation Introduction to API",
+        "Ko‘pchilik IQ darajasi yuqori bo‘lgan odamlar hayotda doimo ustunlikka ega deb o‘ylaydi. Lekin haqiqat shuki, faqat aqlning o‘zi yetarli emas..",
       image: NewsSt,
       link: "maqolalar",
     },
     {
+      id:2,
       date: "May 15, 2024",
-      title: "Design Analysis & Evaluation Analysis & Evaluation",
+      title: "Iqtidor yoki Mashq Natijasi",
       description:
-        "Design Analysis & Evaluation Introduction to API Design Analysis & Evaluation Introduction to API",
+        "IQ – insonning aqliy qobiliyatini o‘lchovchi ko‘rsatkich. U tug‘ma iqtidor  yoki mashq orqali rivojlantirish mumkin bo‘lgan qobiliyatmi?",
       image: NewsNd,
       link: "maqolalar",
     },
     {
+      id:3,
       date: "May 15, 2024",
-      title: "Introduction to API Architecture Logos",
+      title: "Mantiq, Hayotiy qarorlar, O‘rganish",
       description:
-        "Design Analysis & Evaluation Introduction to API Design Analysis & Evaluation Introduction to API",
+        " Tadqiqotlar shuni ko‘rsatadiki, doimiy ravishda mantiqiy masalalar va jumboqlar yechish IQ darajasining oshishiga olib keladi.",
       image: NewsRd,
       link: "maqolalar",
     },
-  ];
+  ];;
 
   return (
     <main className="flex flex-col gap-[40px]">
@@ -163,16 +166,16 @@ const Index = () => {
                 </p>
 
                 {/* Floating Images */}
-                <div className="flex  md:flex-nowrap sm:justify-between items-center gap-[10px]">
+                <div className="flex  md:flex-nowrap sm:justify-between items-center gap-[10px] bg-cover">
                   <img
                     src={Iqnd}
                     alt="Child with Abacus"
-                    className="lg:absolute  h-[80px] w-[140px]  lg:top-[-100px] lg:right-[-90px] lg:w-[245px] md:w-[200px]  md:h-[180px]  lg:h-[200px] object-cover rounded-xl shadow-lg"
+                    className="lg:absolute  h-[80px] w-[140px]  lg:top-[-100px] lg:right-[-90px] lg:w-[245px] md:w-[200px]  md:h-[180px]  lg:h-[200px] object-cover rounded-xl shadow-lg transition duration-300 ease-in-out hover:scale-110"
                   />
                   <img
                     src={IqSt}
                     alt="Kids Experimenting"
-                    className="lg:absolute  h-[80px]  w-[140px]  lg:bottom-[-110px] lg:left-[-100px] lg:w-[245px] md:w-[200px] md:h-[180px] lg:h-[200px]   object-cover rounded-xl shadow-lg"
+                    className="lg:absolute  h-[80px]  w-[140px]  lg:bottom-[-110px] lg:left-[-100px] lg:w-[245px] md:w-[200px] md:h-[180px] lg:h-[200px]   object-cover rounded-xl shadow-lg transition duration-300 ease-in-out hover:scale-110"
                   />
                 </div>
               </div>
@@ -251,7 +254,7 @@ const Index = () => {
                   </a>
                 </button>
               </div>
-              <div className={`${index % 2 === 0 ? "bg-[#DCE1F899]" : "bg-[#E2F6FD99]"} px-6 py-5 rounded-3xl mx-auto poppin`}>
+              <div className={`${index % 2 === 0 ? "bg-[#DCE1F899]" : "bg-[#E2F6FD99]"} px-6 py-5 xl:h-[400px]  rounded-3xl mx-auto poppin`}>
                 <div className="grid text-[#012840] grid-cols-2 lg:grid-cols-3 gap-4 text-center font-semibold">
                   <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3">O‘tkazilish sanasi</span>
                   <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3 hidden lg:block">O‘tkazilish Manzili</span>
@@ -259,9 +262,9 @@ const Index = () => {
                 </div>
                 {schedule.map((item, i) => (
                   <div key={i} className="grid grid-cols-2 lg:grid-cols-3 gap-5 px-2 text-center mt-3">
-                    <span className="text-[#012840B2] font-[500] text-[16px]">{item.grades} Sinf o‘quvchilari</span>
-                    <span className="hidden md:block text-[#012840B2] font-[500] text-[16px]">{index === 0 ? "Online Telegram Bot " : "Offline Osiyo Texnologiyalar Universiteti "}</span>
-                    <span className="text-[#012840B2] font-[500] text-[16px]">{index === 0 ? "1-May " : "15-May "} {item.time} gacha</span>
+                    <span className="text-[#012840B2] font-[500] text-[16px] md:px-3   px-3">{item.grades} Sinf o‘quvchilari</span>
+                    <span className="hidden lg:block text-[#010f18b2] font-[500] text-[14px] md:px-3   px-3">{index === 0 ? "Online Telegram Bot " : "Offline Osiyo Texnologiyalar Universiteti "}</span>
+                    <span className="text-[#062030b2] font-[500] text-[16px] md:px-3  px-3">{index === 0 ? "1-May " : "15-May "} {item.time} gacha</span>
                   </div>
                 ))}
               </div>
@@ -317,23 +320,19 @@ const Index = () => {
             </a>
           </button>
         </div>
-        <div className="grid md:grid-cols-3 gap-[20px]">
-          {newsData.map((news, index) => (
-            <div key={index} className="">
-              <img
-                src={news.image}
-                alt={news.title}
-                className="w-full h-[220px] object-cover rounded-xl"
-              />
+        <div className="grid md:grid-cols-3 gap-4">
+          {newsData.map((news) => (
+            <div key={news.id} >
+              <img src={news.image} alt={news.title} className="w-full h-[200px] object-cover rounded-[20px] transition duration-300 ease-in-out hover:scale-90" />
               <p className="text-[#01284099] text-[17px]  mt-3">{news.date}</p>
-              <h3 className="text-[#061A40] lg:text-[24px] md:text-[22px] text-[20px] font-bold ">{news.title}</h3>
-              <p className="text-[#01284099] text-[17px]  mt-1">{news.description}</p>
-              <a
-                href={news.link}
-                className="text-[#012840] font-medium text-[18px] mt-3 inline-block"
-              >
-                Read More →
-              </a>
+            <h3 className="text-[#061A40] lg:text-[24px] md:text-[22px] text-[20px] font-bold ">{news.title}</h3>
+            <p className="text-[#01284099] text-[17px]  mt-1">{news.description}</p>
+            <a
+              href={news.link}
+              className="text-[#012840] font-medium text-[18px] mt-3 inline-block"
+            >
+              Read More →
+            </a>
             </div>
           ))}
         </div>

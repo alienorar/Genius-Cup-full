@@ -53,11 +53,11 @@ const ContactSection = () => {
         {/* Contact Info Box */}
         <div className="absolute top-55 sm:top-55 md:top-30 lg:top-30 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-[-2px_-2px_75px_4px_rgba(0,_0,_0,_0.1)] p-6 md:p-8 flex flex-col  md:flex-row items-center justify-between w-11/12 md:w-3/4 lg:w-2/3">
           {/* Location */}
-          <div className="flex flex-col items-center text-center px-4">
+          <div className="flex flex-col items-center text-center w-[240px] px-4">
             <FaMapMarkerAlt className="text-[#1E9FD9] text-3xl mb-2" />
             <h3 className="text-lg font-semibold">Location</h3>
             <p className="text-gray-600 text-sm">
-              Qashqadaryo viloyati, Oqqo‘rg‘on tumani, 12-uy
+            Qashqadaryo viloyati, Qarshi tuman, Chaman MFY, Mustaqillik ko’chasi, 41-uy.
             </p>
           </div>
 
@@ -65,16 +65,14 @@ const ContactSection = () => {
           <div className="flex flex-col items-center text-center px-4 mt-6 md:mt-0">
             <FaEnvelope className="text-[#1E9FD9] text-3xl mb-2" />
             <h3 className="text-lg font-semibold">Email Address</h3>
-            <p className="text-gray-600 text-sm">Outlook@gmail.com</p>
-            <p className="text-gray-600 text-sm">Pinterest@gmail.com</p>
+            <a href="mailto:Info@asianuniversity.uz" className="text-gray-600 text-sm">Info@asianuniversity.uz</a>
           </div>
 
           {/* Phone */}
           <div className="flex flex-col items-center text-center px-4 mt-6 md:mt-0">
             <FaPhoneAlt className="text-[#1E9FD9] text-3xl mb-2" />
             <h3 className="text-lg font-semibold">Phone Number</h3>
-            <p className="text-gray-600 text-sm">+998(90)-122-21-12</p>
-            <p className="text-gray-600 text-sm">+998(33)-323-23-23</p>
+            <a href="tel:+998554041166" className="text-gray-600 text-sm">+998(55)4041166</a>
           </div>
         </div>
         {/* Map */}
