@@ -15,6 +15,7 @@ import NewsSt from "../../assets/news-1.png"
 import NewsNd from "../../assets/news-2.png"
 import NewsRd from "../../assets/news-3.png"
 import Feather from "../../assets/feather.svg"
+import { motion } from "framer-motion";
 
 const Index = () => {
 
@@ -85,7 +86,7 @@ const Index = () => {
 
   const newsData = [
     {
-      id:1,
+      id: 1,
       date: "May 15, 2024",
       title: " Intellekt, Strategiya, Muvaffaqiyat",
       description:
@@ -94,7 +95,7 @@ const Index = () => {
       link: "maqolalar",
     },
     {
-      id:2,
+      id: 2,
       date: "May 15, 2024",
       title: "Iqtidor yoki Mashq Natijasi",
       description:
@@ -103,7 +104,7 @@ const Index = () => {
       link: "maqolalar",
     },
     {
-      id:3,
+      id: 3,
       date: "May 15, 2024",
       title: "Mantiq, Hayotiy qarorlar, O‘rganish",
       description:
@@ -117,7 +118,10 @@ const Index = () => {
     <main className="flex flex-col gap-[40px]">
       {/* ==============hero ============ */}
       <section className="custom-container">
-        <div className="flex flex-col justify-center items-center gap-[20px] pt-[60px]">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col justify-center items-center gap-[20px] pt-[60px]">
           <div>
             <div className="flex justify-between items-end">
               <img src={YellowSpot} alt="yellow spot" />
@@ -139,8 +143,11 @@ const Index = () => {
               </a>
             </button>
             <img src={BlueSpot} alt="Blue spot" className="block md:hidden h-[100px] w-[100px] object-none " /></div>
-        </div>
-        <div className="flex flex-col gap-0">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col gap-0">
           <div className="flex  justify-end items-end pl-0 "><img src={Feather} alt="feather" className="-rotate-20 " /></div>
           <div className="bg-gradient-to-br from-[#E7ECFF] to-[#dde3f8] p-[10px] sm:p-[30px] md:p-[40px] lg:p-[60px] rounded-3xl rounded-tr-[40px] md:rounded-tr-[60px] sm:rounded-[25px] md:rounded-[30px]   flex items-center justify-center lg:h-[704px] relative"
           >
@@ -182,7 +189,7 @@ const Index = () => {
             </div>
 
           </div>
-        </div>
+        </motion.div>
 
       </section>
       {/* ============= About Iq============ */}
@@ -268,7 +275,7 @@ const Index = () => {
                   </div>
                 ))}
               </div>
-              </div>
+            </div>
           ))}
         </div>
       </section>
@@ -325,14 +332,14 @@ const Index = () => {
             <div key={news.id} >
               <img src={news.image} alt={news.title} className="w-full h-[200px] object-cover rounded-[20px] transition duration-300 ease-in-out hover:scale-90" />
               <p className="text-[#01284099] text-[17px]  mt-3">{news.date}</p>
-            <h3 className="text-[#061A40] lg:text-[24px] md:text-[22px] text-[20px] font-bold ">{news.title}</h3>
-            <p className="text-[#01284099] text-[17px]  mt-1">{news.description}</p>
-            <a
-              href={news.link}
-              className="text-[#012840] font-medium text-[18px] mt-3 inline-block"
-            >
-              Read More →
-            </a>
+              <h3 className="text-[#061A40] lg:text-[24px] md:text-[22px] text-[20px] font-bold ">{news.title}</h3>
+              <p className="text-[#01284099] text-[17px]  mt-1">{news.description}</p>
+              <a
+                href={news.link}
+                className="text-[#012840] font-medium text-[18px] mt-3 inline-block"
+              >
+                Read More →
+              </a>
             </div>
           ))}
         </div>
