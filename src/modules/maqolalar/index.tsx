@@ -47,11 +47,7 @@ const NewsSection: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="mb-8 text-center poppin">
-        {/* Subheading - "Maqolalar" */}
-        <p className="text-sm sm:text-xl poppin md:text-[16px] text-[#1E9FD9] font-medium mb-1">
-          Maqolalar
-        </p>
-
+      
         {/* Main Heading - "Yangilik va Maqolalar" */}
         <h2 className="text-2xl sm:text-3xl md:text-[40px] font-semibold poppin text-black">
           Yangilik va Maqolalar

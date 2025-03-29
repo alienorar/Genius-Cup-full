@@ -24,20 +24,20 @@ const ContactSection = () => {
             </div>
             {/* Social Media Links */}
             <div className="grid grid-cols-2 gap-4 items-center  justify-center max-w-xs mt-6">
-              <a href="#" className="flex items-center  text-gray-700 hover:text-pink-500">
+              <a href="https://www.instagram.com/asianuniversity_edu/" className="flex items-center space-x-2  text-gray-700 hover:text-pink-500">
                 <img src={Instagram} alt="instagram" />
                 <span className="poppin">Instagram</span>
               </a>
-              <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-red-600">
-                <img src={Youtube} alt="instagram" />
+              <a href="https://www.youtube.com/@asianuniversity_edu" className="flex items-center space-x-2 text-gray-700 hover:text-red-600">
+                <img src={Youtube} alt="you tube" />
                 <span className="poppin">YouTube</span>
               </a>
-              <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-[#1E9FD9]">
-                <img src={Telegram} alt="instagram" />
+              <a href="https://t.me/asianuniversity_edu" className="flex items-center space-x-2 text-gray-700 hover:text-[#1E9FD9]">
+                <img src={Telegram} alt="telegram" />
                 <span className="poppin">Telegram</span>
               </a>
-              <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-black">
-                <img src={Twitter} alt="instagram" />
+              <a href="https://x.com/atu_uz" className="flex items-center space-x-2 text-gray-700 hover:text-black">
+                <img src={Twitter} alt="twitter" />
                 <span className="poppin">Twitter</span>
               </a>
             </div>
