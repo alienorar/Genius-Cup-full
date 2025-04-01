@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import NewsSt from "../../assets/news-1.png";
 import NewsNd from "../../assets/news-2.png";
 import NewsRd from "../../assets/news-3.png";
@@ -111,12 +111,12 @@ const NewsDetailPage: React.FC = () => {
             
             {/* Back Button */}
             <div className="mt-8">
-              <a 
-                href="/maqolalar" 
+              <Link
+                to="/maqolalar" 
                 className="inline-flex items-center px-4 py-2 bg-[#061A40] text-white rounded-lg hover:bg-[#012840] transition-colors"
               >
                 ← Barcha yangiliklarga qaytish
-              </a>
+              </Link>
             </div>
           </div>
         </div>
