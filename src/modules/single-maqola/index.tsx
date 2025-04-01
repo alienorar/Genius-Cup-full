@@ -1,3 +1,4 @@
+import { useState } from "react";
 import NewsSt from "../../assets/news-1.png"
 import NewsNd from "../../assets/news-2.png"
 import NewsRd from "../../assets/news-3.png"
@@ -9,7 +10,7 @@ const newsData = [
     date: "May 15, 2024",
     title: " Intellekt, Strategiya, Muvaffaqiyat",
     description:
-      "Ko‘pchilik IQ darajasi yuqori bo‘lgan odamlar hayotda doimo ustunlikka ega deb o‘ylaydi. Lekin haqiqat shuki, faqat aqlning o‘zi yetarli emas  ",
+      "Ko‘pchilik IQ darajasi yuqori bo‘lgan odamlar hayotda doimo ustunlikka ega deb o‘ylaydi. Lekin haqiqat shuki, faqat aqlning o‘zi yetarli emas..",
     image: NewsSt,
     link: "maqolalar",
   },
@@ -41,6 +42,7 @@ const categories = [
 ];
 
 const NewsSection: React.FC = () => {
+  const [selectedNews, setSelectedNews] = useState(newsData[0]);
   return (
     <section>
       <motion.div initial={{ opacity: 0, y: 50 }}
@@ -59,12 +61,12 @@ const NewsSection: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }} className="custom-container mx-auto px-4 py-8 grid md:grid-cols-4 gap-6">
         {/* News Section */}
-        <div className="md:col-span-3">
+        <div className="">
           <h2 className="text-2xl font-semibold poppin mb-4">So‘nggi yangiliklar</h2>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-rows-3 gap-4">
             {newsData.map((news) => (
               <div key={news.id} >
-                <img src={news.image} alt={news.title} className="w-full h-[200px] object-cover rounded-[20px]" />
+                <img src={news.image} alt={news.title} className="w-full h-[200px] object-cover rounded-[20px]"  onClick={() => setSelectedNews(news)} />
                 <p className="text-[#01284099] text-[17px]  mt-3">{news.date}</p>
                 <h3 className="text-[#061A40] lg:text-[24px] md:text-[22px] text-[20px] font-bold ">{news.title}</h3>
                 <p className="text-[#01284099] text-[17px]  mt-1">{news.description}</p>
@@ -77,10 +79,35 @@ const NewsSection: React.FC = () => {
               </div>
             ))}
           </div>
+          <div>
+       
+          </div>
         </div>
-
+        <div className="md:col-span-2">
+          <div className="p-2 rounded-[20px]">
+            <img src={selectedNews.image} alt={selectedNews.title} className="w-full h-[300px] object-cover rounded-[20px]" />
+            <p className="text-gray-600 text-lg mt-3">{selectedNews.date}</p>
+            <h3 className="text-[#061A40] text-2xl font-bold">{selectedNews.title}</h3>
+            <p className="text-gray-600 text-lg mt-1">{selectedNews.description}</p>
+          </div>
+        </div>
         {/* Sidebar */}
         <div className="md:col-span-1">
+
+          {/* Popular News */}
+          <h3 className="text-xl font-bold mt-6 mb-4">Eng ko‘p o‘qilganlar</h3>
+          <div className="">
+            {newsData.slice(0, 4).map((news) => (
+              <div key={news.id} className="flex items-center  justify-between gap-2 h-25  "  onClick={() => setSelectedNews(news)}>
+                <img src={news.image} alt={news.title} className="w-[121px] h-[90px] object-cover rounded-[20px]" />
+                <div>
+                  <h4 className="text-[14px] font-[600] text-[#012840] poppin">{news.title}</h4>
+                  <a href="#" className="text-[#012840] poppin text-xs">Read More →</a>
+                </div>
+              </div>
+            ))}
+          </div>
+          
           {/* Categories */}
           <h3 className="text-xl font-semibold poppin mb-4">Bo‘limlar</h3>
           <ul className="bg-[#E7ECFF] shadow-md rounded-lg p-4">
@@ -92,19 +119,7 @@ const NewsSection: React.FC = () => {
             ))}
           </ul>
 
-          {/* Popular News */}
-          <h3 className="text-xl font-bold mt-6 mb-4">Eng ko‘p o‘qilganlar</h3>
-          <div className=" h-100">
-            {newsData.slice(0, 4).map((news) => (
-              <div key={news.id} className="flex items-center  justify-between gap-2 h-25 ">
-                <img src={news.image} alt={news.title} className="w-[121px] h-[90px] object-cover rounded-[20px]" />
-                <div>
-                  <h4 className="text-[14px] font-[600] text-[#012840] poppin">{news.title}</h4>
-                  <a href="#" className="text-[#012840] poppin text-xs">Read More →</a>
-                </div>
-              </div>
-            ))}
-          </div>
+          
         </div>
       </motion.div>
     </section>

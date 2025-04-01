@@ -9,11 +9,12 @@ const Header = () => {
 
     const navLinks = [
         { name: "Home", path: "/" },
-        { name: "Sovrin", path: "/sovrin" },
         { name: "Savollar", path: "/savollar" },
+        { name: "Nizom", path: "/nizom" },
+        { name: "Sovrin", path: "/sovrin" },
         { name: "Bog‘lanish", path: "/boglanish" },
         { name: "Maqolalar", path: "/maqolalar" },
-        { name: "Nizom", path: "/nizom" },
+      
     ];
 
     return (

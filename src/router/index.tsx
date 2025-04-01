@@ -12,7 +12,7 @@ import {
     Sovrin,
     Maqolalar,
     Nizom,
-   
+    SingleMaqola,
 } from '@modules';
 
 const Index = () => {
@@ -24,8 +24,8 @@ const Index = () => {
                 <Route path="savollar" element={<Savollar />} />
                 <Route path="boglanish" element={<Boglanish />} />
                 <Route path="maqolalar" element={<Maqolalar />} />
+                <Route path="maqolalar/:id" element={<SingleMaqola />} />
                 <Route path="nizom" element={<Nizom />} />
-                {/* FAQ Sahifasi va Dinamik Routing */}
                 <Route path="faq/:category?" element={<Savollar />} />
             </Route>
         )
