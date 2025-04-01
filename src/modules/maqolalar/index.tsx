@@ -72,7 +72,7 @@ const NewsSection: React.FC = () => {
                  to={`/maqolalar/${news.id}`}
                   className="text-[#012840] font-medium text-[18px] mt-3 inline-block"
                 >
-                  Read More →
+                   MAQOLANI O'QISH →
                 </Link>
               </div>
             ))}

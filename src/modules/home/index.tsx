@@ -75,12 +75,12 @@ const Index = () => {
     {
       name: "Qashqadaryo Viloyati Hokimligi",
       logo: Symbol,
-      link: "#",
+      link: "https://gov.uz/oz/qashqadaryo",
     },
     {
       name: "Osiyo Texnologiyalar Universiteti",
       logo: OtuLogo,
-      link: "#",
+      link: "https://www.otu-edu.uz",
     },
   ];
 
@@ -297,7 +297,7 @@ const Index = () => {
                   <img src={org.logo} alt={org.name} className="mx-auto w-16 h-16 object-contain rounded-4xl" />
                   <h3 className="mt-4 mb-2 text-lg font-medium">{org.name}</h3>
                   <button className="relative h-10  w-40 overflow-hidden border-[1px]  border-[#ffffff] text-[16px] rounded-[30px] text-[#ffffff] font-[400] poppin  transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-white before:duration-300 before:ease-out hover:text-[#1E9FD9] hover:shadow-white hover:before:h-40 hover:before:w-40 ">
-                    <a href="https://t.me/Genius_cup_bot" target="_blank" rel="noopener noreferrer" className="relative z-10">
+                    <a href={org.link} target="_blank" rel="noopener noreferrer" className="relative z-10">
                       Rasmiy sahifa ↗
                     </a>
                   </button>
