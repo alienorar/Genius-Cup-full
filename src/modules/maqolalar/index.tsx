@@ -70,7 +70,7 @@ const NewsSection: React.FC = () => {
                 <p className="text-[#01284099] text-[17px]  mt-1">{news.description}</p>
                 <Link
                  to={`/maqolalar/${news.id}`}
-                  className="text-[#012840] font-medium text-[18px] mt-3 inline-block"
+                  className="text-[#012840] font-medium text-[16px] mt-3 inline-block"
                 >
                    MAQOLANI O'QISH →
                 </Link>
