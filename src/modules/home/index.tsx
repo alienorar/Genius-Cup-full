@@ -336,9 +336,9 @@ const Index = () => {
               <p className="text-[#01284099] text-[17px]  mt-1">{news.description}</p>
               <a
                 href={news.link}
-                className="text-[#012840] font-medium text-[18px] mt-3 inline-block"
+                className="text-[#012840] font-medium text-[15px] mt-3 inline-block"
               >
-                Read More →
+                MAQOLANI O'QISH →
               </a>
             </div>
           ))}

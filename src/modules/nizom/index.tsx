@@ -12,7 +12,7 @@ const sections = [
         <p className="text-[16px] text-[#01284099] poppin">
           <strong className="text-black">1.1.</strong>	Mazkur Nizom Osiyo Texnologiyalar universitetining innovatsion tashabbusi sifatida respublikamizning barcha umumiy o‘rta ta’lim maktab o‘quvchilari, akademik litsey va kasbiy ta’lim muassasalari talabalari orasidan iqtidorli, bilimdon va yaratuvchan yoshlarga e’tibor qaratgan holda, ularni oliy ta’limga keng jalb etish hamda kelajakdagi muvaffaqiyatga yo‘l ochish maqsadida tashkil etayotgan “Genius-Cup” onlayn IQ musobaqasining tashkil etish tartibini belgilaydi.
         </p>
-        <p className="text-[16px] text-[#01284099] poppin"><strong className="text-black">1.2.</strong>Imtihonlarda O‘zbekiston Respublikasidagi barcha umumiy o‘rta ta’lim maktablarining 3-11 sinf o‘quvchilari hamda akademik litsey va kasbiy ta’lim muassasalarining 1-2 bosqich talabalari ishtirok etishi mumkin.</p>
+        <p className="text-[16px] text-[#01284099] poppin"><strong className="text-black">1.2.</strong> Imtihonlarda O‘zbekiston Respublikasidagi barcha umumiy o‘rta ta’lim maktablarining 3-11 sinf o‘quvchilari hamda akademik litsey va kasbiy ta’lim muassasalarining 1-2 bosqich talabalari ishtirok etishi mumkin.</p>
       </>
     ),
   },
@@ -107,6 +107,25 @@ const sections = [
           <li>2-o‘rin: 2 000 000 so‘m;</li>
           <li>3-o‘rin: 1 000 000 so‘m.</li>
           <li>Uchinchi guruhning eng yuqori ball to‘plagan 10 nafari Osiyo Texnologiyalar universitetida bir yil bepul o‘qish imkoniyatiga ega bo‘ladi.</li>
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "5",
+    title: "V bob",
+    content: (
+      <>
+        <h2 className="text-[20px] font-semibold">IV. Yakuniy qoidalar</h2>
+        <p className="text-[16px] text-[#01284099] poppin">
+          <strong className="text-black">7.</strong> Ishtirokchilar tomonidan taqdim etilgan materiallar bo‘yicha izoh yoki sharh berilmaydi va ular egalariga qaytarilmaydi.
+        </p>
+        <p className="text-[16px] text-[#01284099] poppin">
+          <strong className="text-black">8.</strong> Ishtirokchilar tomonidan mazkur Nizom va imtihonlarda ishtirok etish tartib-qoidalari buzilgan taqdirda 
+          Komissiya a’zolarining xulosasi bilan sinovlardan chetlatiladi.
+        </p>
+        <p className="text-[16px] text-[#01284099] poppin">
+          <strong className="text-black">9.</strong> Komissiya a’zolarining g‘oliblarni aniqlash bo‘yicha qarorlari va xulosalari qayta ko‘rib chiqilmaydi hamda muhokama qilinmaydi.
         </p>
       </>
     ),

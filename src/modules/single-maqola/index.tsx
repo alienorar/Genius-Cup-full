@@ -149,7 +149,7 @@ const NewsDetailPage: React.FC = () => {
                     to={`/maqolalar/${news.id}`} 
                     className="text-[#012840] poppin text-xs"
                   >
-                    Read More →
+                   MAQOLANI O'QISH
                   </Link>
                 </div>
               </div>
