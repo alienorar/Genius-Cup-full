@@ -78,7 +78,7 @@ const PrizeFundSection = () => {
                 <span className="font-bold">{prize.times} baravari</span>{" "}
                 <span className={`font-bold ${prize.color}`}>{prize.amount}</span> so‘m
               </p>
-              <p className="text-gray-600 text-sm">(UZS);</p>
+            
             </div>
           ))}
         </div>

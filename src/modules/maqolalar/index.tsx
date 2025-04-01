@@ -7,7 +7,7 @@ const newsData = [
   {
     id: 1,
     date: "May 15, 2024",
-    title: " Intellekt, Strategiya, Muvaffaqiyat",
+    title: " Intellekt, strategiya, muvaffaqiyat",
     description:
       "Ko‘pchilik IQ darajasi yuqori bo‘lgan odamlar hayotda doimo ustunlikka ega deb o‘ylaydi. Lekin haqiqat shuki, faqat aqlning o‘zi yetarli emas  ",
     image: NewsSt,
