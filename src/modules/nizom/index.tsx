@@ -60,6 +60,58 @@ const sections = [
       </>
     ),
   },
+  {
+    id: "4",
+    title: "IV bob",
+    content: (
+      <>
+        <h2 className="text-[20px] font-semibold">4. Musobaqani tashkil etish tartibi</h2>
+        <p className="text-[16px] text-[#01284099] poppin">
+          <strong className="text-black">4.1</strong> Musobaqaning birinchi bosqichi ishtirokchilarning umumiy bilim, 
+          mantiqiy fikrlash va tezkor qaror qabul qilish qobiliyatini sinovdan o‘tkazish uchun 
+          mo‘ljallangan bo‘lib, 2025-yilning 10-may sanasida onlayn test shaklida telegram botlari 
+          orqali o‘tkazilinadi.
+        </p>
+        <p className="text-[16px] text-[#01284099] poppin">
+          <strong className="text-black">4.2</strong> Musobaqa qatnashuvchilarining sinf kesimidan kelib chiqib, mos guruhlar uchun test savollari 
+          shakllantiriladi:
+          <li>Birinchi guruh - 3–5-sinf o‘quvchilari;</li>
+          <li>Ikkinchi guruh - 6–8-sinf o‘quvchilari;</li>
+          <li>Uchinchi guruh - 9–11-sinf o‘quvchilari va akademik litsey, kasbiy ta’lim muassasalarining 1–2 bosqich talabalari.</li>
+        </p>
+        <p className="text-[16px] text-[#01284099] poppin">
+          <strong className="text-black">4.3</strong> Test savollari va baholash tizimi:
+          <li>Har bir ishtirokchiga 20 ta savol taqdim etiladi;</li>
+          <li>To‘g‘ri javob uchun 5 ball, noto‘g‘ri javob uchun 0 ball beriladi;</li>
+          <li>Eng yuqori ball 100 ballni tashkil etadi.</li>
+        </p>
+        <p className="text-[16px] text-[#01284099] poppin">
+          <strong className="text-black">4.4</strong> Testni bajarish uchun 60 daqiqa vaqt ajratiladi. 
+          Eng yuqori ball to‘plagan 100 nafar ishtirokchi g‘olib deb tanlanadi.
+          <li>3–5-sinf: 20 nafar;</li>
+          <li>6–8-sinf: 40 nafar;</li>
+          <li>9–11-sinf va yuqorilar: 40 nafar.</li>
+          Ball teng bo‘lsa, testni tugatish vaqti hal qiluvchi omil hisoblanadi.
+        </p>
+        <p className="text-[16px] text-[#01284099] poppin">
+          <strong className="text-black">4.5</strong> G‘oliblarga mukofotlar:
+          <li>Har bir bosqich g‘olibiga sertifikat va 100 000 so‘m miqdorida pul mukofoti;</li>
+          <li>Ikkinchi bosqichga yo‘llanma.</li>
+        </p>
+        <p className="text-[16px] text-[#01284099] poppin">
+          <strong className="text-black">4.6</strong> Ikkinchi bosqich 2025-yil 10-may kuni Osiyo Texnologiyalar universitetida o'tkaziladi.
+        </p>
+        <p className="text-[16px] text-[#01284099] poppin">
+          <strong className="text-black">4.7</strong> Final bosqichida har bir guruhdan eng yuqori natija qayd etgan 3 nafar g‘olib quyidagi mukofotlarga ega bo‘ladi:
+          <li>1-o‘rin: 3 000 000 so‘m;</li>
+          <li>2-o‘rin: 2 000 000 so‘m;</li>
+          <li>3-o‘rin: 1 000 000 so‘m.</li>
+          <li>Uchinchi guruhning eng yuqori ball to‘plagan 10 nafari Osiyo Texnologiyalar universitetida bir yil bepul o‘qish imkoniyatiga ega bo‘ladi.</li>
+        </p>
+      </>
+    ),
+  }
+  
 ];
 
 const Nizom: React.FC = () => {
@@ -80,17 +132,8 @@ const Nizom: React.FC = () => {
           <div className="space-y-4 text-[16px] leading-relaxed">
 
 
-            <ol className="list-decimal pl-6">
-              <li>
-                Mazkur Nizom umumiy o‘rta ta’lim tashkilotlari, akademik litsey va kasb-hunar maktablari o‘quvchilari o‘rtasida Matematika fanidan Toshkent xalqaro matematika olimpiadasining (Tashkent International Mathematical Olympiad, TIMO – keyingi o‘rinlarda Olimpiada) hududiy-saralash, respublika va xalqaro bosqichini (uch bosqichli) o‘tkazish tartibini belgilaydi.2. Ushbu Nizomda quyidagi asosiy tushunchalar qo‘llaniladi:
-              </li>
-              <li>. Ushbu Nizomda quyidagi asosiy tushunchalar qo‘llaniladi:olimpiada — umumta’lim fanlari bo‘yicha Xalqaro Nordik universiteti, “IDC” nodavlat ta’lim muassasasi tomonidan O‘zbekiston Respublikasi Maktabgacha va maktab ta’limi vazirligi (keyingi o‘rinlarda – Vazirlik), xalqaro tashkilotlar ko‘magida respublika miqyosida va xorijiy mamlakatlar maktablari o‘rtasida tizimli ravishda har yili tashkil etiladigan olimpiada;onlayn olimpiada — o‘quvchilarning bilimlarini onlayn tarzda sinovdan o‘tkazish va faqat axborot texnologiyalari (kompyuter, planshet, telefon va boshqalar) orqali amalga oshiriladigan olimpiada;olimpiada taqvimi — o‘quv yili davomida o‘tkazilishi rejalashtirilgan matematika fani olimpiadasining reja-jadvali;olimpiada g‘oliblari — respublika darajasida 1, 2, 3-o‘rinlarni, xalqaro darajada oltin, kumush va bronza medallarini qo‘lga kiritgan o‘quvchilar;</li>
-              <li> Olimpiada yagona ilmiy-uslubiy yondashuv asosida adolatlilik, ochiqlik va shaffoflik tamoyillari asosida o‘tkaziladi.</li>
-              <li>. Olimpiada uchun test topshiriqlari, yozma va amaliy ishlarni (keyingi o‘rinlarda — nazorat materiallari) tayyorlash “IDC” nodavlat ta’lim muassasasi, olimpiadani o‘tkazish bilan bog‘liq tashkiliy tadbirlar Xalqaro Nordik universiteti tomonidan muvofiqlashtiriladi</li>
-              <li> Mazkur olimpida tashabbus tartibida tashkil qilinayotganligi bois, Vazirlik bilan kelishgan holda o‘tkaziladi hamda olimpiadalar taqvimiga kiritish uchun yozma xat bilan murojaat qilinadi.</li>
-              <li> Olimpiadaning nazorat materiallari o‘quvchilarning bilim, ko‘nikmalarini standart va nostandart masalalarda, amaliy topshiriqlarda qo‘llay olish malakalarini va kompetensiyalarini baholashga qaratiladi.</li>
-              <li> O‘quvchilar olimpiadalarda o‘z xohishlariga ko‘ra, ixtiyoriy ravishda qatnashadilar.</li>
-            </ol>
+           <p className="text-[16px] text-[#01284099] poppin">Mazkur Nizom Osiyo Texnologiyalar universitetining innovatsion tashabbusi sifatida respublikamizning barcha umumiy o‘rta ta’lim maktab o‘quvchilari, akademik litsey va kasbiy ta’lim muassasalari talabalari orasidan iqtidorli, bilimdon va yaratuvchan yoshlarga e’tibor qaratgan holda, ularni oliy ta’limga keng jalb etish hamda kelajakdagi muvaffaqiyatga yo‘l ochish maqsadida tashkil etayotgan “Genius-Cup” onlayn IQ musobaqasining tashkil etish tartibini belgilaydi.
+           Imtihonlarda O‘zbekiston Respublikasidagi barcha umumiy o‘rta ta’lim maktablarining 3-11 sinf o‘quvchilari hamda akademik litsey va kasbiy ta’lim muassasalarining 1-2 bosqich talabalari ishtirok etishi mumkin.</p>
           </div>
         </div>
       </motion.div>
