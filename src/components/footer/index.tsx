@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
         <div className="flex justify-between lg:gap-[80px] gap-5">
           {/* Navigation Links */}
           <div>
-            <h3 className="text-lg sm:text-[16px] md:text-[17px] font-semibold">Navigation</h3>
+            <h3 className="text-lg sm:text-[16px] md:text-[17px] font-semibold">Sahifalar</h3>
             <ul className="mt-3 space-y-2 text-gray-400 text-sm sm:text-[12px] md:text-[13px]">
               <li><a href="/">Home</a></li>
               <li><a href="sovrinlar">Sovrinlar </a></li>
@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
 
           {/* Contacts */}
           <div >
-            <h3 className="text-lg sm:text-[16px] md:text-[17px] font-semibold">Contacts</h3>
+            <h3 className="text-lg sm:text-[16px] md:text-[17px] font-semibold">Bog'lanish</h3>
             <p className="text-gray-400 text-sm sm:text-[12px] md:text-[13px] mt-3">
               (+998 55) 404-11-66;
             </p>
