@@ -14,9 +14,7 @@ const FAQHeader = () => {
                         Ko‘p beriladigan savollar
                     </h2>
                     <p className="text-[#01284099] mt-4 text-[18px] poppin md:text-base text-center lg:text-start leading-relaxed ">
-                        Lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsum dolor sit
-                        lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsum dolor sit
-                        lorem ipsum dolor sit lorem ipsum dolor
+                    "Genius Cup musobaqasining savollari orqali mantiqiy fikrlash, tezkor qaror qabul qilish va intellektual qobiliyatingizni sinab ko‘ring. Siz tayyormisiz?"
                     </p>
                 </div>
 
