@@ -8,7 +8,7 @@ import AverageIq from "../../assets/average-it.png"
 import KnowledgeIq from "../../assets/study-iq.png"
 import FinanceIq from "../../assets/finance-iq.png"
 import Symbol from "../../assets/symbol.png"
-import OtuLogo from "../../assets/otu-logo.png"
+import OtuLogo from "../../assets/otu-logo 2.png"
 import ArrowWhite from "../../assets/arrow.svg"
 import WhiteSpot from "../../assets/Ellipse 4.svg"
 import NewsSt from "../../assets/news-1.png"
@@ -294,7 +294,7 @@ const Index = () => {
             <div className="flex flex-col lg:flex-row justify-center gap-10 mt-6 py-2 px-5 md:px-5  border-dashed border-[2px] border-white  rounded-3xl">
               {organizers.map((org, index) => (
                 <div key={index} className="bg-transparent p-4 md:p-6 text-center md:w-64 ">
-                  <img src={org.logo} alt={org.name} className="mx-auto w-16 h-16 " />
+                  <img src={org.logo} alt={org.name} className="mx-auto w-16 h-16 object-contain rounded-4xl" />
                   <h3 className="mt-4 mb-2 text-lg font-medium">{org.name}</h3>
                   <button className="relative h-10  w-40 overflow-hidden border-[1px]  border-[#ffffff] text-[16px] rounded-[30px] text-[#ffffff] font-[400] poppin  transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-white before:duration-300 before:ease-out hover:text-[#1E9FD9] hover:shadow-white hover:before:h-40 hover:before:w-40 ">
                     <a href="https://t.me/Genius_cup_bot" target="_blank" rel="noopener noreferrer" className="relative z-10">

@@ -3,52 +3,59 @@ import { motion } from "framer-motion";
 const sections = [
   {
     id: "1",
-    title: "I bob.",
+    title: "I bob",
     content: (
       <>
         <h2 className="text-[20px] font-semibold">
-          Olimpiadaning asosiy maqsadi va vazifalari
+          1. Umumiy qoidalar
         </h2>
-        <p className="text-[16px] text-[#012840]">
-          <strong>8.</strong> Olimpiada O‘zbekiston Respublikasi Prezidentining
-          2023 yil 11 sentyabdagi “O‘zbekiston – 2030” strategiyasi to‘g‘risida”gi
-          PF-158-soni Farmoni hamda O‘zbekiston Respublikasi Prezidentining 2020 yil
-          7 maydagi “Matematika sohasidagi ta’lim sifatini oshirish va ilmiy-tadqiqotlarni
-          rivojlantirish chora-tadbirlari to‘g‘risida”gi PQ-4708-son qarorida belgilangan
-          vazifalar ijrosini ta’minlash;
+        <p className="text-[16px] text-[#01284099] poppin">
+          <strong className="text-black">1.1.</strong>	Mazkur Nizom Osiyo Texnologiyalar universitetining innovatsion tashabbusi sifatida respublikamizning barcha umumiy o‘rta ta’lim maktab o‘quvchilari, akademik litsey va kasbiy ta’lim muassasalari talabalari orasidan iqtidorli, bilimdon va yaratuvchan yoshlarga e’tibor qaratgan holda, ularni oliy ta’limga keng jalb etish hamda kelajakdagi muvaffaqiyatga yo‘l ochish maqsadida tashkil etayotgan “Genius-Cup” onlayn IQ musobaqasining tashkil etish tartibini belgilaydi.
         </p>
+        <p className="text-[16px] text-[#01284099] poppin"><strong className="text-black">1.2.</strong>Imtihonlarda O‘zbekiston Respublikasidagi barcha umumiy o‘rta ta’lim maktablarining 3-11 sinf o‘quvchilari hamda akademik litsey va kasbiy ta’lim muassasalarining 1-2 bosqich talabalari ishtirok etishi mumkin.</p>
       </>
     ),
   },
   {
     id: "2",
-    title: "II bob.",
+    title: "II bob",
     content: (
       <>
-        <p>
-          <strong>2.</strong> Ushbu Nizomda quyidagi asosiy tushunchalar qo‘llaniladi:
+        <h2 className="text-[20px] font-semibold">
+          2.	Musobaqaning asosiy maqsad va vazifalari
+        </h2>
+        <p className="text-[16px] text-[#01284099] poppin">
+          <strong className="text-black">2.1</strong>  Musobaqaning asosiy maqsadi yoshlarimizning bilimini, mantiqiy fikrlashini va tezkor qaror qabul qilish qobiliyatini aniqlash va rivojlantirishdan iborat bo‘lib, quyidagi maqsadlarni ham qamrab oladi:
+          <li>	Yoshlarimizga zamonaviy bilim va texnologiyalarni o‘zlashtirish imkoniyatini yaratish;</li>
+          <li>	Ularning intellektual imkoniyatlarini oshirish va oliy ta’limga qiziqishini rag‘batlantirish.</li>
+
         </p>
-        <ul className="list-disc pl-6 text-[#01284099]">
-          <li>
-            Olimpiada — umumta’lim fanlari bo‘yicha Xalqaro Nordik universiteti va “IDC”
-            nodavlat ta’lim muassasasi tomonidan tashkil etiladigan musobaqa;
-          </li>
-          <li>
-            Onlayn olimpiada – faqat axborot texnologiyalari (kompyuter, planshet, telefon)
-            orqali o‘tkaziladi.
-          </li>
-        </ul>
+        <p className="text-[16px] text-[#01284099] poppin">
+          <strong className="text-black">2.2</strong> Musobaqaning ustuvor Vazifasi qatnashuvchilarning shaxsiy rivojlanishini qo‘llab-quvvatlash bilan birga, jamiyatimizning intellektual salohiyatini oshirishga ham xizmat qiladi:
+          <li>Yoshlarimizga zamonaviy bilim va texnologiyalarni o‘zlashtirish imkoniyatini yaratish;</li>
+          <li>Innovatsion fikrlash va kreativ yondoshuvni rag‘batlantirish;</li>
+          <li>Oliy ta’lim tizimiga kirish uchun malaka va qobiliyatlarni rivojlantirish;</li>
+          <li>	Qatnashchilarni sog‘lom raqobat muhitida sinovdan o‘tkazish orqali ularning imkoniyatlarini aniq baholash.</li>
+        </p>
       </>
     ),
   },
   {
     id: "3",
-    title: "III bob.",
+    title: "III bob",
     content: (
       <>
-        <p>
-          <strong>3.</strong> Olimpiada yagona ilmiy-uslubiy yondashuv asosida adolatlilik,
-          ochiqlik va shaffoflik tamoyillari asosida o‘tkaziladi.
+        <h2 className="text-[20px] font-semibold">
+          3. Ishtirok etish shartlari
+        </h2>
+        <p className="text-[16px] text-[#01284099] poppin">
+          <strong className="text-black">3.1</strong> Musobaqada qatnashish uchun mo‘ljallangan auditoriyani quyidagilardan iborat:
+          <li>O‘zbekiston Respublikasidagi barcha umumiy o‘rta ta’lim maktablarining 3–11-sinf o‘quvchilari;</li>
+          <li>Akademik litsey va kasbiy ta’lim muassasalarining 1–2 bosqich talabalari.</li>
+
+        </p>
+        <p className="text-[16px] text-[#01284099] poppin">
+          <strong className="text-black">3.2</strong>  Qatnashuvchilarga  @Genius_cup_bot va  @Genius_cup2_bot telegram botlari orqali onlayn ro‘yxatdan o‘tishlari talab qilinadi.Musobaqa ham bevosita ushbu botlar orqali tashkil qilinadi. Ro‘yxatdan o‘tish jarayonlari joriy 2025-yiling  1-may sanasiga qadar amalga oshiriladi.
         </p>
       </>
     ),
@@ -95,8 +102,8 @@ const Nizom: React.FC = () => {
             <button
               key={section.id}
               className={`text-lg font-semibold transition ${activeSection === section.id
-                  ? "text-black border-b-2 border-black"
-                  : "text-gray-500 hover:text-black"
+                ? "text-black border-b-2 border-black"
+                : "text-gray-500 hover:text-black"
                 }`}
               onClick={() => setActiveSection(section.id)}
             >

@@ -96,7 +96,7 @@ const NewsSection: React.FC = () => {
           <h3 className="text-xl font-bold mt-6 mb-4">Eng ko‘p o‘qilganlar</h3>
           <div className=" h-100">
             {newsData.slice(0, 4).map((news) => (
-              <div key={news.id} className="flex items-center  justify-between gap-2 h-25 ">
+              <div key={news.id} className="flex items-center gap-2 h-25 ">
                 <img src={news.image} alt={news.title} className="w-[121px] h-[90px] object-cover rounded-[20px]" />
                 <div>
                   <h4 className="text-[14px] font-[600] text-[#012840] poppin">{news.title}</h4>

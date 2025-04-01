@@ -72,99 +72,103 @@ const NewsDetailPage: React.FC = () => {
 
   return (
     <section className="pb-12">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="mb-8 text-center poppin"
-      >
-        <h2 className="text-2xl sm:text-3xl md:text-[40px] font-semibold poppin text-black">
-          Yangilik va Maqolalar
-        </h2>
-      </motion.div>
+    {/* Header - unchanged */}
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="mb-8 text-center poppin"
+    >
+      <h2 className="text-2xl sm:text-3xl md:text-[40px] font-semibold poppin text-black">
+        Yangilik va Maqolalar
+      </h2>
+    </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="custom-container mx-auto px-4 py-8 grid md:grid-cols-3 gap-6"
-      >
-        {/* Main News Content */}
-        <div className="md:col-span-2">
-          <div className="p-2 rounded-[20px]">
-            <img
-              src={selectedNews.image}
-              alt={selectedNews.title}
-              className="w-full h-[300px] sm:h-[400px] object-cover rounded-[20px]"
-            />
-            <p className="text-gray-600 text-lg mt-4">{selectedNews.date}</p>
-            <h3 className="text-[#061A40] text-2xl sm:text-3xl font-bold mt-2">
-              {selectedNews.title}
-            </h3>
-            <p className="text-[#01284099] text-lg poppin mt-4">{selectedNews.description}</p>
+    {/* Main Grid - now responsive */}
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }} 
+      className="custom-container mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-6"
+    >
+      {/* Main Content - full width on mobile, 2 cols on desktop */}
+      <div className="lg:col-span-2">
+        <div className="p-2 rounded-[20px]">
+          <img
+            src={selectedNews.image}
+            alt={selectedNews.title}
+            className="w-full h-[200px] sm:h-[300px] md:h-[400px] object-cover rounded-[20px]"
+          />
+          <p className="text-[#01284099] text-[17px] mt-3">{selectedNews.date}</p>
+          <h3 className="text-[#061A40] text-[20px] md:text-[22px] lg:text-[24px] font-bold">
+            {selectedNews.title}
+          </h3>
+          <p className="text-[#01284099] text-[17px] mt-1">{selectedNews.description}</p>
+          
+          {/* Full Content */}
+          <div 
+            className="prose max-w-none mt-6 text-[#01284099] text-[17px]"
+            dangerouslySetInnerHTML={{ __html: selectedNews.fullContent }}
+          />
+          
+          {/* Back Button */}
+          <div className="mt-8">
+            <Link
+              to="/maqolalar"
+                 className="inline-flex items-center px-4 py-2 bg-[#061A40] text-white rounded-lg hover:bg-[#012840] transition-colors poppin"
+            >
+              ← Barcha yangiliklarga qaytish
+            </Link>
+          </div>
+        </div>
+      </div>
 
-            {/* Full Content */}
-            <div
-              className="prose max-w-none mt-6 text-[#01284099] text-lg poppin"
-              dangerouslySetInnerHTML={{ __html: selectedNews.fullContent }}
-            />
-
-            {/* Back Button */}
-            <div className="mt-8">
-              <Link
-                to="/maqolalar"
-                className="inline-flex items-center px-4 py-2 bg-[#061A40] text-white rounded-lg hover:bg-[#012840] transition-colors"
+      <div className="lg:col-span-1">
+        {/* Popular News - unchanged styling */}
+        <h3 className="text-xl font-bold mt-6 mb-4 poppin">Eng ko'p o'qilganlar</h3>
+        <div className="space-y-4">
+          {newsData
+            .filter(news => news.id !== selectedNews.id)
+            .slice(0, 3)
+            .map((news) => (
+              <div 
+                key={news.id} 
+                className="flex items-center gap-2 h-25"
+                onClick={() => setSelectedNews(news)}
               >
-                ← Barcha yangiliklarga qaytish
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        {/* Sidebar */}
-        <div className="md:col-span-1">
-          {/* Popular News */}
-          <h3 className="text-xl font-bold mt-6 mb-4">Eng ko'p o'qilganlar</h3>
-          <div className="space-y-4">
-            {newsData
-              .filter(news => news.id !== selectedNews.id)
-              .slice(0, 3)
-              .map((news) => (
-                <div
-                  key={news.id}
-                  className="flex items-center gap-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors"
-                  onClick={() => setSelectedNews(news)}
-                >
-                  <img
-                    src={news.image}
-                    alt={news.title}
-                    className="w-[100px] h-[75px] object-cover rounded-[15px]"
-                  />
-                  <div>
-                    <h4 className="text-[14px] font-[600] text-[#012840] poppin">
-                      {news.title}
-                    </h4>
-                    <a href={`/maqolalar/${news.id}`} className="text-[#012840] poppin text-xs block mt-1">
-                      Batafsil →
-                    </a>
-                  </div>
+                <img 
+                  src={news.image} 
+                  alt={news.title} 
+                  className="w-[121px] h-[90px] object-cover rounded-[20px]" 
+                />
+                <div>
+                  <h4 className="text-[14px] font-[600] text-[#012840] poppin">
+                    {news.title}
+                  </h4>
+                  <Link 
+                    to={`/maqolalar/${news.id}`} 
+                    className="text-[#012840] poppin text-xs"
+                  >
+                    Read More →
+                  </Link>
                 </div>
-              ))}
-          </div>
-
-          {/* Categories */}
-          <h3 className="text-xl font-semibold poppin mt-8 mb-4">Bo'limlar</h3>
-          <ul className="bg-[#E7ECFF] shadow-md rounded-lg p-4">
-            {categories.map((category, index) => (
-              <li key={index} className="flex justify-between py-2 poppin text-[18px]">
-                <span className="text-[#353535]">{category.name}</span>
-                <span className="text-gray-500">({category.count})</span>
-              </li>
+              </div>
             ))}
-          </ul>
         </div>
-      </motion.div>
-    </section>
+        
+        {/* Categories - unchanged styling */}
+        <h3 className="text-xl font-semibold poppin mt-8 mb-4">Bo'limlar</h3>
+        <ul className="bg-[#E7ECFF] shadow-md rounded-lg p-4">
+          {categories.map((category, index) => (
+            <li key={index} className="flex justify-between py-2 poppin text-[18px]">
+              <span className="text-[#353535]">{category.name}</span>
+              <span className="text-gray-500">({category.count})</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </motion.div>
+  </section>
   );
 };
 
