@@ -59,7 +59,7 @@ const faqData = {
 const FAQSection = () => {
   const { category } = useParams<{ category: keyof typeof faqData }>();
   const navigate = useNavigate();
-  const defaultCategory: keyof typeof faqData = (category as keyof typeof faqData) || "general";
+  const defaultCategory: keyof typeof faqData = (category as keyof typeof faqData) || "umumiy";
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
