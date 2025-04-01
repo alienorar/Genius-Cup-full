@@ -101,18 +101,18 @@ const NewsDetailPage: React.FC = () => {
             <h3 className="text-[#061A40] text-2xl sm:text-3xl font-bold mt-2">
               {selectedNews.title}
             </h3>
-            <p className="text-gray-600 text-lg mt-4">{selectedNews.description}</p>
-            
+            <p className="text-[#01284099] text-lg poppin mt-4">{selectedNews.description}</p>
+
             {/* Full Content */}
-            <div 
-              className="prose max-w-none mt-6 text-gray-700"
+            <div
+              className="prose max-w-none mt-6 text-[#01284099] text-lg poppin"
               dangerouslySetInnerHTML={{ __html: selectedNews.fullContent }}
             />
-            
+
             {/* Back Button */}
             <div className="mt-8">
               <Link
-                to="/maqolalar" 
+                to="/maqolalar"
                 className="inline-flex items-center px-4 py-2 bg-[#061A40] text-white rounded-lg hover:bg-[#012840] transition-colors"
               >
                 ← Barcha yangiliklarga qaytish
@@ -130,15 +130,15 @@ const NewsDetailPage: React.FC = () => {
               .filter(news => news.id !== selectedNews.id)
               .slice(0, 3)
               .map((news) => (
-                <div 
-                  key={news.id} 
+                <div
+                  key={news.id}
                   className="flex items-center gap-4 p-3 rounded-lg hover:bg-gray-100 cursor-pointer transition-colors"
                   onClick={() => setSelectedNews(news)}
                 >
-                  <img 
-                    src={news.image} 
-                    alt={news.title} 
-                    className="w-[100px] h-[75px] object-cover rounded-[15px]" 
+                  <img
+                    src={news.image}
+                    alt={news.title}
+                    className="w-[100px] h-[75px] object-cover rounded-[15px]"
                   />
                   <div>
                     <h4 className="text-[14px] font-[600] text-[#012840] poppin">
@@ -151,7 +151,7 @@ const NewsDetailPage: React.FC = () => {
                 </div>
               ))}
           </div>
-          
+
           {/* Categories */}
           <h3 className="text-xl font-semibold poppin mt-8 mb-4">Bo'limlar</h3>
           <ul className="bg-[#E7ECFF] shadow-md rounded-lg p-4">
