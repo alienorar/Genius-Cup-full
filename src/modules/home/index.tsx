@@ -7,7 +7,6 @@ import Iqnd from "../../assets/iq-nd.png"
 import AverageIq from "../../assets/average-it.png"
 import KnowledgeIq from "../../assets/study-iq.png"
 import FinanceIq from "../../assets/finance-iq.png"
-import Symbol from "../../assets/symbol.png"
 import OtuLogo from "../../assets/otu-logo 2.png"
 import ArrowWhite from "../../assets/arrow.svg"
 import WhiteSpot from "../../assets/Ellipse 4.svg"
@@ -72,11 +71,7 @@ const Index = () => {
   ];
 
   const organizers = [
-    {
-      name: "Qashqadaryo Viloyati Hokimligi",
-      logo: Symbol,
-      link: "https://gov.uz/oz/qashqadaryo",
-    },
+    
     {
       name: "Osiyo Texnologiyalar Universiteti",
       logo: OtuLogo,
