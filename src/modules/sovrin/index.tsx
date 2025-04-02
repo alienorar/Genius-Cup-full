@@ -42,8 +42,8 @@ const PrizeFundSection = () => {
          <h2 className="text-[#1E9FD9] text-center lg:text-start text-[34px] md:text-3xl font-bold">
             Ajoyib imkoniyatlar
           </h2>
-          <h3 className="text-[#000000] text-center lg:text-start text-[28px] md:text-2xl font-bold mt-1">
-            Genius-Cup musobaqasi g'oliblari uchun
+          <h3 className="text-[#000000] text-center lg:text-start text-[28px]  font-bold mt-1">
+       Musobaqa g'oliblari uchun
           </h3>
           <p className="text-[#01284099] mt-4 text-[18px] poppin md:text-base text-center lg:text-start leading-relaxed lg:w-[543px]">
             Musobaqada eng yaxshi natijalarni ko'rsatgan ishtirokchilar nafaqat pul mukofotlari, 
