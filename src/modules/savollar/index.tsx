@@ -72,14 +72,14 @@ const FAQSection = () => {
       <FAQHeader />
 
       {/* Dinamik savollar qismi */}
-      <div className="flex flex-col items-center mt-10">
+      <div className="flex flex-col items-center mt-10 custom-container">
         {/* Tabs */}
         <div className="flex space-x-4 mb-6">
           {Object.keys(faqData).map((key) => (
             <button
               key={key}
               onClick={() => navigate(`/faq/${key}`)}
-              className={`px-4 py-2 text-[18px] font-semibold border rounded-full ${defaultCategory === key ? "border-black text-black" : "border-transparent"
+              className={`md:px-4 px-2 py-1 md:py-2 text-[18px] font-semibold border rounded-full ${defaultCategory === key ? "border-black text-black" : "border-transparent"
                 }`}
             >
               {key.charAt(0).toUpperCase() + key.slice(1)}
@@ -88,15 +88,15 @@ const FAQSection = () => {
         </div>
 
         {/* FAQ List */}
-        <ul className="w-3/4 max-w-lg space-y-4">
+        <ul className="w-3/4 max-w-lg lg:space-y-4">
           {faqData[defaultCategory]?.map((item, index) => (
             <li key={index} className=" pb-3">
               <button
                 className="flex items-center justify-between  w-full text-left font-medium text-lg py-2"
                 onClick={() => toggleFAQ(index)}
-              ><div className="flex gap-4 md:gap-5 items-center">
-                  <span>
-                    <img src={ChatImg} alt="" />
+              ><div className="flex gap-4 md:gap-5 justify-center items-center">
+                  <span  >
+                    <img src={ChatImg} alt="chat img "  />
                   </span>
                   <span>{item.savol}</span>
                 </div>
