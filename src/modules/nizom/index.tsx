@@ -45,7 +45,7 @@ const sections = [
     title: "III bob",
     content: (
       <>
-        <h2 className="text-[22px] font-semibold">
+        <h2 className="text-[22px] font-semibold py-2">
           3. Ishtirok etish shartlari
         </h2>
         <p className="text-[16px] text-[#01284099] poppin">
@@ -55,7 +55,11 @@ const sections = [
 
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
-          <strong className="text-black">3.2</strong>  Qatnashuvchilarga  @Genius_cup_bot va  @Genius_cup2_bot telegram botlari orqali onlayn ro‘yxatdan o‘tishlari talab qilinadi.Musobaqa ham bevosita ushbu botlar orqali tashkil qilinadi. Ro‘yxatdan o‘tish jarayonlari joriy 2025-yiling  1-may sanasiga qadar amalga oshiriladi.
+          <strong className="text-black">3.2</strong>  Qatnashuvchilarga  <a href="https://t.me/Genius_cup_bot"
+            target="_blank"
+            rel="noopener noreferrer" className="text-[#1E9FD9] font-semibold ">@Genius_cup_bot </a> va <a href="https://t.me/Genius_cup_bot"
+              target="_blank"
+              rel="noopener noreferrer" className="text-[#1E9FD9] font-semibold">@Genius_cup2_bot </a> telegram botlari orqali onlayn ro‘yxatdan o‘tishlari talab qilinadi.Musobaqa ham bevosita ushbu botlar orqali tashkil qilinadi. Ro‘yxatdan o‘tish jarayonlari joriy 2025-yiling  1-may sanasiga qadar amalga oshiriladi.
         </p>
       </>
     ),
@@ -67,13 +71,13 @@ const sections = [
       <>
         <h2 className="text-[22px] font-semibold">4. Musobaqani tashkil etish tartibi</h2>
         <p className="text-[16px] text-[#01284099] poppin">
-          <strong className="text-black">4.1</strong> Musobaqaning birinchi bosqichi ishtirokchilarning umumiy bilim, 
-          mantiqiy fikrlash va tezkor qaror qabul qilish qobiliyatini sinovdan o‘tkazish uchun 
-          mo‘ljallangan bo‘lib, 2025-yilning 10-may sanasida onlayn test shaklida telegram botlari 
+          <strong className="text-black">4.1</strong> Musobaqaning birinchi bosqichi ishtirokchilarning umumiy bilim,
+          mantiqiy fikrlash va tezkor qaror qabul qilish qobiliyatini sinovdan o‘tkazish uchun
+          mo‘ljallangan bo‘lib, 2025-yilning 10-may sanasida onlayn test shaklida telegram botlari
           orqali o‘tkazilinadi.
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
-          <strong className="text-black">4.2</strong> Musobaqa qatnashuvchilarining sinf kesimidan kelib chiqib, mos guruhlar uchun test savollari 
+          <strong className="text-black">4.2</strong> Musobaqa qatnashuvchilarining sinf kesimidan kelib chiqib, mos guruhlar uchun test savollari
           shakllantiriladi:
           <li className="text-[16px] text-[#01284099] py-1 poppin">Birinchi guruh - 3–5-sinf o‘quvchilari;</li>
           <li className="text-[16px] text-[#01284099] py-1 poppin">Ikkinchi guruh - 6–8-sinf o‘quvchilari;</li>
@@ -86,7 +90,7 @@ const sections = [
           <li className="text-[16px] text-[#01284099] py-1 poppin">Eng yuqori ball 100 ballni tashkil etadi.</li>
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
-          <strong className="text-black">4.4</strong> Testni bajarish uchun 60 daqiqa vaqt ajratiladi. 
+          <strong className="text-black">4.4</strong> Testni bajarish uchun 60 daqiqa vaqt ajratiladi.
           Eng yuqori ball to‘plagan 100 nafar ishtirokchi g‘olib deb tanlanadi.
           <li className="text-[16px] text-[#01284099] py-1 poppin">3–5-sinf: 20 nafar;</li>
           <li className="text-[16px] text-[#01284099] py-1 poppin">6–8-sinf: 40 nafar;</li>
@@ -121,7 +125,7 @@ const sections = [
           <strong className="text-black">7.</strong> Ishtirokchilar tomonidan taqdim etilgan materiallar bo‘yicha izoh yoki sharh berilmaydi va ular egalariga qaytarilmaydi.
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
-          <strong className="text-black">8.</strong> Ishtirokchilar tomonidan mazkur Nizom va imtihonlarda ishtirok etish tartib-qoidalari buzilgan taqdirda 
+          <strong className="text-black">8.</strong> Ishtirokchilar tomonidan mazkur Nizom va imtihonlarda ishtirok etish tartib-qoidalari buzilgan taqdirda
           Komissiya a’zolarining xulosasi bilan sinovlardan chetlatiladi.
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
@@ -130,7 +134,7 @@ const sections = [
       </>
     ),
   }
-  
+
 ];
 
 const Nizom: React.FC = () => {
@@ -143,23 +147,25 @@ const Nizom: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="bg-[#F7FAFF] text-gray-900 py-10 ">
-        <div className="w-full mx-auto px-4 nizom-header custom-container">
+        <div className="w-full mx-auto px-[600px] nizom-header flex flex-col justify-center  custom-container">
           {/* Header */}
-          <h1 className=" md:text-3xl text-[#012840] lg:text-[32px] text-[28px] text-center md:text-start font-semibold mb-6">Genius Cup Nizom</h1>
+         <div  className=" text-[16px] flex justify-center md:justify-start lg:px-30  leading-relaxed">
+         <h1 className=" md:text-3xl text-[#012840] lg:text-[32px] text-[28px] lg:text-start md:text-start font-semibold mb-6">Genius Cup Nizom</h1>
 
+          </div> 
           {/* Nizom Matni */}
-          <div className="space-y-4 text-[16px] leading-relaxed">
+          <div className=" text-[16px] flex justify-center  leading-relaxed">
 
 
-           <p className="text-[16px] text-[#01284099] poppin">Mazkur Nizom Osiyo Texnologiyalar universitetining innovatsion tashabbusi sifatida respublikamizning barcha umumiy o‘rta ta’lim maktab o‘quvchilari, akademik litsey va kasbiy ta’lim muassasalari talabalari orasidan iqtidorli, bilimdon va yaratuvchan yoshlarga e’tibor qaratgan holda, ularni oliy ta’limga keng jalb etish hamda kelajakdagi muvaffaqiyatga yo‘l ochish maqsadida tashkil etayotgan “Genius-Cup” onlayn IQ musobaqasining tashkil etish tartibini belgilaydi.
-           Imtihonlarda O‘zbekiston Respublikasidagi barcha umumiy o‘rta ta’lim maktablarining 3-11 sinf o‘quvchilari hamda akademik litsey va kasbiy ta’lim muassasalarining 1-2 bosqich talabalari ishtirok etishi mumkin.</p>
+            <p className="text-[16px] text-[#01284099] lg:w-[1000px] poppin">Mazkur Nizom Osiyo Texnologiyalar universitetining innovatsion tashabbusi sifatida respublikamizning barcha umumiy o‘rta ta’lim maktab o‘quvchilari, akademik litsey va kasbiy ta’lim muassasalari talabalari orasidan iqtidorli, bilimdon va yaratuvchan yoshlarga e’tibor qaratgan holda, ularni oliy ta’limga keng jalb etish hamda kelajakdagi muvaffaqiyatga yo‘l ochish maqsadida tashkil etayotgan “Genius-Cup” onlayn IQ musobaqasining tashkil etish tartibini belgilaydi.
+              Imtihonlarda O‘zbekiston Respublikasidagi barcha umumiy o‘rta ta’lim maktablarining 3-11 sinf o‘quvchilari hamda akademik litsey va kasbiy ta’lim muassasalarining 1-2 bosqich talabalari ishtirok etishi mumkin.</p>
           </div>
         </div>
       </motion.div>
 
       {/* Bob tugmalari */}
-      <div className="max-w-4xl mx-auto px-4 my-[68px]">
-        <div className="flex space-x-4  pb-3">
+      <div className="max-w-4xl mx-auto px-4 mt-[68px]">
+        <div className="flex space-x-4  pb-2">
           {sections.map((section) => (
             <button
               key={section.id}
