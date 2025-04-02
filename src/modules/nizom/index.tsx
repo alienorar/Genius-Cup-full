@@ -69,29 +69,29 @@ const sections = [
     title: "IV bob",
     content: (
       <>
-        <h2 className="text-[22px] font-semibold">4. Musobaqani tashkil etish tartibi</h2>
+        <h2 className="text-[22px] font-semibold py-2">4. Musobaqani tashkil etish tartibi</h2>
         <p className="text-[16px] text-[#01284099] poppin">
-          <strong className="text-black">4.1</strong> Musobaqaning birinchi bosqichi ishtirokchilarning umumiy bilim,
+          <strong className="text-black">4.1</strong> Musobaqaning <span className="text-[#1E9FD9] font-semibold">birinchi bosqichi</span> ishtirokchilarning umumiy bilim,
           mantiqiy fikrlash va tezkor qaror qabul qilish qobiliyatini sinovdan o‘tkazish uchun
-          mo‘ljallangan bo‘lib, 2025-yilning 10-may sanasida onlayn test shaklida telegram botlari
+          mo‘ljallangan bo‘lib, <span  className="text-[#1E9FD9] font-semibold">2025-yilning 10-may sanasida onlayn test shaklida</span>  telegram botlari
           orqali o‘tkazilinadi.
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
-          <strong className="text-black">4.2</strong> Musobaqa qatnashuvchilarining sinf kesimidan kelib chiqib, mos guruhlar uchun test savollari
+          <strong className="text-black">4.2</strong> Musobaqa qatnashuvchilarining <span className="text-[#1E9FD9] font-semibold">sinf</span> kesimidan kelib chiqib, mos guruhlar uchun test savollari
           shakllantiriladi:
-          <li className="text-[16px] text-[#01284099] py-1 poppin">Birinchi guruh - 3–5-sinf o‘quvchilari;</li>
-          <li className="text-[16px] text-[#01284099] py-1 poppin">Ikkinchi guruh - 6–8-sinf o‘quvchilari;</li>
-          <li className="text-[16px] text-[#01284099] py-1 poppin">Uchinchi guruh - 9–11-sinf o‘quvchilari va akademik litsey, kasbiy ta’lim muassasalarining 1–2 bosqich talabalari.</li>
+          <li className="text-[16px] text-[#01284099] py-1 poppin"><span className="text-[#1E9FD9] font-semibold">Birinchi  </span> guruh - 3–5-sinf o‘quvchilari;</li>
+          <li className="text-[16px] text-[#01284099] py-1 poppin"><span className="text-[#1E9FD9] font-semibold">Ikkinchi </span> guruh - 6–8-sinf o‘quvchilari;</li>
+          <li className="text-[16px] text-[#01284099] py-1 poppin"><span className="text-[#1E9FD9] font-semibold">Uchinchi </span> guruh - 9–11-sinf o‘quvchilari va akademik litsey, kasbiy ta’lim muassasalarining 1–2 bosqich talabalari.</li>
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
           <strong className="text-black">4.3</strong> Test savollari va baholash tizimi:
-          <li className="text-[16px] text-[#01284099] py-1 poppin">Har bir ishtirokchiga 20 ta savol taqdim etiladi;</li>
-          <li className="text-[16px] text-[#01284099] py-1 poppin">To‘g‘ri javob uchun 5 ball, noto‘g‘ri javob uchun 0 ball beriladi;</li>
-          <li className="text-[16px] text-[#01284099] py-1 poppin">Eng yuqori ball 100 ballni tashkil etadi.</li>
+          <li className="text-[16px] text-[#01284099] py-1 poppin">Har bir ishtirokchiga <span className="text-[#1E9FD9] font-semibold">20 ta savol</span> taqdim etiladi;</li>
+          <li className="text-[16px] text-[#01284099] py-1 poppin">To‘g‘ri javob uchun <span className="text-[#1E9FD9] font-semibold">5 ball</span> , noto‘g‘ri javob uchun  <span className="text-[#1E9FD9] font-semibold">0 ball</span> beriladi;</li>
+          <li className="text-[16px] text-[#01284099] py-1 poppin">Eng yuqori ball <span className="text-[#1E9FD9] font-semibold">100 ballni</span> tashkil etadi.</li>
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
-          <strong className="text-black">4.4</strong> Testni bajarish uchun 60 daqiqa vaqt ajratiladi.
-          Eng yuqori ball to‘plagan 100 nafar ishtirokchi g‘olib deb tanlanadi.
+          <strong className="text-black">4.4</strong> Testni bajarish uchun <span className="text-[#1E9FD9] font-semibold">60 daqiqa</span> vaqt ajratiladi.
+          Eng yuqori ball to‘plagan <span className="text-[#1E9FD9] font-semibold">100 nafar</span> ishtirokchi g‘olib deb tanlanadi.
           <li className="text-[16px] text-[#01284099] py-1 poppin">3–5-sinf: 20 nafar;</li>
           <li className="text-[16px] text-[#01284099] py-1 poppin">6–8-sinf: 40 nafar;</li>
           <li className="text-[16px] text-[#01284099] py-1 poppin">9–11-sinf va yuqorilar: 40 nafar.</li>
@@ -103,14 +103,14 @@ const sections = [
           <li className="text-[16px] text-[#01284099] py-1 poppin">Ikkinchi bosqichga yo‘llanma.</li>
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
-          <strong className="text-black">4.6</strong> Ikkinchi bosqich 2025-yil 10-may kuni Osiyo Texnologiyalar universitetida o'tkaziladi.
+          <strong className="text-black">4.6</strong> Ikkinchi bosqich <span className="text-[#1E9FD9] font-semibold">2025-yil 10-may</span>  kuni <span className="text-[#1E9FD9] font-semibold">Osiyo Texnologiyalar universiteti</span>ning binosida tashkil qilinadi. Ushbu bosqichda ishtirokchilarning shaxsan baholanishi, yozma test orqali ularning imkoniyatlari yanada chuqurroq sinovdan o‘tkazilinadi.
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
           <strong className="text-black">4.7</strong> Final bosqichida har bir guruhdan eng yuqori natija qayd etgan 3 nafar g‘olib quyidagi mukofotlarga ega bo‘ladi:
-          <li className="text-[16px] text-[#01284099] py-1 poppin">1-o‘rin: 3 000 000 so‘m;</li>
-          <li className="text-[16px] text-[#01284099] py-1 poppin">2-o‘rin: 2 000 000 so‘m;</li>
-          <li className="text-[16px] text-[#01284099] py-1 poppin">3-o‘rin: 1 000 000 so‘m.</li>
-          <li className="text-[16px] text-[#01284099] py-1 poppin">Uchinchi guruhning eng yuqori ball to‘plagan 10 nafari Osiyo Texnologiyalar universitetida bir yil bepul o‘qish imkoniyatiga ega bo‘ladi.</li>
+          <li className="text-[16px] text-[#01284099] py-1 poppin"><span className="text-[#1E9FD9] font-semibold">1-o'rin</span>: 3 000 000 so‘m;</li>
+          <li className="text-[16px] text-[#01284099] py-1 poppin"><span className="text-[#1E9FD9] font-semibold">2-o'rin</span>: 2 000 000 so‘m;</li>
+          <li className="text-[16px] text-[#01284099] py-1 poppin"><span className="text-[#1E9FD9] font-semibold">3-o'rin</span>: 1 000 000 so‘m.</li>
+          <li className="text-[16px] text-[#01284099] py-1 poppin">Uchinchi guruhning eng yuqori ball to‘plagan 10 nafari <span className="text-[#1E9FD9] font-semibold"> Osiyo Texnologiyalar universiteti</span>da bir yil bepul o‘qish imkoniyatiga ega bo‘ladi.</li>
         </p>
       </>
     ),
@@ -120,7 +120,7 @@ const sections = [
     title: "V bob",
     content: (
       <>
-        <h2 className="text-[22px] font-semibold">5. Yakuniy qoidalar</h2>
+        <h2 className="text-[22px] font-semibold py-2">5. Yakuniy qoidalar</h2>
         <p className="text-[16px] text-[#01284099] poppin">
           <strong className="text-black">7.</strong> Ishtirokchilar tomonidan taqdim etilgan materiallar bo‘yicha izoh yoki sharh berilmaydi va ular egalariga qaytarilmaydi.
         </p>
