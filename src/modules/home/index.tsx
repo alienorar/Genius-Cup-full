@@ -265,7 +265,7 @@ const Index = () => {
                 {schedule.map((item, i) => (
                   <div key={i} className="grid grid-cols-2 lg:grid-cols-3 gap-5 px-2 text-center mt-3">
                     <span className="text-[#012840B2] font-[500] text-[16px] md:px-3   px-3">{item.grades} Sinf o‘quvchilari</span>
-                    <span className="hidden lg:block text-[#010f18b2] font-[500] text-[14px] md:px-3   px-3">{index === 0 ? "Online Telegram bot " : "Offline Osiyo texnologiyalar universiteti "}</span>
+                    <span className="hidden lg:block text-[#010f18b2] font-[500] text-[15px] md:px-2   px-1">{index === 0 ? "Online Telegram bot " : "Offline Osiyo texnologiyalar universiteti "}</span>
                     <span className="text-[#062030b2] font-[500] text-[16px] md:px-3  px-3">{index === 0 ? "11-May " : "18-May "} {item.time} gacha</span>
                   </div>
                 ))}
