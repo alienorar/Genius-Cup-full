@@ -10,7 +10,7 @@ const sections = [
           1. Umumiy qoidalar
         </h2>
         <p className="text-[16px] text-[#01284099] poppin">
-          <strong className="text-black">1.1.</strong>	Mazkur Nizom Osiyo Texnologiyalar universitetining innovatsion tashabbusi sifatida respublikamizning barcha umumiy o‘rta ta’lim maktab o‘quvchilari, akademik litsey va kasbiy ta’lim muassasalari talabalari orasidan iqtidorli, bilimdon va yaratuvchan yoshlarga e’tibor qaratgan holda, ularni oliy ta’limga keng jalb etish hamda kelajakdagi muvaffaqiyatga yo‘l ochish maqsadida tashkil etayotgan “Genius-Cup” onlayn IQ musobaqasining tashkil etish tartibini belgilaydi.
+          <strong className="text-black">1.1.</strong>	Mazkur Nizom Osiyo texnologiyalar universitetining innovatsion tashabbusi sifatida respublikamizning barcha umumiy o‘rta ta’lim maktab o‘quvchilari, akademik litsey va kasbiy ta’lim muassasalari talabalari orasidan iqtidorli, bilimdon va yaratuvchan yoshlarga e’tibor qaratgan holda, ularni oliy ta’limga keng jalb etish hamda kelajakdagi muvaffaqiyatga yo‘l ochish maqsadida tashkil etayotgan “Genius-Cup” onlayn IQ musobaqasining tashkil etish tartibini belgilaydi.
         </p>
         <p className="text-[16px] text-[#01284099] poppin"><strong className="text-black">1.2.</strong> Imtihonlarda O‘zbekiston Respublikasidagi barcha umumiy o‘rta ta’lim maktablarining 3-11 sinf o‘quvchilari hamda akademik litsey va kasbiy ta’lim muassasalarining 1-2 bosqich talabalari ishtirok etishi mumkin.</p>
       </div>
@@ -31,7 +31,7 @@ const sections = [
 
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
-          <strong className="text-black">2.2</strong> Musobaqaning ustuvor Vazifasi qatnashuvchilarning shaxsiy rivojlanishini qo‘llab-quvvatlash bilan birga, jamiyatimizning intellektual salohiyatini oshirishga ham xizmat qiladi:
+          <strong className="text-black">2.2</strong> Musobaqaning ustuvor vazifasi qatnashuvchilarning shaxsiy rivojlanishini qo‘llab-quvvatlash bilan birga, jamiyatimizning intellektual salohiyatini oshirishga ham xizmat qiladi:
           <li className="text-[16px] text-[#01284099] py-1 poppin">Yoshlarimizga zamonaviy bilim va texnologiyalarni o‘zlashtirish imkoniyatini yaratish;</li>
           <li className="text-[16px] text-[#01284099] py-1 poppin">Innovatsion fikrlash va kreativ yondoshuvni rag‘batlantirish;</li>
           <li className="text-[16px] text-[#01284099] py-1 poppin">Oliy ta’lim tizimiga kirish uchun malaka va qobiliyatlarni rivojlantirish;</li>
@@ -49,7 +49,7 @@ const sections = [
           3. Ishtirok etish shartlari
         </h2>
         <p className="text-[16px] text-[#01284099] poppin">
-          <strong className="text-black">3.1</strong> Musobaqada qatnashish uchun mo‘ljallangan auditoriyani quyidagilardan iborat:
+          <strong className="text-black">3.1</strong> Musobaqada qatnashish uchun mo‘ljallangan auditoriya quyidagilardan iborat:
           <li className="text-[16px] text-[#01284099] py-1 poppin">O‘zbekiston Respublikasidagi barcha umumiy o‘rta ta’lim maktablarining 3–11-sinf o‘quvchilari;</li>
           <li className="text-[16px] text-[#01284099] py-1 poppin">Akademik litsey va kasbiy ta’lim muassasalarining 1–2 bosqich talabalari.</li>
 
@@ -59,7 +59,7 @@ const sections = [
             target="_blank"
             rel="noopener noreferrer" className="text-[#1E9FD9] font-semibold ">@Genius_cup_bot </a> va <a href="https://t.me/Genius_cup_bot"
               target="_blank"
-              rel="noopener noreferrer" className="text-[#1E9FD9] font-semibold">@Genius_cup2_bot </a> telegram botlari orqali onlayn ro‘yxatdan o‘tishlari talab qilinadi.Musobaqa ham bevosita ushbu botlar orqali tashkil qilinadi. Ro‘yxatdan o‘tish jarayonlari joriy 2025-yiling  1-may sanasiga qadar amalga oshiriladi.
+              rel="noopener noreferrer" className="text-[#1E9FD9] font-semibold">@Genius_cup2_bot </a> telegram botlari orqali onlayn ro‘yxatdan o‘tishlari talab qilinadi. Musobaqa ham bevosita ushbu botlar orqali tashkil qilinadi. Ro‘yxatdan o‘tish jarayonlari joriy 2025-yiling  1-may sanasiga qadar amalga oshiriladi.
         </p>
       </>
     ),
@@ -103,14 +103,14 @@ const sections = [
           <li className="text-[16px] text-[#01284099] py-1 poppin">Ikkinchi bosqichga yo‘llanma.</li>
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
-          <strong className="text-black">4.6</strong> Ikkinchi bosqich <span className="text-[#1E9FD9] font-semibold">2025-yil 10-may</span>  kuni <span className="text-[#1E9FD9] font-semibold">Osiyo Texnologiyalar universiteti</span>ning binosida tashkil qilinadi. Ushbu bosqichda ishtirokchilarning shaxsan baholanishi, yozma test orqali ularning imkoniyatlari yanada chuqurroq sinovdan o‘tkazilinadi.
+          <strong className="text-black">4.6</strong> Ikkinchi bosqich <span className="text-[#1E9FD9] font-semibold">2025-yil 10-may</span>  kuni <span className="text-[#1E9FD9] font-semibold">Osiyo texnologiyalar universiteti</span>ning binosida tashkil qilinadi. Ushbu bosqichda ishtirokchilarning shaxsan baholanishi, yozma test orqali ularning imkoniyatlari yanada chuqurroq sinovdan o‘tkazilinadi.
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
           <strong className="text-black">4.7</strong> Final bosqichida har bir guruhdan eng yuqori natija qayd etgan 3 nafar g‘olib quyidagi mukofotlarga ega bo‘ladi:
           <li className="text-[16px] text-[#01284099] py-1 poppin"><span className="text-[#1E9FD9] font-semibold">1-o'rin</span>: 3 000 000 so‘m;</li>
           <li className="text-[16px] text-[#01284099] py-1 poppin"><span className="text-[#1E9FD9] font-semibold">2-o'rin</span>: 2 000 000 so‘m;</li>
           <li className="text-[16px] text-[#01284099] py-1 poppin"><span className="text-[#1E9FD9] font-semibold">3-o'rin</span>: 1 000 000 so‘m.</li>
-          <li className="text-[16px] text-[#01284099] py-1 poppin">Uchinchi guruhning eng yuqori ball to‘plagan 10 nafari <span className="text-[#1E9FD9] font-semibold"> Osiyo Texnologiyalar universiteti</span>da bir yil bepul o‘qish imkoniyatiga ega bo‘ladi.</li>
+          <li className="text-[16px] text-[#01284099] py-1 poppin">Uchinchi guruhning eng yuqori ball to‘plagan 10 nafari <span className="text-[#1E9FD9] font-semibold"> Osiyo texnologiyalar universiteti</span>da bir yil bepul o‘qish imkoniyatiga ega bo‘ladi.</li>
         </p>
       </>
     ),
@@ -157,7 +157,7 @@ const Nizom: React.FC = () => {
           <div className=" text-[16px] flex justify-center  leading-relaxed">
 
 
-            <p className="text-[16px] text-[#01284099] lg:w-[1000px] poppin">Mazkur Nizom Osiyo Texnologiyalar universitetining innovatsion tashabbusi sifatida respublikamizning barcha umumiy o‘rta ta’lim maktab o‘quvchilari, akademik litsey va kasbiy ta’lim muassasalari talabalari orasidan iqtidorli, bilimdon va yaratuvchan yoshlarga e’tibor qaratgan holda, ularni oliy ta’limga keng jalb etish hamda kelajakdagi muvaffaqiyatga yo‘l ochish maqsadida tashkil etayotgan “Genius-Cup” onlayn IQ musobaqasining tashkil etish tartibini belgilaydi.
+            <p className="text-[16px] text-[#01284099] lg:w-[1000px] poppin">Mazkur Nizom Osiyo texnologiyalar universitetining innovatsion tashabbusi sifatida respublikamizning barcha umumiy o‘rta ta’lim maktab o‘quvchilari, akademik litsey va kasbiy ta’lim muassasalari talabalari orasidan iqtidorli, bilimdon va yaratuvchan yoshlarga e’tibor qaratgan holda, ularni oliy ta’limga keng jalb etish hamda kelajakdagi muvaffaqiyatga yo‘l ochish maqsadida tashkil etayotgan “Genius-Cup” onlayn IQ musobaqasining tashkil etish tartibini belgilaydi.
               Imtihonlarda O‘zbekiston Respublikasidagi barcha umumiy o‘rta ta’lim maktablarining 3-11 sinf o‘quvchilari hamda akademik litsey va kasbiy ta’lim muassasalarining 1-2 bosqich talabalari ishtirok etishi mumkin.</p>
           </div>
         </div>

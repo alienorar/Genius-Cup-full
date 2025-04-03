@@ -47,12 +47,12 @@ const PrizeFundSection = () => {
           </h3>
           <p className="text-[#01284099] mt-4 text-[18px] poppin md:text-base text-center lg:text-start leading-relaxed lg:w-[543px]">
             Musobaqada eng yaxshi natijalarni ko'rsatgan ishtirokchilar nafaqat pul mukofotlari, 
-            balki Osiyo Texnologiyalar Universitetida tahsil olish imkoniyatini qo'lga kiritadilar. 
+            balki Osiyo texnologiyalar universitetida tahsil olish imkoniyatini qo'lga kiritadilar. 
             9-11-sinf o'quvchilari uchun alohida grantlar ajratilgan.
           </p>
           <button className="relative mt-3.5 h-10 w-40 overflow-hidden border-[2px] border-[#1E9FD9] text-[16px] rounded-[30px] text-[#1E9FD9] font-[500] poppin transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-[#1E9FD9] before:duration-300 before:ease-out hover:text-white hover:shadow-[#1E9FD9] hover:before:h-40 hover:before:w-40 hover:before:opacity-80">
             <a href="https://t.me/Genius_cup_bot" target="_blank" rel="noopener noreferrer" className="relative z-10">
-              Ro'yxatdan O'tish
+              Ro'yxatdan o'tish
             </a>
           </button>
         </motion.div>
@@ -103,7 +103,7 @@ const PrizeFundSection = () => {
         </p>
         <p className="lg:text-[20px] text-[18px] md:text-base font-semibold text-center lg:text-start">
           Uchinchi guruh (9-11-sinflar) ishtirokchilarining eng yuqori ball to'plagan 10 nafari Osiyo
-          Texnologiyalar universitetida bir yil bepul o'qish imkoniyatini qo'lga kiritadi.
+          texnologiyalar universitetida bir yil bepul o'qish imkoniyatini qo'lga kiritadi.
         </p>
       </section>
     </>

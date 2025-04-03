@@ -9,9 +9,9 @@ const newsData = [
   {
     id: 1,
     date: "May 15, 2024",
-    title: "Intellekt, Strategiya, Muvaffaqiyat",
+    title: "Intellekt, strategiya, muvaffaqiyat",
     description:
-      "Ko'pchilik IQ darajasi yuqori bo'lgan odamlar hayotda doimo ustunlikka ega deb o'ylaydi. Lekin haqiqat shuki, faqat aqlning o'zi yetarli emas..",
+      "Ko'pchilik IQ darajasi yuqori bo'lgan odamlar hayotda doimo ustunlikka ega deb o'ylaydi. Lekin haqiqat shuki, faqat aqlning o'zi yetarli emas.",
     fullContent: `
       <p>Ko'pchilik IQ darajasi yuqori bo'lgan odamlar hayotda doimo ustunlikka ega deb o'ylaydi. Lekin haqiqat shuki, faqat aqlning o'zi yetarli emas. Hayotda muvaffaqiyat qozonish uchun intellekt bilan birga strategik fikrlash, ijodkorlik va hissiy aqllilik ham muhim rol o'ynaydi.</p>
       <p>Yangi tadqiqotlar shuni ko'rsatadiki, yuqori IQga ega bo'lish har doim ham katta muvaffaqiyatlar bilan bog'liq emas. Buning o'rniga, "amaliy aql" deb ataladigan qobiliyat - ya'ni bilimlarni amaliyotda qo'llash, muammolarni hal qilish va munosabatlarni boshqarish ko'nikmalari ko'proq muhim bo'lishi mumkin.</p>
@@ -23,7 +23,7 @@ const newsData = [
   {
     id: 2,
     date: "May 15, 2024",
-    title: "IQ: Tug'ma Iqtidor yoki Mashq Natijasi",
+    title: "IQ: Tug'ma iqtidor yoki mashq natijasi",
     description:
       "IQ – insonning aqliy qobiliyatini o'lchovchi ko'rsatkich. U tug'ma iqtidor yoki mashq orqali rivojlantirish mumkin bo'lgan qobiliyatmi?",
     fullContent: `
@@ -37,7 +37,7 @@ const newsData = [
   {
     id: 3,
     date: "May 15, 2024",
-    title: "Mantiq, Hayotiy qarorlar, O'rganish",
+    title: "Mantiq, hayotiy qarorlar, o'rganish",
     description:
       "Tadqiqotlar shuni ko'rsatadiki, doimiy ravishda mantiqiy masalalar va jumboqlar yechish IQ darajasining oshishiga olib keladi.",
     fullContent: `
@@ -80,7 +80,7 @@ const NewsDetailPage: React.FC = () => {
         className="mb-8 text-center poppin"
       >
         <h2 className="text-2xl sm:text-3xl md:text-[40px] font-semibold poppin text-black">
-          Yangilik va Maqolalar
+          Yangilik va maqolalar
         </h2>
       </motion.div>
 

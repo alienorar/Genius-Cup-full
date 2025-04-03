@@ -20,7 +20,7 @@ const faqData = {
     },
     {
       savol: "Test qanday baholanadi?",
-      javob: "Har bir to‘g‘ri javob 5 ball, maksimum 100 ball. Bir xil ballda testni tezroq tugatgan ustunlik qiladi."
+      javob: "Har bir to‘g‘ri javob 5 ball, maksimum 100 ball. Bir xil ballda testni tezroq tugatgan ishtirokchi ustunlik qiladi."
     },
     {
       savol: "Birinchi bosqichda qancha vaqt beriladi?",

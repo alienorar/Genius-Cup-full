@@ -20,21 +20,21 @@ const Index = () => {
 
   const iqData = [
     {
-      title: "O‘rtacha IQ Darajasi",
+      title: "O‘rtacha IQ darajasi",
       description:
         " Aholining katta qismi (taxminan 68%) 85 dan 115 gacha IQ darajasiga ega",
       imgSrc: AverageIq,
       color: "text-[#1E9FD9]",
     },
     {
-      title: "IQ va Ta’lim Darajasi",
+      title: "IQ va ta’lim darajasi",
       description:
         "Oliy ma’lumotga ega bo‘lgan odamlarning o‘rtacha IQ darajasi 110-120 IQ oralig‘ida",
       imgSrc: KnowledgeIq,
       color: "text-purple-600",
     },
     {
-      title: "Moliyaviy Muvaffaqiyat",
+      title: "Moliyaviy muvaffaqiyat",
       description:
         "IQ 130+ bo‘lganlar boshqalarga qaraganda 2-3 barobar yuqori daromad qilishadi",
       imgSrc: FinanceIq,
@@ -48,7 +48,7 @@ const Index = () => {
       description:
         "Musobaqaning birinchi bosqichi online tarzda quyida keltirilgan telegram botlar orqali o'tkaziladi. Musobaqada ishtirok etish uchun oldindan ro'yxatdan o'tib qo'yishingiz zarur!",
       type: "Online",
-      date: "01.05.2025",
+      date: "11.05.2025",
       buttonText: "Ro‘yxatdan o‘tish",
       bgColor: "bg-white",
     },
@@ -57,23 +57,23 @@ const Index = () => {
       description:
         "Musobaqaning ikkinchi bosqichi offline tarzda o'tkaziladi. Musobaqada ishtirok etish uchun oldindan ro'yxatdan o'tib qo'yishingiz zarur!",
       type: "Offline",
-      date: "15.05.2025",
+      date: "18.05.2025",
       buttonText: "Ro‘yxatdan o‘tish",
       bgColor: "bg-white",
     },
   ];
 
   const schedule = [
-    { grades: <span className="font-bold text-black block">3-4-5</span>, description: "Sinf o’quvchilari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">1-may</span>, time: "9:00dan 10:00gacha" },
-    { grades: <span className="font-bold text-black block">6-7-8</span>, description: "Sinf o’quvchilari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">1-may</span>, time: "11:00dan 12:00gacha" },
-    { grades: <span className="font-bold text-black block">9-10-11</span>, description: "Sinf o’quvchilari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">1-may</span>, time: "11:00dan 12:00gacha" },
-    { grades: <span className="font-bold text-black block">1-2</span>, description: "Bosqich akademik litsey talabalari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">1-may</span>, time: "11:00dan 12:00gacha" },
+    { grades: <span className="font-bold text-black block">3-4-5</span>, description: "Sinf o’quvchilari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">11-may</span>, time: "9:00dan 10:00gacha" },
+    { grades: <span className="font-bold text-black block">6-7-8</span>, description: "Sinf o’quvchilari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">11-may</span>, time: "11:00dan 12:00gacha" },
+    { grades: <span className="font-bold text-black block">9-10-11</span>, description: "Sinf o’quvchilari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">11-may</span>, time: "11:00dan 12:00gacha" },
+    { grades: <span className="font-bold text-black block">1-2</span>, description: "Bosqich akademik litsey talabalari", location: <span className="font-bold text-black block">Online</span>, date: <span className="font-bold text-black block">11-may</span>, time: "11:00dan 12:00gacha" },
   ];
 
   const organizers = [
     
     {
-      name: "Osiyo Texnologiyalar Universiteti",
+      name: "Osiyo texnologiyalar universiteti",
       logo: OtuLogo,
       link: "https://www.otu-edu.uz",
     },
@@ -83,7 +83,7 @@ const Index = () => {
     {
       id: 1,
       date: "May 15, 2024",
-      title: " Intellekt, Strategiya, Muvaffaqiyat",
+      title: " Intellekt, strategiya, muvaffaqiyat",
       description:
         "Ko‘pchilik IQ darajasi yuqori bo‘lgan odamlar hayotda doimo ustunlikka ega deb o‘ylaydi. Lekin haqiqat shuki, faqat aqlning o‘zi yetarli emas..",
       image: NewsSt,
@@ -92,7 +92,7 @@ const Index = () => {
     {
       id: 2,
       date: "May 15, 2024",
-      title: "Iqtidor yoki Mashq Natijasi",
+      title: "Iqtidor yoki mashq natijasi",
       description:
         "IQ – insonning aqliy qobiliyatini o‘lchovchi ko‘rsatkich. U tug‘ma iqtidor  yoki mashq orqali rivojlantirish mumkin bo‘lgan qobiliyatmi?",
       image: NewsNd,
@@ -101,7 +101,7 @@ const Index = () => {
     {
       id: 3,
       date: "May 15, 2024",
-      title: "Mantiq, Hayotiy qarorlar, O‘rganish",
+      title: "Mantiq, hayotiy qarorlar, o‘rganish",
       description:
         " Tadqiqotlar shuni ko‘rsatadiki, doimiy ravishda mantiqiy masalalar va jumboqlar yechish IQ darajasining oshishiga olib keladi.",
       image: NewsRd,
@@ -134,7 +134,7 @@ const Index = () => {
             <img src={Arrow} alt="arrow icon" className="block md:hidden h-[100px] w-[100px] -rotate-45" />
             <button className="relative h-12 w-40 overflow-hidden border-[2px] border-[#1E9FD9] text-[16px] rounded-[30px] text-[#1E9FD9] font-[500] poppin  transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-[#1E9FD9] before:duration-300 before:ease-out hover:text-white hover:shadow-[#1E9FD9] hover:before:h-40 hover:before:w-40 hover:before:opacity-80">
               <a href="https://t.me/Genius_cup_bot" target="_blank" rel="noopener noreferrer" className="relative z-10">
-                Ro'yxatdan O'tish
+                Ro'yxatdan o'tish
               </a>
             </button>
             <img src={BlueSpot} alt="Blue spot" className="block md:hidden h-[100px] w-[100px] object-none " /></div>
@@ -164,7 +164,7 @@ const Index = () => {
                   IQ darajangiz – bu sizning fikrlash tezligingiz, muammolarni hal qilish qobiliyatingiz
                   va intellektual salohiyatingizning kaliti. O‘z imkoniyatlaringizni kashf eting, yangi
                   bilimlar bilan ongingizni charxlang va har kuni o‘zingizning eng yaxshi versiyangiz bo‘lishga
-                  intiling! Aql-u idrokingizni sinang – siz doim o‘ylaganingizdan ham aqilliroqsiz!
+                  intiling! Aql-u idrokingizni sinang – siz doim o‘ylaganingizdan ham aqlliroqsiz!
                 </p>
 
                 {/* Floating Images */}
@@ -193,7 +193,7 @@ const Index = () => {
           <div className="text-center">
             {/* Section Title */}
             <h2 className="text-[#061A40]  md:text-4xl font-bold">
-              IQ, Ta’lim va Muvaffaqiyat
+              IQ, ta’lim va muvaffaqiyat
             </h2>
 
             {/* Three Card Sections */}
@@ -224,7 +224,7 @@ const Index = () => {
       <section className="custom-container ">
         <div className=" lg:py-10  poppin ">
           <div>  <h2 className="lg:text-[40px] md:text-[36px] text-[30px] font-bold text-center text-[#012840] pb-2 ">
-            Musobaqa Bosqichlari
+            Musobaqa bosqichlari
           </h2>
             <p className="text-center text-[#01284099] text-[20px] lg:mb-[100px] mb-0 lg:w-[600px] flex items-center justify-between mx-auto">
               «Genius Cup» IQ-turniri ikki bosqichda o'tkaziladi va quyida o'tkazish
@@ -252,21 +252,21 @@ const Index = () => {
                 </div>
                 <button className="relative mt-8 h-12 w-40 overflow-hidden border-[2px] border-[#1E9FD9] text-[16px] rounded-[30px] text-[#1E9FD9] font-[500] poppin  transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-[#1E9FD9] before:duration-300 before:ease-out hover:text-white hover:shadow-[#1E9FD9] hover:before:h-40 hover:before:w-40 hover:before:opacity-80">
                   <a href="https://t.me/Genius_cup_bot" target="_blank" rel="noopener noreferrer" className="relative z-10">
-                    Ro'yxatdan O'tish
+                    Ro'yxatdan o'tish
                   </a>
                 </button>
               </div>
               <div className={`${index % 2 === 0 ? "bg-[#DCE1F899]" : "bg-[#E2F6FD99]"} px-6 py-5 xl:h-[400px]  rounded-3xl mx-auto poppin`}>
                 <div className="grid text-[#012840] grid-cols-2 lg:grid-cols-3 gap-4 text-center font-semibold">
                   <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3">O‘tkazilish sanasi</span>
-                  <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3 hidden lg:block">O‘tkazilish Manzili</span>
+                  <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3 hidden lg:block">O‘tkazilish manzili</span>
                   <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3">Vaqtlar</span>
                 </div>
                 {schedule.map((item, i) => (
                   <div key={i} className="grid grid-cols-2 lg:grid-cols-3 gap-5 px-2 text-center mt-3">
                     <span className="text-[#012840B2] font-[500] text-[16px] md:px-3   px-3">{item.grades} Sinf o‘quvchilari</span>
-                    <span className="hidden lg:block text-[#010f18b2] font-[500] text-[14px] md:px-3   px-3">{index === 0 ? "Online Telegram Bot " : "Offline Osiyo Texnologiyalar Universiteti "}</span>
-                    <span className="text-[#062030b2] font-[500] text-[16px] md:px-3  px-3">{index === 0 ? "1-May " : "15-May "} {item.time} gacha</span>
+                    <span className="hidden lg:block text-[#010f18b2] font-[500] text-[14px] md:px-3   px-3">{index === 0 ? "Online Telegram bot " : "Offline Osiyo texnologiyalar universiteti "}</span>
+                    <span className="text-[#062030b2] font-[500] text-[16px] md:px-3  px-3">{index === 0 ? "11-May " : "18-May "} {item.time} gacha</span>
                   </div>
                 ))}
               </div>
@@ -310,10 +310,10 @@ const Index = () => {
       <section className="custom-container">
         <div className="flex justify-between flex-col md:flex-row items-center py-4">
           <div>
-            <h2 className="text-[32px] font-semibold poppin text-center md:text-start">So’nggi Yangiliklar</h2>
+            <h2 className="text-[32px] font-semibold poppin text-center md:text-start">So’nggi yangiliklar</h2>
             <p className="text-[18px] text-center md:text-start py-2 font-[300] poppin lg:w-[600px] text-[#01284099]">
               «Genius Cup» IQ-turniri ikki bosqichda o‘tkaziladi va quyida o‘tkazish
-              vaqtlari bilan tanishing
+              vaqtlari bilan tanishing:
             </p>
           </div>
           <button className="relative h-12 w-40 overflow-hidden border bg-gradient-to-br rounded-[30px] from-sky-600 to-blue-800 text-white transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:before:-translate-x-40">

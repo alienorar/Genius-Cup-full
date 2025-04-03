@@ -16,7 +16,7 @@ const newsData = [
   {
     id: 2,
     date: "May 15, 2024",
-    title: "IQ: Tug‘ma Iqtidor yoki Mashq Natijasi",
+    title: "IQ: Tug‘ma iqtidor yoki mashq natijasi",
     description:
       "IQ – insonning aqliy qobiliyatini o‘lchovchi ko‘rsatkich. U tug‘ma iqtidor  yoki mashq orqali rivojlantirish mumkin bo‘lgan qobiliyatmi?",
     image: NewsNd,
@@ -25,7 +25,7 @@ const newsData = [
   {
     id: 3,
     date: "May 15, 2024",
-    title: "Mantiq, Hayotiy qarorlar, O‘rganish",
+    title: "Mantiq, hayotiy qarorlar, o‘rganish",
     description:
       " Tadqiqotlar shuni ko‘rsatadiki, doimiy ravishda mantiqiy masalalar va jumboqlar yechish IQ darajasining oshishiga olib keladi.",
     image: NewsRd,
@@ -50,7 +50,7 @@ const NewsSection: React.FC = () => {
       
         {/* Main Heading - "Yangilik va Maqolalar" */}
         <h2 className="text-2xl sm:text-3xl md:text-[40px] font-semibold poppin text-black">
-          Yangilik va Maqolalar
+          Yangilik va maqolalar
         </h2>
 
 

@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
               rel="noopener noreferrer"
               className="relative z-10"
             >
-              Ro'yxatdan O'tish
+              Ro'yxatdan o'tish
             </a>
           </button>
         </div>

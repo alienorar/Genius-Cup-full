@@ -46,7 +46,7 @@ const Header = () => {
 
                     <button className="relative h-12 w-40 overflow-hidden border bg-gradient-to-br rounded-[30px] from-sky-400 to-purple-700 text-white transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:before:-translate-x-40">
                         <a href="https://t.me/Genius_cup_bot" target="_blank" rel="noopener noreferrer" className="relative z-10">
-                            Ro'yxatdan O'tish
+                            Ro'yxatdan o'tish
                         </a>
                     </button>
                 </div>
@@ -73,7 +73,7 @@ const Header = () => {
                         </Link>
                     ))}
                     <a href="https://t.me/Genius_cup_bot" target="_blank" rel="noopener noreferrer" className="text-white bg-gradient-to-br from-sky-400 to-purple-700 rounded-[30px] px-6 py-2">
-                        Ro'yxatdan O'tish
+                        Ro'yxatdan o'tish
                     </a>
                 </div>
             </nav>
