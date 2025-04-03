@@ -76,7 +76,7 @@ const ContactSection = () => {
           <div className="flex flex-col items-center text-center px-4 mt-6 md:mt-0">
             <FaPhoneAlt className="text-[#1E9FD9] text-3xl mb-2" />
             <h3 className="text-lg font-semibold">Phone Number</h3>
-            <a href="tel:+998554041166" className="text-gray-600 text-sm">+998(55)4041166</a>
+            <a href="tel:+998901231166" className="text-gray-600 text-sm">+998(90)1231166</a>
           </div>
         </div>
         {/* Map */}

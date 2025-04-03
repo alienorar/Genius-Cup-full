@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { HiMenuAlt1, HiX } from "react-icons/hi";
-import BlueLogo from "../../assets/logo-blue.svg";
+import BlueLogo from "../../assets/gns-blue.png";
 
 const Header = () => {
     const location = useLocation();
@@ -14,14 +14,14 @@ const Header = () => {
         { name: "Sovrin", path: "/sovrin" },
         { name: "Bog‘lanish", path: "/boglanish" },
         { name: "Maqolalar", path: "/maqolalar" },
-      
+
     ];
 
     return (
         <header className="custom-container">
             <nav className="flex items-center justify-between md:py-[30px] py-[20px] relative">
                 <Link to={"/"}>
-                    <img src={BlueLogo} alt="blue logo" />
+                    <img src={BlueLogo} alt="blue logo" className="w-[200px]" />
                 </Link>
 
                 {/* Mobile Menu Button */}

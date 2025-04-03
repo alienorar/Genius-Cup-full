@@ -5,8 +5,8 @@ const Footer: React.FC = () => {
     <footer className="bg-[#12222D] text-white mt-[120px]">
       <div className="custom-container py-[80px] flex gap-[30px] items-baseline lg:flex-row flex-col lg:justify-between justify-center">
         {/* Logo & Description */}
-        <div className="flex flex-col justify-between lg:w-[370px]">
-          <img src={GnsWhite} alt="white logo" className="w-[250px]" />
+        <div className="flex flex-col justify-between gap-2 lg:w-[370px]">
+          <a href="/"><img src={GnsWhite} alt="white logo" className="w-[250px]" /></a>
           <p className="text-gray-400 text-[16px] sm:text-[14px] md:text-[15px] poppin">
             Genius Cup – Bilim. Mantiq. G‘alaba.
             Aqlingizni charxlang, chegaralaringizni sinang va eng yaxshilar bilan bellashing!
@@ -32,18 +32,18 @@ const Footer: React.FC = () => {
               <li><a href="/">Home</a></li>
               <li><a href="sovrinlar">Sovrinlar </a></li>
               <li><a href="nizom">Nizom </a></li>
-              <li>  <a href="maqolalar"> Maqolalar</a></li>
-              <li> <a href="savollar">FAQ</a></li>
-              <li>   <a href="boglanish"> Bog‘lanish </a></li>
+              <li><a href="maqolalar"> Maqolalar</a></li>
+              <li><a href="savollar">FAQ</a></li>
+              <li><a href="boglanish"> Bog‘lanish </a></li>
             </ul >
           </div >
 
           {/* Contacts */}
           <div >
             <h3 className="text-lg sm:text-[16px] md:text-[17px] font-semibold">Bog'lanish</h3>
-            <p className="text-gray-400 text-sm sm:text-[12px] md:text-[13px] mt-3">
-              (+998 55) 404-11-66;
-            </p>
+            <a href="tel:+998901231166" className="text-gray-400 text-sm sm:text-[12px] md:text-[13px] mt-3">
+              +998 (90)-123-11-66
+            </a>
             <p className="text-gray-400 text-sm sm:text-[12px] md:text-[13px] lg:w-[300px] w-[220px]">
               Qashqadaryo viloyati, Qarshi tuman, Chaman MFY, Mustaqillik ko’chasi, 41-uy.
             </p>
