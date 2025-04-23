@@ -75,7 +75,7 @@ const Index = () => {
     {
       name: "Osiyo texnologiyalar universiteti",
       logo: OtuLogo,
-      link: "https://www.otu-edu.uz",
+      link: "https://asianuniversity.uz/uz",
     },
   ];
 
