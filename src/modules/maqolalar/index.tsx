@@ -100,7 +100,7 @@ const NewsSection: React.FC = () => {
                 <img src={news.image} alt={news.title} className="w-[121px] h-[90px] object-cover rounded-[20px]" />
                 <div>
                   <h4 className="text-[14px] font-[600] text-[#012840] poppin">{news.title}</h4>
-                  <a href="#" className="text-[#012840] poppin text-xs">MAQOLANI O'QISH</a>
+                  <a href={`/maqolalar/${news.id}`} className="text-[#012840] poppin text-xs">MAQOLANI O'QISH</a>
                 </div>
               </div>
             ))}
