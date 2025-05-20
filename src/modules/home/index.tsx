@@ -247,7 +247,7 @@ const Index = () => {
                   </div>
                   <div>
                     <span className="text-[22px] lg:text-[28px] md:text-[26px]  font-bold text-[#012840]">{stage.date}</span>
-                    <p className="text-[#01284099] text-sm">O‘tkazilish sanasi</p>
+                    <p className="text-[#01284099] text-sm">Ishtirokchilar</p>
                   </div>
                 </div>
                 <button className="relative mt-8 h-12 w-40 overflow-hidden border-[2px] border-[#1E9FD9] text-[16px] rounded-[30px] text-[#1E9FD9] font-[500] poppin  transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-[#1E9FD9] before:duration-300 before:ease-out hover:text-white hover:shadow-[#1E9FD9] hover:before:h-40 hover:before:w-40 hover:before:opacity-80">
@@ -258,7 +258,7 @@ const Index = () => {
               </div>
               <div className={`${index % 2 === 0 ? "bg-[#DCE1F899]" : "bg-[#E2F6FD99]"} px-6 py-5 xl:h-[400px]  rounded-3xl mx-auto poppin`}>
                 <div className="grid text-[#012840] grid-cols-2 lg:grid-cols-3 gap-4 text-center font-semibold">
-                  <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3">O‘tkazilish sanasi</span>
+                  <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3">Ishtirokchilar</span>
                   <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3 hidden lg:block">O‘tkazilish manzili</span>
                   <span className="bg-white rounded-2xl md:px-4 md:py-5 py-3 px-3">Vaqtlar</span>
                 </div>
