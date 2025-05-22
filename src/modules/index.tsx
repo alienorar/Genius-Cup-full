@@ -5,6 +5,7 @@ import Savollar from "./savollar";
 import Sovrin from "./sovrin";
 import Nizom from "./nizom";
 import SingleMaqola  from "./single-maqola";
+import Results from "./results/pages/index"
 
 export {
     Home,
@@ -13,5 +14,6 @@ export {
     Savollar,
     Sovrin,
     Nizom,
-    SingleMaqola
+    SingleMaqola,
+    Results
 }
