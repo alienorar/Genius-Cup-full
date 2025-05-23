@@ -33,7 +33,9 @@ const ResultsTable: React.FC = () => {
     data: uzResults = [],
     isLoading: uzLoading,
     error: uzError,
-  } = useGetResultsQuery();
+  } = useGetResultsQuery({
+    olympiadId: "1",
+  });
 
   // regionsResponse turli formatlarda ([], {data: []}, {regions: []} ...) kelishi mumkin;
   // uni har doim massivga normalizatsiya qilamiz.
@@ -41,8 +43,10 @@ const ResultsTable: React.FC = () => {
 
   const regions = useMemo(() => {
     if (Array.isArray(regionsResponse)) return regionsResponse;
-    if (regionsResponse && Array.isArray(regionsResponse.data)) return regionsResponse.data;
-    if (regionsResponse && Array.isArray(regionsResponse.regions)) return regionsResponse.regions;
+    if (regionsResponse && Array.isArray(regionsResponse.data))
+      return regionsResponse.data;
+    if (regionsResponse && Array.isArray(regionsResponse.regions))
+      return regionsResponse.regions;
     return [];
   }, [regionsResponse]);
 
@@ -75,15 +79,17 @@ const ResultsTable: React.FC = () => {
   const error = country === "Uzbekistan" ? uzError : otherError;
 
   /* ------------------------- Filtering ------------------------- */
-  const filtered = useMemo(() => {
-    return results
-      .filter(r => (grade === "all" ? true : r.grade === Number(grade)))
-      .filter(r => (language === "all" ? true : r.language === language))
-      .filter(r => (regionId === "all" ? true : r.regionId === Number(regionId)))
-      .filter(r => (stage === "all" ? true : r.stage === stage))
-      .filter(r => (country === "all" ? true : r.country === country))
-      .filter(r => r.score >= minScore && r.score <= maxScore);
-  }, [results, grade, language, regionId, stage, country, minScore, maxScore]);
+  // const filtered = useMemo(() => {
+  //   return results
+  //     .filter((r: any) => (grade === "all" ? true : r.grade === Number(grade)))
+  //     .filter((r: any) => (language === "all" ? true : r.language === language))
+  //     .filter((r: any) =>
+  //       regionId === "all" ? true : r.regionId === Number(regionId)
+  //     )
+  //     .filter((r: any) => (stage === "all" ? true : r.stage === stage))
+  //     .filter((r: any) => (country === "all" ? true : r.country === country))
+  //     .filter((r: any) => r.score >= minScore && r.score <= maxScore);
+  // }, [results, grade, language, regionId, stage, country, minScore, maxScore]);
 
   /* ------------------------- Columns ------------------------- */
   const columns = [
@@ -109,8 +115,8 @@ const ResultsTable: React.FC = () => {
     },
     {
       title: "Natijalar",
-      dataIndex: "score",
-      key: "score",
+      dataIndex: "result",
+      key: "result",
       align: "center" as const,
       sorter: (a: any, b: any) => a.score - b.score,
     },
@@ -123,14 +129,14 @@ const ResultsTable: React.FC = () => {
     },
     {
       title: "Imtihon tili",
-      dataIndex: "language",
-      key: "language",
+      dataIndex: "examLang",
+      key: "examLang",
       align: "center" as const,
     },
     {
       title: "Sinf",
-      dataIndex: "grade",
-      key: "grade",
+      dataIndex: "classNumber",
+      key: "classNumber",
       align: "center" as const,
     },
   ];
@@ -167,7 +173,11 @@ const ResultsTable: React.FC = () => {
 
         {/* Language */}
         <Col>
-          <Select value={language} style={{ width: 130 }} onChange={setLanguage}>
+          <Select
+            value={language}
+            style={{ width: 130 }}
+            onChange={setLanguage}
+          >
             <Option value="all">Barcha tillar</Option>
             <Option value="UZ">UZ</Option>
             <Option value="RU">RU</Option>
@@ -197,7 +207,12 @@ const ResultsTable: React.FC = () => {
 
         {/* Stage */}
         <Col>
-          <Select value={stage} style={{ width: 200 }} onChange={setStage} placeholder="Genius Cup, 1-bosqich">
+          <Select
+            value={stage}
+            style={{ width: 200 }}
+            onChange={setStage}
+            placeholder="Genius Cup, 1-bosqich"
+          >
             <Option value="all">Barcha bosqichlar</Option>
             <Option value="1">Genius Cup, 1-bosqich</Option>
             <Option value="2">Genius Cup, 2-bosqich</Option>
@@ -221,7 +236,7 @@ const ResultsTable: React.FC = () => {
                 min={0}
                 max={100}
                 value={minScore}
-                onChange={value => setMinScore(value ?? 0)}
+                onChange={(value) => setMinScore(value ?? 0)}
                 placeholder="Min"
               />
             </Col>
@@ -233,7 +248,7 @@ const ResultsTable: React.FC = () => {
                 min={0}
                 max={100}
                 value={maxScore}
-                onChange={value => setMaxScore(value ?? 100)}
+                onChange={(value) => setMaxScore(value ?? 100)}
                 placeholder="Max"
               />
             </Col>
@@ -247,19 +262,21 @@ const ResultsTable: React.FC = () => {
       ) : (
         <Table
           rowKey="id"
-          dataSource={filtered}
+          dataSource={results}
           columns={columns}
           pagination={false}
           bordered
           scroll={{ x: 900, y: 500 }}
           locale={{ emptyText: "Maʼlumot topilmadi" }}
-          rowClassName={(_, idx) => (idx % 2 === 0 ? "ant-table-row-odd" : "ant-table-row-even")}
+          rowClassName={(_, idx) =>
+            idx % 2 === 0 ? "ant-table-row-odd" : "ant-table-row-even"
+          }
         />
       )}
 
       {/* Footer */}
       <Row justify="end" style={{ marginTop: 8 }}>
-        <Text type="secondary">Qatorlar soni sahifada: {filtered.length}</Text>
+        <Text type="secondary">Qatorlar soni sahifada: {results.length}</Text>
       </Row>
     </Card>
   );

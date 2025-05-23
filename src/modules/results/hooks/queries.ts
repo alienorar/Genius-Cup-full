@@ -1,12 +1,18 @@
-import { useQuery } from '@tanstack/react-query';
-import { getResults, getRegions, getSingleResult, getOtherCountryResults } from '../service';
+import { useQuery } from "@tanstack/react-query";
+import {
+  getResults,
+  getRegions,
+  getSingleResult,
+  getOtherCountryResults,
+} from "../service";
+import { IGetResultPayload } from "./IQuery";
 
 // ================ RESULTS GET=================
 
-export const useGetResultsQuery = () => {
+export const useGetResultsQuery = (payload: IGetResultPayload) => {
   return useQuery({
-    queryKey: ['results'],
-    queryFn: getResults,
+    queryKey: ["results"],
+    queryFn: () => getResults(payload),
   });
 };
 
@@ -14,19 +20,18 @@ export const useGetResultsQuery = () => {
 
 export const useGetRegionsQuery = () => {
   return useQuery({
-    queryKey: ['regions'],
+    queryKey: ["regions"],
     queryFn: getRegions,
   });
 };
 
 export function useSingleResult(chatId: string | number) {
   return useQuery({
-    queryKey: ['singleResult', chatId],
+    queryKey: ["singleResult", chatId],
     queryFn: () => getSingleResult(chatId),
     enabled: !!chatId,
   });
 }
-
 
 interface HookParams {
   page: number;
@@ -40,8 +45,9 @@ export function useOtherCountryResults(params: HookParams) {
   const { page, limit, testId, regionId, token } = params;
 
   return useQuery({
-    queryKey: ['otherCountryResults', page, limit, testId, regionId],
-    queryFn: () => getOtherCountryResults({ page, limit, testId, regionId, token }),
+    queryKey: ["otherCountryResults", page, limit, testId, regionId],
+    queryFn: () =>
+      getOtherCountryResults({ page, limit, testId, regionId, token }),
     enabled: !!token, // faqat token mavjud bo‘lsa ishga tushadi
   });
 }
