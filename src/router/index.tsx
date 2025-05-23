@@ -13,6 +13,7 @@ import {
     Maqolalar,
     Nizom,
     SingleMaqola,
+    Results,
 } from '@modules';
 
 const Index = () => {
@@ -27,6 +28,7 @@ const Index = () => {
                 <Route path="maqolalar/:id" element={<SingleMaqola />} />
                 <Route path="nizom" element={<Nizom />} />
                 <Route path="faq/:category?" element={<Savollar />} />
+                <Route path="natijalar" element={<Results/>} />
             </Route>
         )
     );

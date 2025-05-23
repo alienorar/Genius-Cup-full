@@ -14,6 +14,7 @@ const Header = () => {
         { name: "Sovrin", path: "/sovrin" },
         { name: "Bog‘lanish", path: "/boglanish" },
         { name: "Maqolalar", path: "/maqolalar" },
+        { name: "Natijalar", path: "/natijalar" },
 
     ];
 
