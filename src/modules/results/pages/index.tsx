@@ -1,48 +1,59 @@
 "use client"
 
-import type React from "react"
-import { useState, useEffect, useMemo, useCallback } from "react"
-import { useSearchParams } from "react-router-dom"
-import { Table, Select, InputNumber, Card, Typography, Spin, Alert, Tag, Tooltip, type TableColumnsType } from "antd"
-import { FileDoneOutlined, TrophyOutlined} from "@ant-design/icons"
-// import dayjs from "dayjs"
-import Cookies from "js-cookie"
+import type React from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
+import { useSearchParams } from "react-router-dom";
+import {
+  Table,
+  Select,
+  InputNumber,
+  Card,
+  Typography,
+  Spin,
+  Alert,
+  Tag,
+  Tooltip,
+  Checkbox,
+  type TableColumnsType,
+} from "antd";
+import { FileDoneOutlined, TrophyOutlined } from "@ant-design/icons";
+import Cookies from "js-cookie";
 import {
   useGetResultsQuery,
   useGetRegionsQuery,
   useGetOlympiadsQuery,
   useGetTestsQuery,
   useOtherCountryResults,
-} from "../hooks/queries"
-import type { IResult, IRegion, IOlympiad, ITest } from "../service"
-import { getWinnersCountByGrade } from "../service"
+} from "../hooks/queries";
+import type { IResult, IRegion, IOlympiad, ITest } from "../service";
+import { GRADE_GROUPS, getWinnersCountForSelectedGrades, GradeGroupKey } from "../service";
 
-const { Option } = Select
-const { Title, Text } = Typography
+const { Option } = Select;
+const { Title, Text } = Typography;
 
-const PRIMARY_COLOR = "#1E9FD9"
-const WINNER_COLOR = "#52c41a"
+const PRIMARY_COLOR = "#1E9FD9";
+const WINNER_COLOR = "#52c41a";
 
 const ResultsPage: React.FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams()
-  const token = Cookies.get("token") || ""
+  const [searchParams, setSearchParams] = useSearchParams();
+  const token = Cookies.get("token") || "";
 
   // State management with proper types
-  const [grade, setGrade] = useState<string>(searchParams.get("grade") || "all")
-  const [language, setLanguage] = useState<string>(searchParams.get("language") || "all")
-  const [regionId, setRegionId] = useState<string>(searchParams.get("regionId") || "all")
-  const [districtId, setDistrictId] = useState<string>(searchParams.get("districtId") || "all")
-  const [olympiadId, setOlympiadId] = useState<string>(searchParams.get("olympiadId") || "1")
-  const [country, setCountry] = useState<string>(searchParams.get("country") || "uz")
-  const [minScore, setMinScore] = useState<number>(Number(searchParams.get("minScore")) || 0)
-  const [maxScore, setMaxScore] = useState<number>(Number(searchParams.get("maxScore")) || 100)
-  const [page, setPage] = useState<number>(Number(searchParams.get("page")) || 1)
-  const [limit, setLimit] = useState<number>(Number(searchParams.get("limit")) || 100)
+  const [selectedGrades, setSelectedGrades] = useState<number[]>([]);
+  const [language, setLanguage] = useState<string>(searchParams.get("language") || "all");
+  const [regionId, setRegionId] = useState<string>(searchParams.get("regionId") || "all");
+  const [districtId, setDistrictId] = useState<string>(searchParams.get("districtId") || "all");
+  const [olympiadId, setOlympiadId] = useState<string>(searchParams.get("olympiadId") || "1");
+  const [country, setCountry] = useState<string>(searchParams.get("country") || "uz");
+  const [minScore, setMinScore] = useState<number>(Number(searchParams.get("minScore")) || 0);
+  const [maxScore, setMaxScore] = useState<number>(Number(searchParams.get("maxScore")) || 100);
+  const [page, setPage] = useState<number>(Number(searchParams.get("page")) || 1);
+  const [limit, setLimit] = useState<number>(Number(searchParams.get("limit") || 100));
 
   // Data queries with proper error handling
-  const { data: regions = [], isLoading: regionsLoading, error: regionsError } = useGetRegionsQuery()
-  const { data: olympiads = [], isLoading: olympiadsLoading, error: olympiadsError } = useGetOlympiadsQuery()
-  const { data: tests = [], isLoading: testsLoading, error: testsError } = useGetTestsQuery(token)
+  const { data: regions = [], isLoading: regionsLoading, error: regionsError } = useGetRegionsQuery();
+  const { data: olympiads = [], isLoading: olympiadsLoading, error: olympiadsError } = useGetOlympiadsQuery();
+  const { data: tests = [], isLoading: testsLoading, error: testsError } = useGetTestsQuery(token);
 
   // Uzbekistan results query
   const {
@@ -50,17 +61,17 @@ const ResultsPage: React.FC = () => {
     isLoading: uzLoading,
     error: uzError,
   } = useGetResultsQuery({
-    olympiadId,
-    classNumber: grade === "all" ? null : grade,
+    olympiadId: Number(olympiadId),
+    classNumberList: selectedGrades.length > 0 ? selectedGrades : undefined,
     language: language === "all" ? null : language,
     page: page - 1,
-    regionId: regionId === "all" ? null : regionId,
-    districtId: districtId === "all" ? null : districtId,
+    regionId: regionId === "all" ? null : Number(regionId),
+    districtId: districtId === "all" ? null : Number(districtId),
     resultFrom: minScore,
     resultTo: maxScore,
     size: limit,
     phone: null,
-  })
+  });
 
   // Other country results query
   const {
@@ -70,103 +81,128 @@ const ResultsPage: React.FC = () => {
   } = useOtherCountryResults({
     page: page - 1,
     limit,
-    testId: grade === "all" ? 0 : Number(grade),
+    testId: selectedGrades.length > 0 ? selectedGrades[0] : 0,
     regionId: regionId === "all" ? 0 : Number(regionId),
     token: country !== "uz" ? token : "",
-  })
+  });
 
   // Determine which data to use
-  const results = country === "uz" ? uzResults : otherResults
-  const isLoading = country === "uz" ? uzLoading : otherLoading
-  const error = country === "uz" ? uzError : otherError
+  const results = country === "uz" ? uzResults : otherResults;
+  const isLoading = country === "uz" ? uzLoading : otherLoading;
+  const error = country === "uz" ? uzError : otherError;
 
   // Process regions data with proper type safety
   const processedRegions = useMemo((): IRegion[] => {
-    if (!regions) return []
-    return Array.isArray(regions) ? regions : []
-  }, [regions])
+    if (!regions) return [];
+    return Array.isArray(regions) ? regions : [];
+  }, [regions]);
 
   // G'oliblar statistikasi
   const winnersStats = useMemo(() => {
-    if (!results?.content) return null
+    if (!results?.content) return null;
 
-    const stats: { [key: number]: { total: number; winners: number; maxWinners: number } } = {}
+    const totalWinners = results.content.filter((result) => result.isWinner).length;
+    const expectedWinners = selectedGrades.length > 0 ? getWinnersCountForSelectedGrades(selectedGrades) : 100;
 
-    results.content.forEach((result) => {
-      const gradeNum = result.classNumber
-      if (!stats[gradeNum]) {
-        stats[gradeNum] = {
-          total: 0,
-          winners: 0,
-          maxWinners: getWinnersCountByGrade(gradeNum),
-        }
-      }
-      stats[gradeNum].total++
-      if (result.isWinner) {
-        stats[gradeNum].winners++
-      }
-    })
-
-    return stats
-  }, [results])
+    return {
+      total: results.content.length,
+      winners: totalWinners,
+      expected: expectedWinners,
+      selectedGrades,
+    };
+  }, [results, selectedGrades]);
 
   // Update URL params when filters change
   useEffect(() => {
-    const params = new URLSearchParams()
-    params.set("grade", grade)
-    params.set("language", language)
-    params.set("regionId", regionId)
-    params.set("districtId", districtId)
-    params.set("olympiadId", olympiadId)
-    params.set("country", country)
-    params.set("minScore", minScore.toString())
-    params.set("maxScore", maxScore.toString())
-    params.set("page", page.toString())
-    params.set("limit", limit.toString())
+    const params = new URLSearchParams();
+    params.set("selectedGrades", selectedGrades.join(","));
+    params.set("language", language);
+    params.set("regionId", regionId);
+    params.set("districtId", districtId);
+    params.set("olympiadId", olympiadId);
+    params.set("country", country);
+    params.set("minScore", minScore.toString());
+    params.set("maxScore", maxScore.toString());
+    params.set("page", page.toString());
+    params.set("limit", limit.toString());
 
-    setSearchParams(params)
-  }, [grade, language, regionId, districtId, olympiadId, country, minScore, maxScore, page, limit, setSearchParams])
+    setSearchParams(params);
+  }, [
+    selectedGrades,
+    language,
+    regionId,
+    districtId,
+    olympiadId,
+    country,
+    minScore,
+    maxScore,
+    page,
+    limit,
+    setSearchParams,
+  ]);
+
+  // Initialize selected grades from URL
+  useEffect(() => {
+    const gradesParam = searchParams.get("selectedGrades");
+    if (gradesParam) {
+      const grades = gradesParam.split(",").map(Number).filter(Boolean);
+      setSelectedGrades(grades);
+    }
+  }, [searchParams]);
 
   // Filter handlers with useCallback for performance
   const handleCountryChange = useCallback((value: string) => {
-    setCountry(value)
-    setPage(1)
+    setCountry(value);
+    setPage(1);
     if (value !== "uz") {
-      setRegionId("all")
-      setDistrictId("all")
-      setLanguage("all")
+      setRegionId("all");
+      setDistrictId("all");
+      setLanguage("all");
     }
-  }, [])
+  }, []);
 
   const handleRegionChange = useCallback((value: string) => {
-    setRegionId(value)
-    setDistrictId("all")
-    setPage(1)
-  }, [])
+    setRegionId(value);
+    setDistrictId("all");
+    setPage(1);
+  }, []);
 
-  // Render grade options with proper type safety
-  const renderGradeOptions = useCallback(() => {
-    if (country === "uz") {
-      return (
-        <>
-          <Option value="all" style={{ color: PRIMARY_COLOR, fontWeight: 900 }}>
-            Barcha sinflar
-          </Option>
-          {Array.from({ length: 9 }, (_, index) => index + 3).map((gradeNum) => (
-            <Option key={gradeNum} value={gradeNum.toString()}>
-              {gradeNum} - sinf
-            </Option>
-          ))}
-          <Option value="1">1 - kurs</Option>
-          <Option value="2">2 - kurs</Option>
-        </>
-      )
+  // Grade selection handlers
+  const handleGradeGroupChange = useCallback((groupKey: GradeGroupKey, checked: boolean) => {
+    const group = GRADE_GROUPS[groupKey];
+    if (checked) {
+      setSelectedGrades((prev) => [...new Set([...prev, ...group.grades])]);
     } else {
+      setSelectedGrades((prev) => prev.filter((grade) => !group.grades.includes(grade)));
+    }
+    setPage(1);
+  }, []);
+
+  const handleIndividualGradeChange = useCallback((grade: number, checked: boolean) => {
+    if (checked) {
+      setSelectedGrades((prev) => [...new Set([...prev, grade])]);
+    } else {
+      setSelectedGrades((prev) => prev.filter((g) => g !== grade));
+    }
+    setPage(1);
+  }, []);
+
+  // Render grade selection
+  const renderGradeSelection = useCallback(() => {
+    if (country !== "uz") {
       return (
-        <>
-          <Option value="all" style={{ color: PRIMARY_COLOR, fontWeight: 900 }}>
-            Barcha testlar
-          </Option>
+        <Select
+          mode="multiple"
+          value={selectedGrades.map(String)}
+          onChange={(values: string[]) => {
+            setSelectedGrades(values.map(Number));
+            setPage(1);
+          }}
+          className="min-w-[200px]"
+          size="large"
+          placeholder="Testlarni tanlang"
+          loading={testsLoading}
+        >
           {tests
             ?.filter((test: ITest) => test.status === true)
             ?.map((test: ITest) => (
@@ -174,10 +210,51 @@ const ResultsPage: React.FC = () => {
                 {`${test.Participants} - ${test.Participants <= 2 ? "kurs" : "sinf"} (${test.testLang})`}
               </Option>
             ))}
-        </>
-      )
+        </Select>
+      );
     }
-  }, [country, tests])
+
+    return (
+      <div className="flex flex-wrap gap-2">
+        {/* Guruh bo'yicha tanlash */}
+        {Object.entries(GRADE_GROUPS)
+          .filter(([groupKey]) => groupKey !== "other")
+          .map(([groupKey, group]) => {
+            const isGroupSelected = group.grades.every((grade) => selectedGrades.includes(grade));
+            const isPartiallySelected = group.grades.some((grade) => selectedGrades.includes(grade)) && !isGroupSelected;
+
+            return (
+              <div key={groupKey} className="flex items-center gap-1">
+                <Checkbox
+                  checked={isGroupSelected}
+                  indeterminate={isPartiallySelected}
+                  onChange={(e) => handleGradeGroupChange(groupKey as GradeGroupKey, e.target.checked)}
+                >
+                  {groupKey === "kurs" ? "Kurslar (1-2)" : `${groupKey} sinflar`}
+                </Checkbox>
+                <Tag color={isGroupSelected ? "success" : "default"} className="text-xs py-0.5 px-2">
+                  {group.winnersCount}
+                </Tag>
+              </div>
+            );
+          })}
+
+        {/* Individual sinf tanlash */}
+        <div className="flex flex-wrap gap-1 ml-4">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((grade) => (
+            <Checkbox
+              key={grade}
+              checked={selectedGrades.includes(grade)}
+              onChange={(e) => handleIndividualGradeChange(grade, e.target.checked)}
+              className="text-xs py-0.5 px-2"
+            >
+              {grade}
+            </Checkbox>
+          ))}
+        </div>
+      </div>
+    );
+  }, [country, selectedGrades, tests, testsLoading, handleGradeGroupChange, handleIndividualGradeChange]);
 
   // Table columns with proper types
   const columns: TableColumnsType<IResult> = useMemo(
@@ -188,7 +265,7 @@ const ResultsPage: React.FC = () => {
         key: "index",
         width: 70,
         render: (_, record: IResult, idx: number) => {
-          const number = (page - 1) * limit + idx + 1
+          const number = (page - 1) * limit + idx + 1;
           return (
             <div className="flex items-center gap-1">
               {record.isWinner && (
@@ -198,7 +275,7 @@ const ResultsPage: React.FC = () => {
               )}
               <span className="font-medium">{number}</span>
             </div>
-          )
+          );
         },
         align: "center",
       },
@@ -210,7 +287,7 @@ const ResultsPage: React.FC = () => {
         ellipsis: true,
         render: (text: string, record: IResult) => (
           <div className="flex items-center gap-2">
-            <span>{text}</span>
+            <span>{text || "-"}</span>
             {record.isWinner && (
               <Tag color="success" icon={<TrophyOutlined />}>
                 G'olib
@@ -225,6 +302,7 @@ const ResultsPage: React.FC = () => {
         key: "phone",
         align: "center",
         className: "text-center",
+        render: (phone: string) => phone || "-",
       },
       {
         title: "Natijalar",
@@ -232,12 +310,12 @@ const ResultsPage: React.FC = () => {
         key: "result",
         align: "center",
         sorter: (a: IResult, b: IResult) => {
-          const aScore = country === "uz" ? a.result : a.score
-          const bScore = country === "uz" ? b.result : b.score
-          return (aScore || 0) - (bScore || 0)
+          const aScore = country === "uz" ? a.result || 0 : a.score || 0;
+          const bScore = country === "uz" ? b.result || 0 : b.score || 0;
+          return aScore - bScore;
         },
         render: (result: number, record: IResult) => {
-          const score = country === "uz" ? result : record.score
+          const score = country === "uz" ? result || 0 : record.score || 0;
           return (
             <span
               className={`px-3 py-1 rounded-full font-bold text-white ${record.isWinner ? "shadow-lg" : ""}`}
@@ -245,41 +323,11 @@ const ResultsPage: React.FC = () => {
                 backgroundColor: record.isWinner ? WINNER_COLOR : PRIMARY_COLOR,
               }}
             >
-              {score || 0}
+              {score}
             </span>
-          )
+          );
         },
       },
-      // {
-      //   title: (
-      //     <div className="flex items-center gap-1">
-      //       <ClockCircleOutlined />
-      //       <span>Tugatgan vaqt</span>
-      //     </div>
-      //   ),
-      //   dataIndex: country === "uz" ? "examClosedAt" : "finishedAt",
-      //   key: "finishedAt",
-      //   align: "center",
-      //   sorter: (a: IResult, b: IResult) => {
-      //     const timeA = new Date(a.examClosedAt || a.finishedAt).getTime()
-      //     const timeB = new Date(b.examClosedAt || b.finishedAt).getTime()
-      //     return timeA - timeB
-      //   },
-      //   render: (val: string, record: IResult) => {
-      //     if (!val) return "-"
-      //     const formattedTime = dayjs(val).format("DD.MM.YYYY HH:mm:ss")
-      //     return (
-      //       <div className="text-sm">
-      //         <div>{formattedTime}</div>
-      //         {record.isWinner && (
-      //           <Tag color="success" size="small">
-      //             Tez bajargan
-      //           </Tag>
-      //         )}
-      //       </div>
-      //     )
-      //   },
-      // },
       {
         title: "Imtihon tili",
         dataIndex: "examLang",
@@ -298,18 +346,18 @@ const ResultsPage: React.FC = () => {
         align: "center",
         render: (classNumber: number, record: IResult) => (
           <div className="flex flex-col items-center">
-            <span className="font-medium">{classNumber !== -1 && classNumber ? classNumber : "-"}</span>
-            {record.isWinner && winnersStats && winnersStats[classNumber] && (
-              <Tag color="success" size="small">
-                {winnersStats[classNumber].winners}/{winnersStats[classNumber].maxWinners}
+            <span className="font-medium">{classNumber && classNumber !== -1 ? classNumber : "-"}</span>
+            {record.isWinner && (
+              <Tag color="success" className="text-xs py-0.5 px-2">
+                G'olib
               </Tag>
             )}
           </div>
         ),
       },
     ],
-    [country, olympiadId, page, limit, winnersStats],
-  )
+    [country, page, limit],
+  );
 
   // Error handling
   if (error || regionsError || olympiadsError || testsError) {
@@ -324,7 +372,7 @@ const ResultsPage: React.FC = () => {
           />
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -332,7 +380,7 @@ const ResultsPage: React.FC = () => {
       <div className="container mx-auto p-6">
         {/* Header Section */}
         <Card className="mb-6 shadow-sm">
-          <div className="flex flex-col lg:flex-row items-center gap-4">
+          <div className="flex flex-col gap-4">
             <div className="flex items-center gap-4">
               <div
                 className="hidden lg:flex w-16 h-16 rounded-lg justify-center items-center"
@@ -345,25 +393,29 @@ const ResultsPage: React.FC = () => {
                   Natijalar
                 </Title>
                 <Text className="text-sm text-gray-600">
-                  G'oliblar yashil rangda belgilangan. Bir xil ball bo'lsa, tezroq bajargan g'olib hisoblanadi.
+                  Tanlangan sinflar guruhidan birgalikda g'oliblar aniqlanadi. G'oliblar yashil rangda belgilangan.
                 </Text>
               </div>
+
+              {/* G'oliblar statistikasi */}
+              {winnersStats && (
+                <div className="ml-auto">
+                  <Tag color="success" className="flex items-center gap-1">
+                    <TrophyOutlined />
+                    G'oliblar: {winnersStats.winners}/{winnersStats.expected}
+                  </Tag>
+                </div>
+              )}
             </div>
 
-            {/* G'oliblar statistikasi */}
-            {winnersStats && (
-              <div className="flex flex-wrap gap-2">
-                {Object.entries(winnersStats).map(([gradeKey, stats]) => (
-                  <Tag key={gradeKey} color="success" className="flex items-center gap-1">
-                    <TrophyOutlined />
-                    {gradeKey}-sinf: {stats.winners}/{stats.maxWinners}
-                  </Tag>
-                ))}
-              </div>
-            )}
+            {/* Sinf tanlash */}
+            <div className="border-t pt-4">
+              <Text className="text-sm font-medium mb-2 block">Sinflarni tanlang:</Text>
+              {renderGradeSelection()}
+            </div>
 
             {/* Filters */}
-            <div className="flex flex-wrap gap-3 ml-auto">
+            <div className="flex flex-wrap gap-3 border-t pt-4">
               {/* Country */}
               <Select value={country} onChange={handleCountryChange} className="min-w-[150px]" size="large">
                 <Option value="uz">O'zbekiston</Option>
@@ -375,8 +427,8 @@ const ResultsPage: React.FC = () => {
                 <Select
                   value={olympiadId}
                   onChange={(value: string) => {
-                    setOlympiadId(value)
-                    setPage(1)
+                    setOlympiadId(value);
+                    setPage(1);
                   }}
                   className="min-w-[200px]"
                   size="large"
@@ -390,27 +442,13 @@ const ResultsPage: React.FC = () => {
                 </Select>
               )}
 
-              {/* Grade */}
-              <Select
-                value={grade}
-                onChange={(value: string) => {
-                  setGrade(value)
-                  setPage(1)
-                }}
-                className="min-w-[130px]"
-                size="large"
-                loading={country !== "uz" && testsLoading}
-              >
-                {renderGradeOptions()}
-              </Select>
-
               {/* Language (only for Uzbekistan) */}
               {country === "uz" && (
                 <Select
                   value={language}
                   onChange={(value: string) => {
-                    setLanguage(value)
-                    setPage(1)
+                    setLanguage(value);
+                    setPage(1);
                   }}
                   className="min-w-[130px]"
                   size="large"
@@ -450,8 +488,8 @@ const ResultsPage: React.FC = () => {
                 <Select
                   value={districtId}
                   onChange={(value: string) => {
-                    setDistrictId(value)
-                    setPage(1)
+                    setDistrictId(value);
+                    setPage(1);
                   }}
                   className="min-w-[200px]"
                   size="large"
@@ -477,8 +515,8 @@ const ResultsPage: React.FC = () => {
                   max={100}
                   value={minScore}
                   onChange={(value: number | null) => {
-                    setMinScore(value ?? 0)
-                    setPage(1)
+                    setMinScore(value ?? 0);
+                    setPage(1);
                   }}
                   placeholder="Min"
                   size="large"
@@ -490,8 +528,8 @@ const ResultsPage: React.FC = () => {
                   max={100}
                   value={maxScore}
                   onChange={(value: number | null) => {
-                    setMaxScore(value ?? 100)
-                    setPage(1)
+                    setMaxScore(value ?? 100);
+                    setPage(1);
                   }}
                   placeholder="Max"
                   size="large"
@@ -511,13 +549,13 @@ const ResultsPage: React.FC = () => {
             </div>
           ) : (
             <Table<IResult>
-              rowKey={country === "uz" ? "userId" : "id"}
+              rowKey={(record) => record.userId || record.id || Math.random().toString()}
               dataSource={results?.content || []}
               columns={columns}
               pagination={{
                 current: page,
                 pageSize: limit,
-                total: results?.paging?.totalElements || 0,
+                total: results?.paging?.totalElements || results?.content?.length || 0,
                 showSizeChanger: true,
                 pageSizeOptions: ["10", "20", "50", "100"],
                 showQuickJumper: true,
@@ -527,22 +565,22 @@ const ResultsPage: React.FC = () => {
                   </span>
                 ),
                 onChange: (newPage: number, newPageSize: number) => {
-                  setPage(newPage)
-                  setLimit(newPageSize)
+                  setPage(newPage);
+                  setLimit(newPageSize);
                 },
                 onShowSizeChange: (_: number, size: number) => {
-                  setPage(1)
-                  setLimit(size)
+                  setPage(1);
+                  setLimit(size);
                 },
               }}
               bordered
-              scroll={{ x: 900, y: "calc(100vh - 350px)" }}
+              scroll={{ x: 900, y: "calc(100vh - 450px)" }}
               locale={{ emptyText: "Ma'lumot topilmadi" }}
               rowClassName={(record: IResult, index: number) => {
                 if (record.isWinner) {
-                  return "winner-row bg-green-50 hover:bg-green-100 border-l-4 border-green-500"
+                  return "winner-row bg-green-50 hover:bg-green-100 border-l-4 border-green-500";
                 }
-                return index % 2 === 0 ? "bg-white hover:bg-gray-50" : "bg-gray-50 hover:bg-gray-100"
+                return index % 2 === 0 ? "bg-white hover:bg-gray-50" : "bg-gray-50 hover:bg-gray-100";
               }}
               size="small"
             />
@@ -586,7 +624,7 @@ const ResultsPage: React.FC = () => {
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
-export default ResultsPage
+export default ResultsPage;
