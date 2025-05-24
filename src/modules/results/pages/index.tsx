@@ -55,11 +55,12 @@ const ResultsPage: React.FC = () => {
   const { data: olympiads = [], isLoading: olympiadsLoading, error: olympiadsError } = useGetOlympiadsQuery();
   const { data: tests = [], isLoading: testsLoading, error: testsError } = useGetTestsQuery(token);
 
-  // Uzbekistan results query
+  // Uzbekistan results query with skip condition
   const {
     data: uzResults,
     isLoading: uzLoading,
     error: uzError,
+    refetch: refetchUzResults,
   } = useGetResultsQuery({
     olympiadId: Number(olympiadId),
     classNumberList: selectedGrades.length > 0 ? selectedGrades : undefined,
@@ -73,11 +74,12 @@ const ResultsPage: React.FC = () => {
     phone: null,
   });
 
-  // Other country results query
+  // Other country results query with skip condition
   const {
     data: otherResults,
     isLoading: otherLoading,
     error: otherError,
+    refetch: refetchOtherResults,
   } = useOtherCountryResults({
     page: page - 1,
     limit,
@@ -97,7 +99,7 @@ const ResultsPage: React.FC = () => {
     return Array.isArray(regions) ? regions : [];
   }, [regions]);
 
-  // G'oliblar statistikasi
+  // Winners statistics
   const winnersStats = useMemo(() => {
     if (!results?.content) return null;
 
@@ -149,6 +151,15 @@ const ResultsPage: React.FC = () => {
       setSelectedGrades(grades);
     }
   }, [searchParams]);
+
+  // Refetch data when selectedGrades changes
+  useEffect(() => {
+    if (country === "uz") {
+      refetchUzResults();
+    } else {
+      refetchOtherResults();
+    }
+  }, [selectedGrades, country, refetchUzResults, refetchOtherResults]);
 
   // Filter handlers with useCallback for performance
   const handleCountryChange = useCallback((value: string) => {
@@ -216,7 +227,7 @@ const ResultsPage: React.FC = () => {
 
     return (
       <div className="flex flex-wrap gap-2">
-        {/* Guruh bo'yicha tanlash */}
+        {/* Group selection */}
         {Object.entries(GRADE_GROUPS)
           .filter(([groupKey]) => groupKey !== "other")
           .map(([groupKey, group]) => {
@@ -239,7 +250,7 @@ const ResultsPage: React.FC = () => {
             );
           })}
 
-        {/* Individual sinf tanlash */}
+        {/* Individual grade selection */}
         <div className="flex flex-wrap gap-1 ml-4">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((grade) => (
             <Checkbox
@@ -397,7 +408,7 @@ const ResultsPage: React.FC = () => {
                 </Text>
               </div>
 
-              {/* G'oliblar statistikasi */}
+              {/* Winners statistics */}
               {winnersStats && (
                 <div className="ml-auto">
                   <Tag color="success" className="flex items-center gap-1">
@@ -408,7 +419,7 @@ const ResultsPage: React.FC = () => {
               )}
             </div>
 
-            {/* Sinf tanlash */}
+            {/* Grade selection */}
             <div className="border-t pt-4">
               <Text className="text-sm font-medium mb-2 block">Sinflarni tanlang:</Text>
               {renderGradeSelection()}
