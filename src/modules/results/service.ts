@@ -32,6 +32,8 @@ export interface IResult {
   finishedAt: string
   examLang: string
   classNumber: number
+  examDuration?: number // Test bajarish vaqti (daqiqalarda)
+  isWinner?: boolean // G'olib ekanligini belgilash uchun
 }
 
 export interface IResultsResponse {
@@ -67,6 +69,67 @@ export interface ITest {
   testLang: string
 }
 
+// G'oliblar sonini sinf bo'yicha aniqlash
+export const getWinnersCountByGrade = (grade: number): number => {
+  if (grade >= 3 && grade <= 5) return 20 // 3-5 sinf: 20 nafar
+  if (grade >= 6 && grade <= 8) return 40 // 6-8 sinf: 40 nafar
+  if (grade >= 9 && grade <= 11) return 40 // 9-11 sinf: 40 nafar
+  if (grade === 1 || grade === 2) return 40 // Kurslar: 40 nafar
+  return 40 // Default
+}
+
+// G'oliblarni aniqlash funksiyasi
+export const determineWinners = (results: IResult[]): IResult[] => {
+  if (!results || results.length === 0) return []
+
+  // Sinf bo'yicha guruhlash
+  const groupedByGrade: { [key: number]: IResult[] } = {}
+
+  results.forEach((result) => {
+    const grade = result.classNumber
+    if (!groupedByGrade[grade]) {
+      groupedByGrade[grade] = []
+    }
+    groupedByGrade[grade].push(result)
+  })
+
+  const winnersResults: IResult[] = []
+
+  // Har bir sinf uchun g'oliblarni aniqlash
+  Object.keys(groupedByGrade).forEach((gradeKey) => {
+    const grade = Number.parseInt(gradeKey)
+    const gradeResults = groupedByGrade[grade]
+    const winnersCount = getWinnersCountByGrade(grade)
+
+    // Ball bo'yicha tartiblash (yuqoridan pastga)
+    // Bir xil ball bo'lsa, vaqt bo'yicha tartiblash (tezroq bajargan birinchi)
+    const sortedResults = gradeResults.sort((a, b) => {
+      const scoreA = a.result || a.score || 0
+      const scoreB = b.result || b.score || 0
+
+      if (scoreA !== scoreB) {
+        return scoreB - scoreA // Yuqori ball birinchi
+      }
+
+      // Bir xil ball bo'lsa, vaqt bo'yicha tartiblash
+      const timeA = new Date(a.examClosedAt || a.finishedAt).getTime()
+      const timeB = new Date(b.examClosedAt || b.finishedAt).getTime()
+
+      return timeA - timeB // Tezroq bajargan birinchi
+    })
+
+    // G'oliblarni belgilash
+    const winners = sortedResults.slice(0, winnersCount)
+    winners.forEach((winner) => {
+      winner.isWinner = true
+    })
+
+    winnersResults.push(...sortedResults)
+  })
+
+  return winnersResults
+}
+
 // Uzbekistan results
 export async function getResults(payload: IGetResultPayload): Promise<IResultsResponse> {
   try {
@@ -79,7 +142,14 @@ export async function getResults(payload: IGetResultPayload): Promise<IResultsRe
         },
       },
     )
-    return response.data.data
+
+    // G'oliblarni aniqlash
+    const resultsWithWinners = {
+      ...response.data.data,
+      content: determineWinners(response.data.data.content),
+    }
+
+    return resultsWithWinners
   } catch (error) {
     console.error("Error fetching results:", error)
     throw new Error("Ma'lumotlarni yuklashda xatolik yuz berdi")
@@ -171,7 +241,14 @@ export async function getOtherCountryResults(payload: IOtherCountryPayload): Pro
         },
       },
     )
-    return response.data
+
+    // Boshqa mamlakatlar uchun ham g'oliblarni aniqlash
+    const resultsWithWinners = {
+      ...response.data,
+      content: determineWinners(response.data.content || []),
+    }
+
+    return resultsWithWinners
   } catch (error) {
     console.error("Error fetching other country results:", error)
     throw new Error("Ma'lumotlarni yuklashda xatolik yuz berdi")

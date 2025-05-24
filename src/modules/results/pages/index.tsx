@@ -3,9 +3,9 @@
 import type React from "react"
 import { useState, useEffect, useMemo, useCallback } from "react"
 import { useSearchParams } from "react-router-dom"
-import { Table, Select, InputNumber, Card, Typography, Spin, Alert, type TableColumnsType } from "antd"
-import { FileDoneOutlined } from "@ant-design/icons"
-import dayjs from "dayjs"
+import { Table, Select, InputNumber, Card, Typography, Spin, Alert, Tag, Tooltip, type TableColumnsType } from "antd"
+import { FileDoneOutlined, TrophyOutlined} from "@ant-design/icons"
+// import dayjs from "dayjs"
 import Cookies from "js-cookie"
 import {
   useGetResultsQuery,
@@ -15,11 +15,13 @@ import {
   useOtherCountryResults,
 } from "../hooks/queries"
 import type { IResult, IRegion, IOlympiad, ITest } from "../service"
+import { getWinnersCountByGrade } from "../service"
 
 const { Option } = Select
 const { Title, Text } = Typography
 
 const PRIMARY_COLOR = "#1E9FD9"
+const WINNER_COLOR = "#52c41a"
 
 const ResultsPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -83,6 +85,30 @@ const ResultsPage: React.FC = () => {
     if (!regions) return []
     return Array.isArray(regions) ? regions : []
   }, [regions])
+
+  // G'oliblar statistikasi
+  const winnersStats = useMemo(() => {
+    if (!results?.content) return null
+
+    const stats: { [key: number]: { total: number; winners: number; maxWinners: number } } = {}
+
+    results.content.forEach((result) => {
+      const gradeNum = result.classNumber
+      if (!stats[gradeNum]) {
+        stats[gradeNum] = {
+          total: 0,
+          winners: 0,
+          maxWinners: getWinnersCountByGrade(gradeNum),
+        }
+      }
+      stats[gradeNum].total++
+      if (result.isWinner) {
+        stats[gradeNum].winners++
+      }
+    })
+
+    return stats
+  }, [results])
 
   // Update URL params when filters change
   useEffect(() => {
@@ -161,9 +187,20 @@ const ResultsPage: React.FC = () => {
         dataIndex: "index",
         key: "index",
         width: 70,
-        render: (_, __, idx: number) => (page - 1) * limit + idx + 1,
+        render: (_, record: IResult, idx: number) => {
+          const number = (page - 1) * limit + idx + 1
+          return (
+            <div className="flex items-center gap-1">
+              {record.isWinner && (
+                <Tooltip title="G'olib">
+                  <TrophyOutlined style={{ color: WINNER_COLOR, fontSize: "14px" }} />
+                </Tooltip>
+              )}
+              <span className="font-medium">{number}</span>
+            </div>
+          )
+        },
         align: "center",
-        className: "text-center font-medium",
       },
       {
         title: "FISH",
@@ -171,6 +208,16 @@ const ResultsPage: React.FC = () => {
         key: "fullName",
         className: "font-medium",
         ellipsis: true,
+        render: (text: string, record: IResult) => (
+          <div className="flex items-center gap-2">
+            <span>{text}</span>
+            {record.isWinner && (
+              <Tag color="success" icon={<TrophyOutlined />}>
+                G'olib
+              </Tag>
+            )}
+          </div>
+        ),
       },
       {
         title: "Telefon raqam",
@@ -191,28 +238,48 @@ const ResultsPage: React.FC = () => {
         },
         render: (result: number, record: IResult) => {
           const score = country === "uz" ? result : record.score
-          const isHighScore = score >= 50 && olympiadId === "1"
           return (
             <span
-              className={`px-2 py-1 rounded font-semibold ${
-                isHighScore ? "bg-green-100 text-green-800" : "text-gray-800"
-              }`}
+              className={`px-3 py-1 rounded-full font-bold text-white ${record.isWinner ? "shadow-lg" : ""}`}
+              style={{
+                backgroundColor: record.isWinner ? WINNER_COLOR : PRIMARY_COLOR,
+              }}
             >
               {score || 0}
             </span>
           )
         },
       },
-      {
-        title: "Tugatgan vaqt",
-        dataIndex: country === "uz" ? "examClosedAt" : "finishedAt",
-        key: "finishedAt",
-        align: "center",
-        render: (val: string) => {
-          if (!val) return "-"
-          return <span className="text-sm">{dayjs(val).format("DD.MM.YYYY HH:mm:ss")}</span>
-        },
-      },
+      // {
+      //   title: (
+      //     <div className="flex items-center gap-1">
+      //       <ClockCircleOutlined />
+      //       <span>Tugatgan vaqt</span>
+      //     </div>
+      //   ),
+      //   dataIndex: country === "uz" ? "examClosedAt" : "finishedAt",
+      //   key: "finishedAt",
+      //   align: "center",
+      //   sorter: (a: IResult, b: IResult) => {
+      //     const timeA = new Date(a.examClosedAt || a.finishedAt).getTime()
+      //     const timeB = new Date(b.examClosedAt || b.finishedAt).getTime()
+      //     return timeA - timeB
+      //   },
+      //   render: (val: string, record: IResult) => {
+      //     if (!val) return "-"
+      //     const formattedTime = dayjs(val).format("DD.MM.YYYY HH:mm:ss")
+      //     return (
+      //       <div className="text-sm">
+      //         <div>{formattedTime}</div>
+      //         {record.isWinner && (
+      //           <Tag color="success" size="small">
+      //             Tez bajargan
+      //           </Tag>
+      //         )}
+      //       </div>
+      //     )
+      //   },
+      // },
       {
         title: "Imtihon tili",
         dataIndex: "examLang",
@@ -229,12 +296,19 @@ const ResultsPage: React.FC = () => {
         dataIndex: "classNumber",
         key: "classNumber",
         align: "center",
-        render: (classNumber: number) => (
-          <span className="font-medium">{classNumber !== -1 && classNumber ? classNumber : "-"}</span>
+        render: (classNumber: number, record: IResult) => (
+          <div className="flex flex-col items-center">
+            <span className="font-medium">{classNumber !== -1 && classNumber ? classNumber : "-"}</span>
+            {record.isWinner && winnersStats && winnersStats[classNumber] && (
+              <Tag color="success" size="small">
+                {winnersStats[classNumber].winners}/{winnersStats[classNumber].maxWinners}
+              </Tag>
+            )}
+          </div>
         ),
       },
     ],
-    [country, olympiadId, page, limit],
+    [country, olympiadId, page, limit, winnersStats],
   )
 
   // Error handling
@@ -264,12 +338,29 @@ const ResultsPage: React.FC = () => {
                 className="hidden lg:flex w-16 h-16 rounded-lg justify-center items-center"
                 style={{ backgroundColor: PRIMARY_COLOR }}
               >
-                <FileDoneOutlined className="text-2xl text-white" />
+                <FileDoneOutlined className="text-2xl !text-white" />
               </div>
-              <Title level={3} className="m-0" style={{ color: PRIMARY_COLOR }}>
-                Natijalar
-              </Title>
+              <div>
+                <Title level={3} className="m-0" style={{ color: PRIMARY_COLOR }}>
+                  Natijalar
+                </Title>
+                <Text className="text-sm text-gray-600">
+                  G'oliblar yashil rangda belgilangan. Bir xil ball bo'lsa, tezroq bajargan g'olib hisoblanadi.
+                </Text>
+              </div>
             </div>
+
+            {/* G'oliblar statistikasi */}
+            {winnersStats && (
+              <div className="flex flex-wrap gap-2">
+                {Object.entries(winnersStats).map(([gradeKey, stats]) => (
+                  <Tag key={gradeKey} color="success" className="flex items-center gap-1">
+                    <TrophyOutlined />
+                    {gradeKey}-sinf: {stats.winners}/{stats.maxWinners}
+                  </Tag>
+                ))}
+              </div>
+            )}
 
             {/* Filters */}
             <div className="flex flex-wrap gap-3 ml-auto">
@@ -448,9 +539,9 @@ const ResultsPage: React.FC = () => {
               scroll={{ x: 900, y: "calc(100vh - 350px)" }}
               locale={{ emptyText: "Ma'lumot topilmadi" }}
               rowClassName={(record: IResult, index: number) => {
-                const score = country === "uz" ? record.result : record.score
-                const isHighScore = score >= 50 && olympiadId === "1"
-                if (isHighScore) return "bg-green-50 hover:bg-green-100"
+                if (record.isWinner) {
+                  return "winner-row bg-green-50 hover:bg-green-100 border-l-4 border-green-500"
+                }
                 return index % 2 === 0 ? "bg-white hover:bg-gray-50" : "bg-gray-50 hover:bg-gray-100"
               }}
               size="small"
@@ -469,6 +560,16 @@ const ResultsPage: React.FC = () => {
         
         .ant-table-tbody > tr > td {
           border: 1px solid #f1f1f1;
+        }
+        
+        .winner-row {
+          background: linear-gradient(90deg, #f6ffed 0%, #f6ffed 100%) !important;
+          box-shadow: 0 2px 4px rgba(82, 196, 26, 0.1);
+        }
+        
+        .winner-row:hover {
+          background: linear-gradient(90deg, #d9f7be 0%, #d9f7be 100%) !important;
+          box-shadow: 0 4px 8px rgba(82, 196, 26, 0.2);
         }
         
         .ant-table-container::-webkit-scrollbar {
