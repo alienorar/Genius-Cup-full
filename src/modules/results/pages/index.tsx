@@ -1,285 +1,491 @@
-import React, { useMemo, useState } from "react";
-import dayjs from "dayjs";
+"use client"
+
+import type React from "react"
+import { useState, useEffect, useMemo, useCallback } from "react"
+import { useSearchParams } from "react-router-dom"
+import { Table, Select, InputNumber, Card, Typography, Spin, Alert, type TableColumnsType } from "antd"
+import { FileDoneOutlined } from "@ant-design/icons"
+import dayjs from "dayjs"
+import Cookies from "js-cookie"
 import {
   useGetResultsQuery,
   useGetRegionsQuery,
+  useGetOlympiadsQuery,
+  useGetTestsQuery,
   useOtherCountryResults,
-} from "../hooks/queries";
-import {
-  Table,
-  Select,
-  InputNumber,
-  Card,
-  Row,
-  Col,
-  Typography,
-  Spin,
-} from "antd";
+} from "../hooks/queries"
+import type { IResult, IRegion, IOlympiad, ITest } from "../service"
 
-const { Option } = Select;
-const { Title, Text } = Typography;
+const { Option } = Select
+const { Title, Text } = Typography
 
-/**
- * ResultsTable (Ant Design)
- * ------------------------------------------------------------
- *  ‣ All filters (grade, language, region, stage, country, score range)
- *  ‣ Single AntD <Table /> with sticky header & zebra rows (via rowClassName)
- *  ‣ Uses provided React‑Query hooks
- * ------------------------------------------------------------
- */
-const ResultsTable: React.FC = () => {
-  /* ---------------------------- Hooks ---------------------------- */
+const PRIMARY_COLOR = "#1E9FD9"
+
+const ResultsPage: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const token = Cookies.get("token") || ""
+
+  // State management with proper types
+  const [grade, setGrade] = useState<string>(searchParams.get("grade") || "all")
+  const [language, setLanguage] = useState<string>(searchParams.get("language") || "all")
+  const [regionId, setRegionId] = useState<string>(searchParams.get("regionId") || "all")
+  const [districtId, setDistrictId] = useState<string>(searchParams.get("districtId") || "all")
+  const [olympiadId, setOlympiadId] = useState<string>(searchParams.get("olympiadId") || "1")
+  const [country, setCountry] = useState<string>(searchParams.get("country") || "uz")
+  const [minScore, setMinScore] = useState<number>(Number(searchParams.get("minScore")) || 0)
+  const [maxScore, setMaxScore] = useState<number>(Number(searchParams.get("maxScore")) || 100)
+  const [page, setPage] = useState<number>(Number(searchParams.get("page")) || 1)
+  const [limit, setLimit] = useState<number>(Number(searchParams.get("limit")) || 100)
+
+  // Data queries with proper error handling
+  const { data: regions = [], isLoading: regionsLoading, error: regionsError } = useGetRegionsQuery()
+  const { data: olympiads = [], isLoading: olympiadsLoading, error: olympiadsError } = useGetOlympiadsQuery()
+  const { data: tests = [], isLoading: testsLoading, error: testsError } = useGetTestsQuery(token)
+
+  // Uzbekistan results query
   const {
-    data: uzResults = [],
+    data: uzResults,
     isLoading: uzLoading,
     error: uzError,
   } = useGetResultsQuery({
-    olympiadId: "1",
-  });
+    olympiadId,
+    classNumber: grade === "all" ? null : grade,
+    language: language === "all" ? null : language,
+    page: page - 1,
+    regionId: regionId === "all" ? null : regionId,
+    districtId: districtId === "all" ? null : districtId,
+    resultFrom: minScore,
+    resultTo: maxScore,
+    size: limit,
+    phone: null,
+  })
 
-  // regionsResponse turli formatlarda ([], {data: []}, {regions: []} ...) kelishi mumkin;
-  // uni har doim massivga normalizatsiya qilamiz.
-  const { data: regionsResponse } = useGetRegionsQuery();
-
-  const regions = useMemo(() => {
-    if (Array.isArray(regionsResponse)) return regionsResponse;
-    if (regionsResponse && Array.isArray(regionsResponse.data))
-      return regionsResponse.data;
-    if (regionsResponse && Array.isArray(regionsResponse.regions))
-      return regionsResponse.regions;
-    return [];
-  }, [regionsResponse]);
-
-  /* --------------------- Local filter state --------------------- */
-  const [grade, setGrade] = useState<string>("all");
-  const [language, setLanguage] = useState<string>("all");
-  const [regionId, setRegionId] = useState<string>("all");
-  const [stage, setStage] = useState<string>("all");
-  const [country, setCountry] = useState<string>("Uzbekistan");
-  const [minScore, setMinScore] = useState<number>(0);
-  const [maxScore, setMaxScore] = useState<number>(100);
-  const [page] = useState<number>(1);
-  const [limit] = useState<number>(100);
-
-  /* ---- Other‑country query (only runs when country !== Uzbekistan) ---- */
+  // Other country results query
   const {
-    data: otherCountryResults = [],
+    data: otherResults,
     isLoading: otherLoading,
     error: otherError,
   } = useOtherCountryResults({
-    page,
+    page: page - 1,
     limit,
-    testId: stage === "all" ? 0 : Number(stage),
+    testId: grade === "all" ? 0 : Number(grade),
     regionId: regionId === "all" ? 0 : Number(regionId),
-    token: country !== "Uzbekistan" ? "token-placeholder" : "",
-  });
+    token: country !== "uz" ? token : "",
+  })
 
-  const results = country === "Uzbekistan" ? uzResults : otherCountryResults;
-  const isLoading = country === "Uzbekistan" ? uzLoading : otherLoading;
-  const error = country === "Uzbekistan" ? uzError : otherError;
+  // Determine which data to use
+  const results = country === "uz" ? uzResults : otherResults
+  const isLoading = country === "uz" ? uzLoading : otherLoading
+  const error = country === "uz" ? uzError : otherError
 
-  /* ------------------------- Filtering ------------------------- */
-  // const filtered = useMemo(() => {
-  //   return results
-  //     .filter((r: any) => (grade === "all" ? true : r.grade === Number(grade)))
-  //     .filter((r: any) => (language === "all" ? true : r.language === language))
-  //     .filter((r: any) =>
-  //       regionId === "all" ? true : r.regionId === Number(regionId)
-  //     )
-  //     .filter((r: any) => (stage === "all" ? true : r.stage === stage))
-  //     .filter((r: any) => (country === "all" ? true : r.country === country))
-  //     .filter((r: any) => r.score >= minScore && r.score <= maxScore);
-  // }, [results, grade, language, regionId, stage, country, minScore, maxScore]);
+  // Process regions data with proper type safety
+  const processedRegions = useMemo((): IRegion[] => {
+    if (!regions) return []
+    return Array.isArray(regions) ? regions : []
+  }, [regions])
 
-  /* ------------------------- Columns ------------------------- */
-  const columns = [
-    {
-      title: "№",
-      dataIndex: "index",
-      key: "index",
-      width: 70,
-      render: (_: any, __: any, idx: number) => idx + 1,
-      align: "center" as const,
-      fixed: "left" as const,
-    },
-    {
-      title: "FISH",
-      dataIndex: "fullName",
-      key: "fullName",
-    },
-    {
-      title: "Telefon raqam",
-      dataIndex: "phone",
-      key: "phone",
-      align: "center" as const,
-    },
-    {
-      title: "Natijalar",
-      dataIndex: "result",
-      key: "result",
-      align: "center" as const,
-      sorter: (a: any, b: any) => a.score - b.score,
-    },
-    {
-      title: "Tugatgan vaqt",
-      dataIndex: "finishedAt",
-      key: "finishedAt",
-      align: "center" as const,
-      render: (val: string) => dayjs(val).format("DD.MM.YYYY HH:mm:ss"),
-    },
-    {
-      title: "Imtihon tili",
-      dataIndex: "examLang",
-      key: "examLang",
-      align: "center" as const,
-    },
-    {
-      title: "Sinf",
-      dataIndex: "classNumber",
-      key: "classNumber",
-      align: "center" as const,
-    },
-  ];
+  // Update URL params when filters change
+  useEffect(() => {
+    const params = new URLSearchParams()
+    params.set("grade", grade)
+    params.set("language", language)
+    params.set("regionId", regionId)
+    params.set("districtId", districtId)
+    params.set("olympiadId", olympiadId)
+    params.set("country", country)
+    params.set("minScore", minScore.toString())
+    params.set("maxScore", maxScore.toString())
+    params.set("page", page.toString())
+    params.set("limit", limit.toString())
 
-  /* ------------------------- Render ------------------------- */
-  if (error) {
+    setSearchParams(params)
+  }, [grade, language, regionId, districtId, olympiadId, country, minScore, maxScore, page, limit, setSearchParams])
+
+  // Filter handlers with useCallback for performance
+  const handleCountryChange = useCallback((value: string) => {
+    setCountry(value)
+    setPage(1)
+    if (value !== "uz") {
+      setRegionId("all")
+      setDistrictId("all")
+      setLanguage("all")
+    }
+  }, [])
+
+  const handleRegionChange = useCallback((value: string) => {
+    setRegionId(value)
+    setDistrictId("all")
+    setPage(1)
+  }, [])
+
+  // Render grade options with proper type safety
+  const renderGradeOptions = useCallback(() => {
+    if (country === "uz") {
+      return (
+        <>
+          <Option value="all" style={{ color: PRIMARY_COLOR, fontWeight: 900 }}>
+            Barcha sinflar
+          </Option>
+          {Array.from({ length: 9 }, (_, index) => index + 3).map((gradeNum) => (
+            <Option key={gradeNum} value={gradeNum.toString()}>
+              {gradeNum} - sinf
+            </Option>
+          ))}
+          <Option value="1">1 - kurs</Option>
+          <Option value="2">2 - kurs</Option>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <Option value="all" style={{ color: PRIMARY_COLOR, fontWeight: 900 }}>
+            Barcha testlar
+          </Option>
+          {tests
+            ?.filter((test: ITest) => test.status === true)
+            ?.map((test: ITest) => (
+              <Option key={test.id} value={test.id.toString()}>
+                {`${test.Participants} - ${test.Participants <= 2 ? "kurs" : "sinf"} (${test.testLang})`}
+              </Option>
+            ))}
+        </>
+      )
+    }
+  }, [country, tests])
+
+  // Table columns with proper types
+  const columns: TableColumnsType<IResult> = useMemo(
+    () => [
+      {
+        title: "№",
+        dataIndex: "index",
+        key: "index",
+        width: 70,
+        render: (_, __, idx: number) => (page - 1) * limit + idx + 1,
+        align: "center",
+        className: "text-center font-medium",
+      },
+      {
+        title: "FISH",
+        dataIndex: "fullName",
+        key: "fullName",
+        className: "font-medium",
+        ellipsis: true,
+      },
+      {
+        title: "Telefon raqam",
+        dataIndex: "phone",
+        key: "phone",
+        align: "center",
+        className: "text-center",
+      },
+      {
+        title: "Natijalar",
+        dataIndex: country === "uz" ? "result" : "score",
+        key: "result",
+        align: "center",
+        sorter: (a: IResult, b: IResult) => {
+          const aScore = country === "uz" ? a.result : a.score
+          const bScore = country === "uz" ? b.result : b.score
+          return (aScore || 0) - (bScore || 0)
+        },
+        render: (result: number, record: IResult) => {
+          const score = country === "uz" ? result : record.score
+          const isHighScore = score >= 50 && olympiadId === "1"
+          return (
+            <span
+              className={`px-2 py-1 rounded font-semibold ${
+                isHighScore ? "bg-green-100 text-green-800" : "text-gray-800"
+              }`}
+            >
+              {score || 0}
+            </span>
+          )
+        },
+      },
+      {
+        title: "Tugatgan vaqt",
+        dataIndex: country === "uz" ? "examClosedAt" : "finishedAt",
+        key: "finishedAt",
+        align: "center",
+        render: (val: string) => {
+          if (!val) return "-"
+          return <span className="text-sm">{dayjs(val).format("DD.MM.YYYY HH:mm:ss")}</span>
+        },
+      },
+      {
+        title: "Imtihon tili",
+        dataIndex: "examLang",
+        key: "examLang",
+        align: "center",
+        render: (lang: string) => (
+          <span className="font-medium" style={{ color: PRIMARY_COLOR }}>
+            {lang || "-"}
+          </span>
+        ),
+      },
+      {
+        title: "Sinf",
+        dataIndex: "classNumber",
+        key: "classNumber",
+        align: "center",
+        render: (classNumber: number) => (
+          <span className="font-medium">{classNumber !== -1 && classNumber ? classNumber : "-"}</span>
+        ),
+      },
+    ],
+    [country, olympiadId, page, limit],
+  )
+
+  // Error handling
+  if (error || regionsError || olympiadsError || testsError) {
     return (
-      <Card style={{ padding: 16 }}>
-        <Text type="danger">Maʼlumotlarni yuklashda xatolik yuz berdi</Text>
-      </Card>
-    );
+      <div className="min-h-screen bg-gray-50 p-6">
+        <div className="container mx-auto">
+          <Alert
+            message="Xatolik yuz berdi"
+            description="Ma'lumotlarni yuklashda xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring."
+            type="error"
+            showIcon
+          />
+        </div>
+      </div>
+    )
   }
 
   return (
-    <Card bodyStyle={{ padding: 24 }}>
-      {/* Title */}
-      <Title level={4} style={{ marginBottom: 24 }}>
-        Natijalar
-      </Title>
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto p-6">
+        {/* Header Section */}
+        <Card className="mb-6 shadow-sm">
+          <div className="flex flex-col lg:flex-row items-center gap-4">
+            <div className="flex items-center gap-4">
+              <div
+                className="hidden lg:flex w-16 h-16 rounded-lg justify-center items-center"
+                style={{ backgroundColor: PRIMARY_COLOR }}
+              >
+                <FileDoneOutlined className="text-2xl text-white" />
+              </div>
+              <Title level={3} className="m-0" style={{ color: PRIMARY_COLOR }}>
+                Natijalar
+              </Title>
+            </div>
 
-      {/* Filters */}
-      <Row gutter={[8, 8]} style={{ marginBottom: 16 }}>
-        {/* Grade */}
-        <Col>
-          <Select value={grade} style={{ width: 130 }} onChange={setGrade}>
-            <Option value="all">Barcha sinflar</Option>
-            {Array.from({ length: 11 }).map((_, i) => (
-              <Option key={i + 1} value={String(i + 1)}>
-                {i + 1}-sinf
-              </Option>
-            ))}
-          </Select>
-        </Col>
+            {/* Filters */}
+            <div className="flex flex-wrap gap-3 ml-auto">
+              {/* Country */}
+              <Select value={country} onChange={handleCountryChange} className="min-w-[150px]" size="large">
+                <Option value="uz">O'zbekiston</Option>
+                <Option value="other">Boshqa mamlakatlar</Option>
+              </Select>
 
-        {/* Language */}
-        <Col>
-          <Select
-            value={language}
-            style={{ width: 130 }}
-            onChange={setLanguage}
-          >
-            <Option value="all">Barcha tillar</Option>
-            <Option value="UZ">UZ</Option>
-            <Option value="RU">RU</Option>
-            <Option value="EN">EN</Option>
-          </Select>
-        </Col>
+              {/* Olympiad (only for Uzbekistan) */}
+              {country === "uz" && (
+                <Select
+                  value={olympiadId}
+                  onChange={(value: string) => {
+                    setOlympiadId(value)
+                    setPage(1)
+                  }}
+                  className="min-w-[200px]"
+                  size="large"
+                  loading={olympiadsLoading}
+                >
+                  {olympiads?.map((o: IOlympiad) => (
+                    <Option key={o.id} value={o.id.toString()}>
+                      {o.name}
+                    </Option>
+                  ))}
+                </Select>
+              )}
 
-        {/* Region (only if Uzbekistan) */}
-        {country === "Uzbekistan" && (
-          <Col>
-            <Select
-              value={regionId}
-              style={{ width: 180 }}
-              onChange={setRegionId}
-              placeholder="Barcha viloyatlar"
-              loading={!regions.length}
-            >
-              <Option value="all">Barcha viloyatlar</Option>
-              {regions.map((r: any) => (
-                <Option key={r.id} value={String(r.id)}>
-                  {r.name}
-                </Option>
-              ))}
-            </Select>
-          </Col>
-        )}
+              {/* Grade */}
+              <Select
+                value={grade}
+                onChange={(value: string) => {
+                  setGrade(value)
+                  setPage(1)
+                }}
+                className="min-w-[130px]"
+                size="large"
+                loading={country !== "uz" && testsLoading}
+              >
+                {renderGradeOptions()}
+              </Select>
 
-        {/* Stage */}
-        <Col>
-          <Select
-            value={stage}
-            style={{ width: 200 }}
-            onChange={setStage}
-            placeholder="Genius Cup, 1-bosqich"
-          >
-            <Option value="all">Barcha bosqichlar</Option>
-            <Option value="1">Genius Cup, 1-bosqich</Option>
-            <Option value="2">Genius Cup, 2-bosqich</Option>
-          </Select>
-        </Col>
+              {/* Language (only for Uzbekistan) */}
+              {country === "uz" && (
+                <Select
+                  value={language}
+                  onChange={(value: string) => {
+                    setLanguage(value)
+                    setPage(1)
+                  }}
+                  className="min-w-[130px]"
+                  size="large"
+                >
+                  <Option value="all" style={{ color: PRIMARY_COLOR, fontWeight: 900 }}>
+                    Barcha tillar
+                  </Option>
+                  <Option value="UZ">O'zbek tili</Option>
+                  <Option value="RU">Rus tili</Option>
+                </Select>
+              )}
 
-        {/* Country */}
-        <Col>
-          <Select value={country} style={{ width: 150 }} onChange={setCountry}>
-            <Option value="Uzbekistan">Oʻzbekiston</Option>
-            <Option value="Kazakhstan">Qozogʻiston</Option>
-            <Option value="Kyrgyzstan">Qirgʻiziston</Option>
-          </Select>
-        </Col>
+              {/* Region (only for Uzbekistan) */}
+              {country === "uz" && (
+                <Select
+                  value={regionId}
+                  onChange={handleRegionChange}
+                  className="min-w-[180px]"
+                  size="large"
+                  loading={regionsLoading}
+                >
+                  <Option value="all" style={{ color: PRIMARY_COLOR, fontWeight: 900 }}>
+                    Barcha viloyatlar
+                  </Option>
+                  {processedRegions
+                    ?.filter((region: IRegion) => region.id !== 15)
+                    ?.map((region: IRegion) => (
+                      <Option key={region.id} value={region.id.toString()}>
+                        {region.name}
+                      </Option>
+                    ))}
+                </Select>
+              )}
 
-        {/* Score range */}
-        <Col>
-          <Row gutter={4} align="middle">
-            <Col>
-              <InputNumber
-                min={0}
-                max={100}
-                value={minScore}
-                onChange={(value) => setMinScore(value ?? 0)}
-                placeholder="Min"
-              />
-            </Col>
-            <Col>
-              <Text>–</Text>
-            </Col>
-            <Col>
-              <InputNumber
-                min={0}
-                max={100}
-                value={maxScore}
-                onChange={(value) => setMaxScore(value ?? 100)}
-                placeholder="Max"
-              />
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+              {/* District (only when region is selected) */}
+              {country === "uz" && regionId !== "all" && (
+                <Select
+                  value={districtId}
+                  onChange={(value: string) => {
+                    setDistrictId(value)
+                    setPage(1)
+                  }}
+                  className="min-w-[200px]"
+                  size="large"
+                >
+                  <Option value="all" style={{ color: PRIMARY_COLOR, fontWeight: 900 }}>
+                    Barcha tumanlar
+                  </Option>
+                  {processedRegions
+                    ?.find((r: IRegion) => r.id.toString() === regionId)
+                    ?.districts?.map((district) => (
+                      <Option key={district.id} value={district.id.toString()}>
+                        {district.name}
+                      </Option>
+                    ))}
+                </Select>
+              )}
 
-      {/* Table */}
-      {isLoading ? (
-        <Spin />
-      ) : (
-        <Table
-          rowKey="id"
-          dataSource={results}
-          columns={columns}
-          pagination={false}
-          bordered
-          scroll={{ x: 900, y: 500 }}
-          locale={{ emptyText: "Maʼlumot topilmadi" }}
-          rowClassName={(_, idx) =>
-            idx % 2 === 0 ? "ant-table-row-odd" : "ant-table-row-even"
-          }
-        />
-      )}
+              {/* Score Range */}
+              <div className="flex items-center gap-2">
+                <Text className="text-sm text-gray-600">Ball:</Text>
+                <InputNumber
+                  min={0}
+                  max={100}
+                  value={minScore}
+                  onChange={(value: number | null) => {
+                    setMinScore(value ?? 0)
+                    setPage(1)
+                  }}
+                  placeholder="Min"
+                  size="large"
+                  className="w-20"
+                />
+                <Text>-</Text>
+                <InputNumber
+                  min={0}
+                  max={100}
+                  value={maxScore}
+                  onChange={(value: number | null) => {
+                    setMaxScore(value ?? 100)
+                    setPage(1)
+                  }}
+                  placeholder="Max"
+                  size="large"
+                  className="w-20"
+                />
+              </div>
+            </div>
+          </div>
+        </Card>
 
-      {/* Footer */}
-      <Row justify="end" style={{ marginTop: 8 }}>
-        <Text type="secondary">Qatorlar soni sahifada: {results.length}</Text>
-      </Row>
-    </Card>
-  );
-};
+        {/* Results Table */}
+        <Card className="shadow-sm">
+          {isLoading ? (
+            <div className="text-center py-12">
+              <Spin size="large" />
+              <p className="mt-4 text-gray-500">Ma'lumotlar yuklanmoqda...</p>
+            </div>
+          ) : (
+            <Table<IResult>
+              rowKey={country === "uz" ? "userId" : "id"}
+              dataSource={results?.content || []}
+              columns={columns}
+              pagination={{
+                current: page,
+                pageSize: limit,
+                total: results?.paging?.totalElements || 0,
+                showSizeChanger: true,
+                pageSizeOptions: ["10", "20", "50", "100"],
+                showQuickJumper: true,
+                showTotal: (total: number, range: [number, number]) => (
+                  <span className="text-sm text-gray-600">
+                    {range[0]}-{range[1]} dan {total}
+                  </span>
+                ),
+                onChange: (newPage: number, newPageSize: number) => {
+                  setPage(newPage)
+                  setLimit(newPageSize)
+                },
+                onShowSizeChange: (_: number, size: number) => {
+                  setPage(1)
+                  setLimit(size)
+                },
+              }}
+              bordered
+              scroll={{ x: 900, y: "calc(100vh - 350px)" }}
+              locale={{ emptyText: "Ma'lumot topilmadi" }}
+              rowClassName={(record: IResult, index: number) => {
+                const score = country === "uz" ? record.result : record.score
+                const isHighScore = score >= 50 && olympiadId === "1"
+                if (isHighScore) return "bg-green-50 hover:bg-green-100"
+                return index % 2 === 0 ? "bg-white hover:bg-gray-50" : "bg-gray-50 hover:bg-gray-100"
+              }}
+              size="small"
+            />
+          )}
+        </Card>
+      </div>
 
-export default ResultsTable;
+      <style jsx>{`
+        .ant-table-thead > tr > th {
+          background-color: ${PRIMARY_COLOR} !important;
+          color: white !important;
+          font-weight: 600 !important;
+          border: 1px solid #fafafa;
+        }
+        
+        .ant-table-tbody > tr > td {
+          border: 1px solid #f1f1f1;
+        }
+        
+        .ant-table-container::-webkit-scrollbar {
+          width: 5px;
+        }
+        
+        .ant-table-container::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        
+        .ant-table-container::-webkit-scrollbar-thumb {
+          background-color: ${PRIMARY_COLOR};
+          border-radius: 20px;
+        }
+      `}</style>
+    </div>
+  )
+}
+
+export default ResultsPage
