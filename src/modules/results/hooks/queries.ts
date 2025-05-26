@@ -1,4 +1,4 @@
-import { useQuery, type UseQueryResult } from "@tanstack/react-query"
+import { useQuery, type UseQueryResult } from "@tanstack/react-query";
 import {
   getResults,
   getRegions,
@@ -9,11 +9,10 @@ import {
   type IGetResultPayload,
   type IOtherCountryPayload,
   type IResultsResponse,
-  type IRegion,
   type IOlympiad,
   type ITest,
   type IResult,
-} from "../service"
+} from "../service";
 
 // Results query for Uzbekistan
 export const useGetResultsQuery = (payload: IGetResultPayload): UseQueryResult<IResultsResponse, Error> => {
@@ -21,7 +20,7 @@ export const useGetResultsQuery = (payload: IGetResultPayload): UseQueryResult<I
     queryKey: [
       "results",
       payload.olympiadId,
-      payload.classNumber,
+      payload.classNumberList, // Changed from classNumber to classNumberList
       payload.language,
       payload.regionId,
       payload.districtId,
@@ -32,20 +31,21 @@ export const useGetResultsQuery = (payload: IGetResultPayload): UseQueryResult<I
     ],
     queryFn: () => getResults(payload),
     enabled: !!payload.olympiadId,
-    staleTime: 30000, // 30 seconds
+    staleTime: 0, // Disable staleTime for testing
     retry: 2,
-  })
-}
+  });
+};
 
 // Regions query
-export const useGetRegionsQuery = (): UseQueryResult<IRegion[], Error> => {
+export const useGetRegionsQuery = (options: { enabled?: boolean } = {}) => {
   return useQuery({
     queryKey: ["regions"],
     queryFn: getRegions,
+    enabled: options.enabled !== false,
     staleTime: 300000, // 5 minutes
     retry: 2,
-  })
-}
+  });
+};
 
 // Olympiads query
 export const useGetOlympiadsQuery = (): UseQueryResult<IOlympiad[], Error> => {
@@ -54,8 +54,8 @@ export const useGetOlympiadsQuery = (): UseQueryResult<IOlympiad[], Error> => {
     queryFn: getOlympiads,
     staleTime: 300000, // 5 minutes
     retry: 2,
-  })
-}
+  });
+};
 
 // Tests query for other countries
 export const useGetTestsQuery = (token: string): UseQueryResult<ITest[], Error> => {
@@ -65,19 +65,19 @@ export const useGetTestsQuery = (token: string): UseQueryResult<ITest[], Error> 
     enabled: !!token,
     staleTime: 300000, // 5 minutes
     retry: 2,
-  })
-}
+  });
+};
 
 // Other country results query
 export const useOtherCountryResults = (payload: IOtherCountryPayload): UseQueryResult<IResultsResponse, Error> => {
   return useQuery({
-    queryKey: ["otherCountryResults", payload.page, payload.limit, payload.testId, payload.regionId],
+    queryKey: ["otherCountryResults", payload.page, payload.limit, payload.testId, payload.regionId, payload.token], // Added token
     queryFn: () => getOtherCountryResults(payload),
-    enabled: !!payload.token,
-    staleTime: 30000, // 30 seconds
+    enabled: !!payload.testId, // Changed to testId for consistency
+    staleTime: 0, // Disable staleTime for testing
     retry: 2,
-  })
-}
+  });
+};
 
 // Single result query
 export const useSingleResult = (chatId: string | number): UseQueryResult<IResult | null, Error> => {
@@ -87,5 +87,5 @@ export const useSingleResult = (chatId: string | number): UseQueryResult<IResult
     enabled: !!chatId,
     staleTime: 60000, // 1 minute
     retry: 2,
-  })
-}
+  });
+};

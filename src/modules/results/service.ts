@@ -298,7 +298,7 @@ export async function getTests(token: string): Promise<ITest[]> {
   if (!token) return [];
 
   try {
-    const response: AxiosResponse<{ Tests: ITest[] }> = await axios.get(`${import.meta.env.VITE_URL}/test/admin/list`, {
+    const response: AxiosResponse<{ Tests: ITest[] }> = await axios.get(`${import.meta.env.BASE_URL}/test/admin/list`, {
       headers: {
         "ngrok-skip-browser-warning": "69420",
         authorization: token,
@@ -318,7 +318,7 @@ export async function getOtherCountryResults(payload: IOtherCountryPayload): Pro
 
   try {
     const response: AxiosResponse<IResultsResponse> = await axios.post(
-      `${import.meta.env.VITE_URL}/test/admin/filter?page=${page}&limit=${limit}`,
+      `${import.meta.env.BASE_URL}/test/admin/filter?page=${page}&limit=${limit}`,
       {
         testId: testId,
         region_id: regionId,

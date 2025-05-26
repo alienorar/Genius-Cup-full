@@ -18,7 +18,14 @@ export default defineConfig({
   server: {
     port: 5175, 
     strictPort: false,
-    allowedHosts: ['7aca-213-230-97-96.ngrok-free.app']
+    allowedHosts: ['7aca-213-230-97-96.ngrok-free.app'],
+    proxy: {
+      "/api": {
+        target: "https://gc-bot-admin-api.asianuniversity.uz/", 
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
 
   }
 })
