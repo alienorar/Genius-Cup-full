@@ -73,7 +73,7 @@ const sections = [
         <p className="text-[16px] text-[#01284099] poppin">
           <strong className="text-black">4.1</strong> Musobaqaning <span className="text-[#1E9FD9] font-semibold">birinchi bosqichi</span> ishtirokchilarning umumiy bilim,
           mantiqiy fikrlash va tezkor qaror qabul qilish qobiliyatini sinovdan o‘tkazish uchun
-          mo‘ljallangan bo‘lib, <span  className="text-[#1E9FD9] font-semibold">2025-yilning 10-may sanasida onlayn test shaklida</span>  telegram botlari
+          mo‘ljallangan bo‘lib, <span  className="text-[#1E9FD9] font-semibold">2025-yilning 20-may sanasida onlayn test shaklida</span>  telegram botlari
           orqali o‘tkazilinadi.
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
@@ -103,7 +103,7 @@ const sections = [
           <li className="text-[16px] text-[#01284099] py-1 poppin">Ikkinchi bosqichga yo‘llanma.</li>
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
-          <strong className="text-black">4.6</strong> Ikkinchi bosqich <span className="text-[#1E9FD9] font-semibold">2025-yil 10-may</span>  kuni <span className="text-[#1E9FD9] font-semibold">Osiyo texnologiyalar universiteti</span>ning binosida tashkil qilinadi. Ushbu bosqichda ishtirokchilarning shaxsan baholanishi, yozma test orqali ularning imkoniyatlari yanada chuqurroq sinovdan o‘tkazilinadi.
+          <strong className="text-black">4.6</strong> Ikkinchi bosqich <span className="text-[#1E9FD9] font-semibold">2025-yil 1-iyun</span>  kuni <span className="text-[#1E9FD9] font-semibold">Osiyo texnologiyalar universiteti</span>ning binosida tashkil qilinadi. Ushbu bosqichda ishtirokchilarning shaxsan baholanishi, yozma test orqali ularning imkoniyatlari yanada chuqurroq sinovdan o‘tkazilinadi.
         </p>
         <p className="text-[16px] text-[#01284099] poppin">
           <strong className="text-black">4.7</strong> Final bosqichida har bir guruhdan eng yuqori natija qayd etgan 3 nafar g‘olib quyidagi mukofotlarga ega bo‘ladi:
